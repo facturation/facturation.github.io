@@ -30,6 +30,10 @@ github_username: facturation
 # Build settings
 # theme: "just-the-docs"
 remote_theme: pmarsceill/just-the-docs
+aux_links_new_tab: true
+aux_links:
+  "Facturation.pro":
+    - "https://facturation.pro"
 # plugins:
 #   - jekyll-feed
 

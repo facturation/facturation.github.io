@@ -19,3 +19,5 @@ gem "just-the-docs"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
 end
+
+gem "my_jekyll_tags", path: "./vendor/gems/my_jekyll_tags"
