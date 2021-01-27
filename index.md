@@ -44,7 +44,7 @@ Notre API supporte deux protocoles d'identification:
 
 Lorsque vous développez une application destinée à être publique et à être utilisée par vos propres utilisateurs, nous vous encourageons à authentifier vos requêtes API via le protocole [OAuth 2](http://oauth.net/) pour plus de simplicité et de sécurité pour vos clients. Ce protocole évite à vos utilisateurs d'avoir à communiquer leurs identifiants de connexion API manuellement, et propose donc une expérience utilisateur plus fluide lorsque celui ci souhaite autoriser votre application à accéder à ses données.
 
-Pour pouvoir utiliser le protocole OAuth, vous devez obligatoirement disposer d'un compte sur notre service (un compte gratuit est suffisant) et <%= link_to_if(logged_in?, "enregistrer votre application", oauth_applications_url) %> sur notre service<%= " (vous devez au préalable vous identifier pour accéder au lien permettant de déclarer votre application)" unless logged_in? %>.
+Pour pouvoir utiliser le protocole OAuth, vous devez obligatoirement disposer d'un compte sur notre service (un compte gratuit est suffisant) et [enregistrer votre application](https://www.facturation.pro/oauth/applications) sur notre service.
 
 ### Authentification par clé API
 
