@@ -23,7 +23,7 @@ email: support@facturation.pro
 description: >- # this means to ignore newlines until "baseurl:"
   API officielle du service facturation.pro (MonAE.fr et MaTPE.com)
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://facturation.dev" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://facturation.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: facturation
 github_username: facturation
 
