@@ -5,7 +5,7 @@ parent: "Langage Liquid"
 nav_order: 1000
 ---
 
-Voici quelques exemples d'utilisation de Liquid pour vos contenus dynamiques.
+Voici quelques exemples d'utilisation de Liquid pour vos contenus.
 
 ## Contenu en plusieurs langues
 
@@ -23,7 +23,7 @@ Votre satisfaction est notre priorité
 
 ## RIB différent en fonction du client
 
-Si vous pratiquez l'affacturage, ou bien que vous avez besoin de communication des informations de règlement différentes selon les clients, vous pouvez activer le système de champs clients personnalisés (dans la page Paramètres / Expert de votre compte), et utiliser l'un de ces champs pour détermine les informations à communiquer.
+Si vous pratiquez l'affacturage, ou bien que vous avez besoin de communiquer des informations de règlement différentes selon les clients, vous pouvez activer le système de champs clients personnalisés (dans la page Paramètres / Expert de votre compte), et utiliser l'un de ces champs pour déterminer les informations à communiquer.
 
 {% raw %}
 ```liquid

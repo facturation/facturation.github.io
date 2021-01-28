@@ -1,0 +1,37 @@
+---
+- key: id
+  title: Identifiant
+- key: customer_id
+  title: Client
+- key: invoiced_on
+  title: Date facture
+- key: term_on
+  title: Date d'échéance
+- key: reference
+  title: Numéro de facture
+- key: purchase_number
+  title: Bon de commande
+- key: title
+  title: Objet
+- key: language
+  title: Langue du PDF
+- key: total
+  title: Montant total HT
+- key: total_with_vat
+  title: Montant total TTC
+- key: currency
+  title: Devise
+- key: collaborator
+  title: Collaborateur
+- key: public_download_url
+  title: Url de téléchargement publique
+- key: category
+  title: Catégorie
+- key: followup
+  title: Suivi commercial
+- key: balance
+  title: Montant restant dû
+- key: linked_quote_ref
+  title: Référence du devis associé
+- key: url_pay
+  title: Lien de règlement en ligne (option GOLD requise)

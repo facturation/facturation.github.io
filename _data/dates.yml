@@ -1,31 +1,31 @@
 ---
-- key: :aujourdhui
+- key: today
   title: Date du jour
   example: 28/01/2021
-- key: :mois
+- key: month
   title: Ce mois ci
   example: janvier 2021
-- key: :trimestre
+- key: quarter
   title: Ce trimestre
   example: T1 2021
-- key: :annee
+- key: year
   title: Cette année
   example: '2021'
-- key: :mois_precedent
+- key: previous_month
   title: Le mois dernier
   example: décembre 2020
-- key: :trimestre_precedent
+- key: previous_quarter
   title: Le trimestre dernier
   example: T4 2020
-- key: :annee_precedente
+- key: previous_year
   title: L'année dernière
   example: '2020'
-- key: :mois_suivant
+- key: next_month
   title: Le mois prochain
   example: février 2021
-- key: :trimestre_suivant
+- key: next_quarter
   title: Le trimestre prochain
   example: T2 2021
-- key: :annee_suivante
+- key: next_year
   title: L'année prochaine
   example: '2022'

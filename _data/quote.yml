@@ -1,0 +1,37 @@
+---
+- key: id
+  title: Identifiant
+- key: customer_id
+  title: Client
+- key: invoiced_on
+  title: Date du devis
+- key: term_on
+  title: Valide jusqu'au
+- key: reference
+  title: Numéro du devis
+- key: purchase_number
+  title: Bon de commande
+- key: title
+  title: Objet
+- key: language
+  title: Langue du PDF
+- key: total
+  title: Montant total HT
+- key: total_with_vat
+  title: Montant total TTC
+- key: currency
+  title: Devise
+- key: collaborator
+  title: Collaborateur
+- key: public_download_url
+  title: Url de téléchargement publique
+- key: category
+  title: Catégorie
+- key: followup
+  title: Suivi commercial
+- key: balance
+  title: Total restant à facturer
+- key: fully_invoiced
+  title: Devis soldé?
+- key: amount_invoiced
+  title: Montant déjà facturé

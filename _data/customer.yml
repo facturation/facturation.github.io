@@ -1,0 +1,47 @@
+---
+- key: id
+  title: Identifiant
+- key: company_name
+  title: Société
+- key: civility
+  title: Civilité
+- key: first_name
+  title: Prénom
+- key: last_name
+  title: Nom
+- key: street
+  title: Adresse de facturation
+- key: city
+  title: Ville
+- key: zip_code
+  title: Code postal
+- key: country
+  title: Pays
+- key: individual
+  title: Particulier
+- key: language
+  title: Langue des PDF
+- key: reference
+  title: Référence client
+- key: vat_number
+  title: N° TVA
+- key: siret
+  title: Siret
+- key: sepa_iban
+  title: IBAN
+- key: sepa_bic
+  title: BIC
+- key: sepa_rum
+  title: RUM
+- key: sepa_signature_on
+  title: Date de signature du mandat SEPA
+- key: field1
+  title: Champ libre 1
+- key: field2
+  title: Champ libre 2
+- key: field3
+  title: Champ libre 3
+- key: field4
+  title: Champ libre 4
+- key: field5
+  title: Champ libre 5
