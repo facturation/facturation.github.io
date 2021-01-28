@@ -28,7 +28,7 @@ Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Ag
 
 * pour éviter toute erreur d'encodage de caractères, veuillez à ne pas utiliser de caractères accentués dans le champ User-Agent.
 * si vous n'êtes pas en mesure de changer le User-Agent transmis par le client que vous utilisez pour faire vos requêtes, vous pouvez transmettre un User-Agent conforme en envoyant dans votre requête une entête X-User-Agent. Par exemple:
-{{ site.data.urls }}
+
 {% api_block %}
 {% curl_cmd user_agent: 'X-User-Agent' %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
