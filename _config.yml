@@ -29,6 +29,7 @@ github_username: facturation
 
 # Build settings
 theme: "just-the-docs"
+color_scheme: api
 # remote_theme: pmarsceill/just-the-docs
 aux_links_new_tab: true
 aux_links:
