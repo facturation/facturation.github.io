@@ -3,10 +3,6 @@ layout: default
 title: "Accueil"
 nav_order: 1
 ---
-
-# Accueil
-{: .no_toc }
-
 1. TOC
 {:toc}
 
@@ -30,8 +26,9 @@ Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Ag
 
 * pour éviter toute erreur d'encodage de caractères, veuillez à ne pas utiliser de caractères accentués dans le champ User-Agent.
 * si vous n'êtes pas en mesure de changer le User-Agent transmis par le client que vous utilisez pour faire vos requêtes, vous pouvez transmettre un User-Agent conforme en envoyant dans votre requête une entête X-User-Agent. Par exemple:
+{{ site.data.urls }}
 {% api_block %}
-{% curl_cmd user_agent: 'X-User-Agent' %} "<%= firm_customers_url(firm_id: api_firm_id, format: :json) %>"
+{% curl_cmd user_agent: 'X-User-Agent' %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
 ## Authentification
@@ -57,7 +54,7 @@ A tout moment, vous pouvez générer un nouveau mot de passe API depuis votre co
 Vous pouvez utiliser un utilitaire tel que curl pour tester l'accès à l'API.
 Exemple:
 {% api_block %}
-  {% curl_cmd %} "<%= firm_customers_url(firm_id: api_firm_id, format: :json) %>"
+  {% curl_cmd %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
 ## Paramètre FIRM_ID
@@ -87,7 +84,7 @@ Voici un exemple de création à l'aide de curl :
 
 {% api_block %}
 {% curl_cmd write: true %} -d '{"company_name":"WORLD INC"}' \
- "<%= firm_customers_url(firm_id: api_firm_id, format: :json) %>"
+ "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
 Si la création réussi, le code HTTP de retour est "201 Created" et les entêtes de la réponse contiennent une entrée "Location" indiquant l'url d'accès au nouvel élément créé. De plus, le résultat contient le détail JSON de la ressource créée.
@@ -97,7 +94,7 @@ Sur un principe similaire, la mise à jour des enregistrements se fait à l'aide
 {% api_block %}
 {% curl_cmd(write: true) %} -X PATCH \
  -d '{"company_name":"BIG CORP S.A.S"}' \
- "<%= firm_customer_url(firm_id: FIRM_ID, id: CUSTOMER_ID, format: :json) %>"
+ "{{ site.data.urls['customers']['update']['url'] | api_url }}"
 {% endapi_block %}
 
 Lorsque la mise à jour réussie, vous obtenez en retour le code HTTP "200 OK".
@@ -107,7 +104,7 @@ Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous
 
 {% api_block %}
   {% curl_cmd %} -X DELETE \
-  "<%= firm_customer_url(firm_id: api_firm_id, id: 1, format: :json) %>"
+  "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
 {% endapi_block %}
 
 Les requêtes de suppression ne nécessitent pas de "Content-Type" puisqu'elles ne contiennent pas de JSON. Si la suppression réussie, vous obtenez le code HTTP "200 OK"
@@ -183,7 +180,7 @@ L'API est compatible avec le format JSONP, vous permettant d'accéder aux métho
 Exemple de requête:
 
 {% api_block %}
-  {% curl_cmd %} "<%= firm_customer_url(firm_id: api_firm_id, id: 1, format: :json, callback: 'afficherInfo') %>"
+  {% curl_cmd %} "{{ site.data.urls['customers']['show']['url'] | api_url }}?callback=afficherInfo"
 {% endapi_block %}
 
 Résultat:

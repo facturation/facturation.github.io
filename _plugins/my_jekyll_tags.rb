@@ -1,4 +1,12 @@
 module MyJekyllTags
+  module UrlForFilter
+    def api_url(input)
+      environment = Jekyll::Drops::JekyllDrop.global.environment
+      host = environment == "production" ? "https://facturation.pro" : "https://facturation.test"
+      "#{host}#{input}"
+    end
+  end
+
   class CurlTag < Liquid::Tag
     def initialize(tag_name, params, tokens)
       super
@@ -37,6 +45,8 @@ module MyJekyllTags
     end
   end
 end
+
+Liquid::Template.register_filter(MyJekyllTags::UrlForFilter)
 
 Liquid::Template.register_tag("curl_cmd", MyJekyllTags::CurlTag)
 Liquid::Template.register_tag("api_block", MyJekyllTags::ApiBlock)

@@ -1,0 +1,42 @@
+---
+customers:
+  find:
+    url: "/firms/FIRM_ID/customers.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/customers.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/customers/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/customers/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/customers/ID.json"
+    method: DELETE
+purchases:
+  find:
+    url: "/firms/FIRM_ID/purchases.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/purchases.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/purchases/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/purchases/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/purchases/ID.json"
+    method: DELETE
+  upload:
+    url: "/firms/FIRM_ID/purchases/ID/upload.json"
+    method: POST
+  recurring_list:
+    url: "/firms/FIRM_ID/recurring_purchases.json"
+    method: GET
+  recurring_show:
+    url: "/firms/FIRM_ID/recurring_purchases/ID.json"
+    method: GET
