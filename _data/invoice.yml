@@ -24,11 +24,15 @@
 - key: collaborator
   title: Collaborateur
 - key: public_download_url
-  title: Url de téléchargement publique
+  title: Url publique de téléchargement
+- key: category_id
+  title: ID catégorie
 - key: category
-  title: Catégorie
+  title: Libellé catégorie
+- key: followup_id
+  title: ID suivi commercial
 - key: followup
-  title: Suivi commercial
+  title: Libellé suivi commercial
 - key: balance
   title: Montant restant dû
 - key: linked_quote_ref

@@ -1,7 +1,7 @@
 ---
 - key: today
   title: Date du jour
-  example: 28/01/2021
+  example: 29/01/2021
 - key: month
   title: Ce mois ci
   example: janvier 2021
