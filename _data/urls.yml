@@ -1,4 +1,31 @@
 ---
+account:
+  show:
+    url: "/account.json"
+    method: GET
+  orders:
+    url: "/firms/FIRM_ID/orders.json"
+    method: GET
+categories:
+  find:
+    url: "/firms/FIRM_ID/categories.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/categories.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/categories/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/categories/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/categories/ID.json"
+    method: DELETE
+collaborators:
+  find:
+    url: "/firms/FIRM_ID/collaborators.json"
+    method: GET
 customers:
   find:
     url: "/firms/FIRM_ID/customers.json"
@@ -15,6 +42,80 @@ customers:
   destroy:
     url: "/firms/FIRM_ID/customers/ID.json"
     method: DELETE
+  archive:
+    url: "/firms/FIRM_ID/customers/ID/archive.json"
+    method: POST
+  unarchive:
+    url: "/firms/FIRM_ID/customers/ID/unarchive.json"
+    method: POST
+  invoices:
+    url: "/firms/FIRM_ID/customers/ID/invoices.json"
+    method: GET
+  quotes:
+    url: "/firms/FIRM_ID/customers/ID/quotes.json"
+    method: GET
+quotes:
+  find:
+    url: "/firms/FIRM_ID/quotes.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/quotes.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/quotes/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/quotes/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/quotes/ID.json"
+    method: DELETE
+  download:
+    url: "/firms/FIRM_ID/quotes/ID.pdf"
+    method: GET
+  upload:
+    url: "/firms/FIRM_ID/quotes/ID/upload.json"
+    method: POST
+  email:
+    url: "/firms/FIRM_ID/emails.json?bill_id=ID"
+    method: POST
+  invoice:
+    url: "/firms/FIRM_ID/quotes/ID/invoice.json"
+    method: POST
+invoices:
+  find:
+    url: "/firms/FIRM_ID/invoices.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/invoices.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/invoices/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/invoices/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/invoices/ID.json"
+    method: DELETE
+  download:
+    url: "/firms/FIRM_ID/invoices/ID.pdf"
+    method: GET
+  upload:
+    url: "/firms/FIRM_ID/invoices/ID/upload.json"
+    method: POST
+  email:
+    url: "/firms/FIRM_ID/emails.json?bill_id=ID"
+    method: POST
+  refund:
+    url: "/firms/FIRM_ID/invoices/ID/refund.json"
+    method: POST
+  recurring_list:
+    url: "/firms/FIRM_ID/recurring_invoices.json"
+    method: GET
+  recurring_show:
+    url: "/firms/FIRM_ID/recurring_invoices/ID.json"
+    method: GET
 purchases:
   find:
     url: "/firms/FIRM_ID/purchases.json"
@@ -40,3 +141,80 @@ purchases:
   recurring_show:
     url: "/firms/FIRM_ID/recurring_purchases/ID.json"
     method: GET
+files:
+  customers:
+    url: "/firms/FIRM_ID/assets/customers.json"
+    method: GET
+  invoices:
+    url: "/firms/FIRM_ID/assets/invoices.json"
+    method: GET
+  purchases:
+    url: "/firms/FIRM_ID/assets/purchases.json"
+    method: GET
+  quotes:
+    url: "/firms/FIRM_ID/assets/quotes.json"
+    method: GET
+  destroy:
+    url: "/firms/FIRM_ID/assets/ID.json"
+    method: DELETE
+suppliers:
+  find:
+    url: "/firms/FIRM_ID/suppliers.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/suppliers.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/suppliers/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/suppliers/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/suppliers/ID.json"
+    method: DELETE
+products:
+  find:
+    url: "/firms/FIRM_ID/products.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/products.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/products/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/products/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/products/ID.json"
+    method: DELETE
+followups:
+  find:
+    url: "/firms/FIRM_ID/followups.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/followups.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/followups/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/followups/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/followups/ID.json"
+    method: DELETE
+settlements:
+  find:
+    url: "/firms/FIRM_ID/invoices/INVOICE_ID/settlements.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/invoices/INVOICE_ID/settlements.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/invoices/INVOICE_ID/settlements/ID.json"
+    method: GET
+  destroy:
+    url: "/firms/FIRM_ID/invoices/INVOICE_ID/settlements/ID.json"
+    method: DELETE

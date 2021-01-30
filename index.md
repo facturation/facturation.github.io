@@ -105,8 +105,8 @@ A noter que lors d'une requête de modification, vous n'avez besoin de transmett
 Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous devez utiliser une requête de type DELETE. Par exemple:
 
 {% api_block %}
-  {% curl_cmd %} -X DELETE \
-  "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
+  {% curl_cmd -%}
+  -X DELETE "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
 {% endapi_block %}
 
 Les requêtes de suppression ne nécessitent pas de "Content-Type" puisqu'elles ne contiennent pas de JSON. Si la suppression réussie, vous obtenez le code HTTP "200 OK"

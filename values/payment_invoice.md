@@ -2,7 +2,7 @@
 layout: default
 title: "payment_mode (facture)"
 parent: "Valeurs spécifiques"
-nav_order: 200
+nav_order: 300
 ---
 Voici les valeurs spécifiques de modes de règlement pour une vente
 
