@@ -1,0 +1,479 @@
+---
+language:
+  data:
+  - - Français
+    - fr
+  - - Anglais
+    - en
+  - - Espagnol
+    - es
+  - - Néerlandais
+    - nl
+payment_mode_purchase:
+  field: payment_mode
+  data:
+  - - Non payé
+    - 0
+  - - Paypal
+    - 1
+  - - Carte bancaire
+    - 2
+  - - Virement
+    - 3
+  - - Chèque
+    - 4
+  - - Espèces
+    - 5
+  - - Compte courant d'associé
+    - 7
+  - - Prélèvement
+    - 8
+  - - TIP (Titre interbancaire de paiement)
+    - 9
+  - - Crédit fournisseur
+    - 20
+  - - Ticket restaurant
+    - 30
+  - - Chèque cadeau
+    - 31
+  - - Chèque vacances
+    - 32
+  - - LCR (Lettre de change relevé)
+    - 50
+  - - BOR (Billet à ordre relevé)
+    - 51
+  - - Avoir
+    - 90
+  - - Autre
+    - 99
+payment_mode_bill:
+  field: payment_mode
+  data:
+  - - Non payé
+    - 0
+  - - Paypal
+    - 1
+  - - Carte bancaire
+    - 2
+  - - Virement
+    - 3
+  - - Chèque
+    - 4
+  - - Espèces
+    - 5
+  - - Cesu préfinancé
+    - 6
+  - - Prélèvement
+    - 8
+  - - TIP (Titre interbancaire de paiement)
+    - 9
+  - - Ticket restaurant
+    - 30
+  - - Chèque cadeau
+    - 31
+  - - Chèque vacances
+    - 32
+  - - LCR (Lettre de change relevé)
+    - 50
+  - - BOR (Billet à ordre relevé)
+    - 51
+  - - Avoir
+    - 90
+  - - Autre
+    - 99
+  - - Créance irrécouvrable
+    - 999
+currency:
+  data:
+  - - euro
+    - EUR
+  - - dollar US
+    - USD
+  - - livre sterling
+    - GBP
+  - - franc suisse
+    - CHF
+  - - dollar canadien
+    - CAD
+  - - dollar australien
+    - AUD
+  - - dollar néo-zélandais
+    - NZD
+  - - yen japonais
+    - JPY
+  - - dollar de Hong Kong
+    - HKD
+  - - yuan chinois
+    - CNY
+  - - rouble russe
+    - RUB
+  - - shekel israélien
+    - ILS
+  - - Afghani afghan
+    - AFN
+  - - Ancienne ouguiya mauritanienne
+    - MRO
+  - - Ariary malgache
+    - MGA
+  - - Baht thailandais
+    - THB
+  - - Balboa panaméen
+    - PAB
+  - - Birr éthiopien
+    - ETB
+  - - Bitcoin
+    - BTC
+  - - Bolivar fuerte vénézuélien
+    - VEF
+  - - Boliviano bolivien
+    - BOB
+  - - Cedi ghanéen
+    - GHS
+  - - Colón costaricien
+    - CRC
+  - - Cordoba d'or nicaraguayen
+    - NIO
+  - - Couronne danoise
+    - DKK
+  - - Couronne islandaise
+    - ISK
+  - - Couronne norvégienne
+    - NOK
+  - - Couronne suedoise
+    - SEK
+  - - Couronne tchèque
+    - CZK
+  - - Dalasi gambien
+    - GMD
+  - - Denar macédonien
+    - MKD
+  - - Dinar algérien
+    - DZD
+  - - Dinar bahreïni
+    - BHD
+  - - Dinar irakien
+    - IQD
+  - - Dinar jordanien
+    - JOD
+  - - Dinar koweïtien
+    - KWD
+  - - Dinar libyen
+    - LYD
+  - - Dinar serbe
+    - RSD
+  - - Dinar tunisien
+    - TND
+  - - Dirham des Émirats arabes unis
+    - AED
+  - - Dirham marocain
+    - MAD
+  - - Dobra santoméen
+    - STD
+  - - Dollar bahaméen
+    - BSD
+  - - Dollar barbadien
+    - BBD
+  - - Dollar bermudien
+    - BMD
+  - - Dollar bélizien
+    - BZD
+  - - Dollar de Brunei
+    - BND
+  - - Dollar de Fidji
+    - FJD
+  - - Dollar de Singapour
+    - SGD
+  - - Dollar de Trinité-et-Tobago
+    - TTD
+  - - Dollar des Caraïbes orientales
+    - XCD
+  - - Dollar des Salomon
+    - SBD
+  - - Dollar des îles Caïmans
+    - KYD
+  - - Dollar du Suriname
+    - SRD
+  - - Dollar guyanien
+    - GYD
+  - - Dollar jamaïcain
+    - JMD
+  - - Dollar libérien
+    - LRD
+  - - Dollar namibien
+    - NAD
+  - - Dong vietnamien
+    - VND
+  - - Dram arménien
+    - AMD
+  - - Escudo cap-verdien
+    - CVE
+  - - Florin arubais
+    - AWG
+  - - Florin des Antilles néerlandaises
+    - ANG
+  - - Forint hongrois
+    - HUF
+  - - Franc CFA (XAF)
+    - XAF
+  - - Franc CFA (XOF)
+    - XOF
+  - - Franc CFP (XPF)
+    - XPF
+  - - Franc Djibouti
+    - DJF
+  - - Franc burundais
+    - BIF
+  - - Franc comorien
+    - KMF
+  - - Franc congolais
+    - CDF
+  - - Franc guinéen
+    - GNF
+  - - Franc rwandais
+    - RWF
+  - - Gourde haïtienne
+    - HTG
+  - - Guaraní paraguayen
+    - PYG
+  - - Hryvnia ukrainienne
+    - UAH
+  - - Kina papou-néo-guinéen
+    - PGK
+  - - Kip laotien
+    - LAK
+  - - Kuna croate
+    - HRK
+  - - Kwacha malawien
+    - MWK
+  - - Kwacha zambien
+    - ZMW
+  - - Kwanza angolais
+    - AOA
+  - - Kyat
+    - MMK
+  - - Lari géorgien
+    - GEL
+  - - Lek albanais
+    - ALL
+  - - Lempira hondurien
+    - HNL
+  - - Leone sierra-léonais
+    - SLL
+  - - Leu moldave
+    - MDL
+  - - Leu roumain
+    - RON
+  - - Lev bulgare (ancien)
+    - BGN
+  - - Lilangeni swazilandais
+    - SZL
+  - - Lire turque
+    - TRY
+  - - Livre
+    - SHP
+  - - Livre de Gibraltar
+    - GIP
+  - - Livre des Îles Malouines
+    - FKP
+  - - Livre libanaise
+    - LBP
+  - - Livre soudanaise
+    - SDG
+  - - Livre syrienne
+    - SYP
+  - - Livre égyptienne
+    - EGP
+  - - Loti lesothan
+    - LSL
+  - - Manat azerbaïdjanais
+    - AZN
+  - - Mark convertible de Bosnie-Herzégovine
+    - BAM
+  - - Metical mozambicain
+    - MZN
+  - - Naira nigérien
+    - NGN
+  - - Nakfa érythréen
+    - ERN
+  - - Ngultrum bhoutanais
+    - BTN
+  - - Nouveau dollar de Taïwan
+    - TWD
+  - - Nouveau manat turkmène
+    - TMT
+  - - Pa'anga des Tonga
+    - TOP
+  - - Pataca
+    - MOP
+  - - Peso argentin
+    - ARS
+  - - Peso chilien
+    - CLP
+  - - Peso colombien
+    - COP
+  - - Peso convertible cubain
+    - CUC
+  - - Peso cubain
+    - CUP
+  - - Peso dominicain
+    - DOP
+  - - Peso mexicain
+    - MXN
+  - - Peso philippin
+    - PHP
+  - - Peso uruguayen
+    - UYU
+  - - Pula botswanais
+    - BWP
+  - - Quetzal guatémaltèque
+    - GTQ
+  - - Rand sud-africain
+    - ZAR
+  - - Rial iranien
+    - IRR
+  - - Rial omanais
+    - OMR
+  - - Riel cambodgien
+    - KHR
+  - - Ringgit malaisien
+    - MYR
+  - - Riyal qatarien
+    - QAR
+  - - Riyal saoudien
+    - SAR
+  - - Riyal yéménite
+    - YER
+  - - Rouble biélorusse (nouveau)
+    - BYN
+  - - Roupie indienne
+    - INR
+  - - Roupie indonésienne
+    - IDR
+  - - Roupie mauricienne
+    - MUR
+  - - Roupie népalaise
+    - NPR
+  - - Roupie pakistanaise
+    - PKR
+  - - Roupie seychelloise
+    - SCR
+  - - Roupie srilankaise
+    - LKR
+  - - Rufiyaa maldivienne
+    - MVR
+  - - Réal bresilien
+    - BRL
+  - - Shilling kényan
+    - KES
+  - - Shilling ougandais
+    - UGX
+  - - Shilling somalien
+    - SOS
+  - - Shilling tanzanien
+    - TZS
+  - - Sol péruvien
+    - PEN
+  - - Som kirghiz
+    - KGS
+  - - Somoni tadjik
+    - TJS
+  - - Sum ouzbek
+    - UZS
+  - - Taka bangladais
+    - BDT
+  - - Tala samoan
+    - WST
+  - - Tenge kazakh
+    - KZT
+  - - Tugrik mongol
+    - MNT
+  - - Vatu du Vanuatu
+    - VUV
+  - - Won nord-coréen
+    - KPW
+  - - Won sud-coréen
+    - KRW
+  - - Zloty polonais
+    - PLN
+pay_before:
+  data:
+  - - A réception
+    - '0'
+  - - Comptant
+    - cash
+  - - 15 jours nets, à compter de la livraison
+    - '15'
+  - - 30 jours nets, à compter de la livraison
+    - '30'
+  - - 45 jours nets, à compter de la livraison
+    - '45'
+  - - 60 jours nets, à compter de la livraison
+    - '60'
+  - - 7 jours fin de mois, à compter de la livraison
+    - 07fm
+  - - 30 jours fin de mois, à compter de la livraison
+    - 30fm
+  - - 45 jours fin de mois, à compter de la livraison
+    - 45fm
+  - - fin de mois le 10, à compter de la livraison
+    - 00fm10
+  - - fin de mois le 20, à compter de la livraison
+    - 00fm20
+  - - 30 jours fin de mois le 10, à compter de la livraison
+    - 30fm10
+  - - 30 jours fin de mois le 20, à compter de la livraison
+    - 30fm20
+  - - 15 jours nets, à compter de la facturation
+    - 15-inv
+  - - 30 jours nets, à compter de la facturation
+    - 30-inv
+  - - 45 jours nets, à compter de la facturation
+    - 45-inv
+  - - 60 jours nets, à compter de la facturation
+    - 60-inv
+  - - 7 jours fin de mois, à compter de la facturation
+    - 07fm-inv
+  - - 30 jours fin de mois, à compter de la facturation
+    - 30fm-inv
+  - - 45 jours fin de mois, à compter de la facturation
+    - 45fm-inv
+  - - fin de mois le 10, à compter de la facturation
+    - 00fm10-inv
+  - - fin de mois le 20, à compter de la facturation
+    - 00fm20-inv
+  - - 30 jours fin de mois le 10, à compter de la facturation
+    - 30fm10-inv
+  - - 30 jours fin de mois le 20, à compter de la facturation
+    - 30fm20-inv
+nature:
+  data:
+  - - Vente
+    - 1
+  - - BIC - Prestations de service commerciales ou artisanales
+    - 2
+  - - BNC - Prestation non commerciale
+    - 3
+  - - Débours
+    - 8
+  - - Non applicable
+    - 9
+status_category:
+  field: category
+  data:
+    Achats/Ventes: 0
+    Achats uniquement: 2
+    Ventes uniquement: 1
+status_followup:
+  field: followup
+  data:
+    Devis/Factures: 0
+    Devis uniquement: 1
+    Factures uniquement: 2
+quote_status:
+  data:
+  - - En attente
+    - '0'
+  - - Accepté
+    - '1'
+  - - Refusé
+    - '9'

@@ -3,7 +3,7 @@ layout: default
 title: "Langage Liquid"
 custom_title: 'Personnalisation des contenus'
 has_children: true
-nav_order: 100
+nav_order: 10000
 ---
 
 Vous pouvez personnaliser le contenu de vos courriels, de vos factures récurrentes et des informations complémentaires de vos documents à l'aide de la syntaxe Liquid, qui vous permet d'utiliser des variables, réaliser des tests et des calculs, etc.
