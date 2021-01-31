@@ -1,20 +1,20 @@
 ---
 layout: default
 title: modifier
-custom_title: Modifier un achat
-parent: Achats
+custom_title: Modifier une catégorie
+parent: Catégories
 nav_order: 400
 ---
-{% assign request = site.data.urls.purchases.update -%}
+{% assign request = site.data.urls.categories.update -%}
 ## {{ request.method }} {{ request.url }}
 
-Mise à jour d'un achat existant.
+Mise à jour d'une catégorie existante.
 
 ## Requête
 
 {% api_block %}
 {% curl_cmd(write: true) -%}
--X PATCH -d '{"title": "Serveur virtuel"}' \
+-X PATCH -d '{"title":"Outil SEO","status":"2"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
