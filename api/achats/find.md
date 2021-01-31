@@ -35,7 +35,7 @@ Vous avez la possibilité d'inclure la liste des fichiers joints de chaque achat
   {% endfor %}
 * `accounting_entry`: recherche sur le code d'imputation (abonnement Entreprise)
 
-## Recherche par périodes
+### Recherche par périodes
 
 Vous pouvez limiter votre recherche à une période spécifique en utilisant les paramètres optionnels suivants:
 * `period_start` : période de début
@@ -44,7 +44,7 @@ Vous pouvez limiter votre recherche à une période spécifique en utilisant les
 
 Le format des périodes peut être AAAA-MM (année-mois) ou bien AAAA-MM-JJ (année-mois-jour)
 
-## Tri
+### Tri
 
 Par défaut, les achats sont triés par ordre décroissant de date d'achat.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants

@@ -28,7 +28,7 @@ Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
     - `individual` : retourne uniquement les particuliers actifs
     - `archived` : retourne uniquement les clients archivés
 
-## Tri
+### Tri
 
 Par défaut, les clients sont triés par ordre croissant de nom mnémotechnique.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
