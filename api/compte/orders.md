@@ -1,7 +1,7 @@
 ---
 layout: default
-title: abonnement
-custom_title: Liste des commandes d'abonnement
+nav_title: abonnement
+title: Liste des commandes d'abonnement
 parent: 'Compte'
 nav_order: 200
 ---

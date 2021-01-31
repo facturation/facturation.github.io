@@ -27,6 +27,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: facturation
 github_username: facturation
 
+# jekyll SEO
+twitter:
+  username: facturation
+  card: summary
+
 # Build settings
 theme: "just-the-docs"
 color_scheme: api
@@ -39,6 +44,7 @@ aux_links:
 # paramètres spécifique à la documentation de l'API
 api:
   per_page: 30
+  seo_title: "API de facturation en ligne pour entreprise"
 
 # plugins:
 #   - jekyll-feed

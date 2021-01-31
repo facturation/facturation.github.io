@@ -1,7 +1,7 @@
 ---
 layout: default
-title: détails
-custom_title: Détails d'un client
+nav_title: détails
+title: Détails d'un client
 parent: 'Clients'
 nav_order: 300
 ---

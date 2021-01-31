@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Client'
-parent: "Langage Liquid"
+parent: 'Personnalisation des contenus'
 nav_order: 300
 ---
 

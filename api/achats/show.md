@@ -1,7 +1,7 @@
 ---
 layout: default
-title: détails
-custom_title: Détails d'un achat
+nav_title: détails
+title: Détails d'un achat
 parent: 'Achats'
 nav_order: 300
 ---

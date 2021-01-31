@@ -1,7 +1,7 @@
 ---
 layout: default
-title: modifier
-custom_title: Modifier un client
+nav_title: modifier
+title: Modifier un client
 parent: Clients
 nav_order: 400
 ---

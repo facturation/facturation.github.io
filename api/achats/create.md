@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'créer'
-custom_title: 'Créer un achat'
+nav_title: 'créer'
+title: 'Créer un achat'
 parent: 'Achats'
 nav_order: 200
 ---

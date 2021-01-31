@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'archiver'
-custom_title: 'Archiver un client'
+nav_title: 'archiver'
+title: 'Archiver un client'
 parent: 'Clients'
 nav_order: 1000
 ---

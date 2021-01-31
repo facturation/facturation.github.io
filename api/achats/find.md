@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'lister'
-custom_title: 'Liste des achats'
+nav_title: 'lister'
+title: 'Liste des achats'
 parent: 'Achats'
 nav_order: 100
 ---

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: modifier
-custom_title: Modifier un suivi commercial
-parent: Suivis
+nav_title: modifier
+title: Modifier un suivi commercial
+parent: 'Suivis commerciaux'
 nav_order: 400
 ---
 {% assign request = site.data.urls.followups.update -%}

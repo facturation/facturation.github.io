@@ -1,7 +1,7 @@
 ---
 layout: default
-title: upload
-custom_title: Ajouter une pièce jointe
+nav_title: upload
+title: Ajouter une pièce jointe
 parent: Achats
 nav_order: 600
 ---

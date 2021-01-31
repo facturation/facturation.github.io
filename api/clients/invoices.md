@@ -1,7 +1,7 @@
 ---
 layout: default
-title: factures
-custom_title: Factures d'un client
+nav_title: factures
+title: Factures d'un client
 parent: Clients
 nav_order: 2000
 ---

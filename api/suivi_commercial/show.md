@@ -1,8 +1,8 @@
 ---
 layout: default
-title: détails
-custom_title: Détails d'un suivi commercial
-parent: 'Suivis'
+nav_title: détails
+title: Détails d'un suivi commercial
+parent: 'Suivis commerciaux'
 nav_order: 300
 ---
 {% assign request = site.data.urls.followups.show -%}

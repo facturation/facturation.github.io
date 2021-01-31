@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Dates'
-parent: "Langage Liquid"
+parent: 'Personnalisation des contenus'
 nav_order: 500
 ---
 

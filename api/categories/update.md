@@ -1,7 +1,7 @@
 ---
 layout: default
-title: modifier
-custom_title: Modifier une catégorie
+nav_title: modifier
+title: Modifier une catégorie
 parent: Catégories
 nav_order: 400
 ---

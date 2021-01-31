@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'lister'
-custom_title: 'Liste des suivis commerciaux'
-parent: 'Suivis'
+nav_title: 'lister'
+title: 'Liste des suivis commerciaux'
+parent: 'Suivis commerciaux'
 nav_order: 100
 ---
 {% assign request = site.data.urls.followups.find -%}

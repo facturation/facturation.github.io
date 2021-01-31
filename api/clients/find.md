@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'lister'
-custom_title: 'Liste des clients'
+nav_title: 'lister'
+title: 'Liste des clients'
 parent: 'Clients'
 nav_order: 100
 ---

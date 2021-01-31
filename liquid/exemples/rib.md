@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'RIB multiples'
-custom_title: 'Personnaliser un RIB par client ou facture'
-grand_parent: "Langage Liquid"
+nav_title: 'RIB multiples'
+title: 'Personnaliser un RIB par client ou facture'
+grand_parent: 'Personnalisation des contenus'
 parent: 'Exemples'
 nav_order: 200
 ---

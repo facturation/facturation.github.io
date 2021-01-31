@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'supprimer'
-custom_title: 'Supprimer un suivi commercial'
-parent: 'Suivis'
+nav_title: 'supprimer'
+title: 'Supprimer un suivi commercial'
+parent: 'Suivis commerciaux'
 nav_order: 500
 ---
 {% assign request = site.data.urls.followups.destroy -%}

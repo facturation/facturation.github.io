@@ -1,7 +1,7 @@
 ---
 layout: default
-title: achats récurrents
-custom_title: Gestion des achats récurrents
+nav_title: achats récurrents
+title: Gestion des achats récurrents
 parent: Achats
 nav_order: 700
 ---

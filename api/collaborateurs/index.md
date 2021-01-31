@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Collaborateurs'
-custom_title: 'Liste des collaborateurs'
+nav_title: 'Collaborateurs'
+title: 'Liste des collaborateurs'
 nav_order: 2000
 ---
 {% assign request = site.data.urls.collaborators.find -%}

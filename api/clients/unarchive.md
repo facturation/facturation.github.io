@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'désarchiver'
-custom_title: 'Restaurer un client'
+nav_title: 'désarchiver'
+title: 'Restaurer un client'
 parent: 'Clients'
 nav_order: 1050
 ---

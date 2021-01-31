@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'créer'
-custom_title: 'Créer un suivi commercial'
-parent: 'Suivis'
+nav_title: 'créer'
+title: 'Créer un suivi commercial'
+parent: 'Suivis commerciaux'
 nav_order: 200
 ---
 {% assign request = site.data.urls.followups.create -%}

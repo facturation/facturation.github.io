@@ -1,7 +1,7 @@
 ---
 layout: default
-title: détails
-custom_title: Détails d'une catégorie
+nav_title: détails
+title: Détails d'une catégorie
 parent: 'Catégories'
 nav_order: 300
 ---

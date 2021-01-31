@@ -1,7 +1,7 @@
 ---
 layout: default
-title: devis
-custom_title: Devis d'un client
+nav_title: devis
+title: Devis d'un client
 parent: Clients
 nav_order: 2000
 ---

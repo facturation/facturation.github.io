@@ -1,7 +1,7 @@
 ---
 layout: default
-title: modifier
-custom_title: Modifier un achat
+nav_title: modifier
+title: Modifier un achat
 parent: Achats
 nav_order: 400
 ---

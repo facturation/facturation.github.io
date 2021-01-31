@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Exemples'
-parent: "Langage Liquid"
+parent: 'Personnalisation des contenus'
 has_children: true
 nav_order: 1000
 ---

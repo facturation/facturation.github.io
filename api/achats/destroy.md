@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'supprimer'
-custom_title: 'Supprimer un achat'
+nav_title: 'supprimer'
+title: 'Supprimer un achat'
 parent: 'Achats'
 nav_order: 500
 ---

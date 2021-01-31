@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'supprimer'
-custom_title: 'Supprimer un client'
+nav_title: 'supprimer'
+title: 'Supprimer un client'
 parent: 'Clients'
 nav_order: 500
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: infos
-custom_title: Compte utilisateur
+nav_title: infos
+title: Compte utilisateur
 parent: 'Compte'
 nav_order: 100
 ---

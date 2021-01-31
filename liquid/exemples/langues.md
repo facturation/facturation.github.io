@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'Plusieurs langues'
-custom_title: 'Contenus en plusieurs langues'
-grand_parent: "Langage Liquid"
+nav_title: 'Plusieurs langues'
+title: 'Contenus en plusieurs langues'
+grand_parent: 'Personnalisation des contenus'
 parent: 'Exemples'
 nav_order: 100
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'lister'
-custom_title: 'Liste des catégories'
+nav_title: 'lister'
+title: 'Liste des catégories'
 parent: 'Catégories'
 nav_order: 100
 ---

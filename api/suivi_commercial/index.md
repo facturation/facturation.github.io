@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Suivis'
-custom_title: 'Suivis commerciaux'
+nav_title: 'Suivis'
+title: 'Suivis commerciaux'
 has_children: true
 nav_order: 1100
 ---

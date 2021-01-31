@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'créer'
-custom_title: 'Créer une catégorie'
+nav_title: 'créer'
+title: 'Créer une catégorie'
 parent: 'Catégories'
 nav_order: 200
 ---

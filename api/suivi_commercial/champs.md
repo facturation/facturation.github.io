@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 'champs'
-custom_title: 'Liste des champs'
-parent: 'Suivis'
+nav_title: 'champs'
+title: 'Liste des champs'
+parent: 'Suivis commerciaux'
 nav_order: 10000
 ---
 

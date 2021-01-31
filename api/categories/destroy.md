@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'supprimer'
-custom_title: 'Supprimer une catégorie'
+nav_title: 'supprimer'
+title: 'Supprimer une catégorie'
 parent: 'Catégories'
 nav_order: 500
 ---

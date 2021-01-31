@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Langage Liquid"
-custom_title: 'Personnalisation des contenus'
+nav_title: "Langage Liquid"
+title: 'Personnalisation des contenus'
 has_children: true
 nav_order: 10000
 ---
