@@ -24,7 +24,7 @@ Obtenir le détail du produitn° ID.
   "api_custom": null,
   "api_id": null,
   "category_id": 4868,
-  "id": <%= api_product.id %>,
+  "id": 1,
   "nature": 9,
   "ref": "PRESTASHOP",
   "title": "Developpement module Prestashop",

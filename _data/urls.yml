@@ -54,6 +54,9 @@ customers:
   quotes:
     url: "/firms/FIRM_ID/customers/ID/quotes.json"
     method: GET
+  upload:
+    url: "/firms/FIRM_ID/customers/ID/upload.json"
+    method: POST
 quotes:
   find:
     url: "/firms/FIRM_ID/quotes.json"
