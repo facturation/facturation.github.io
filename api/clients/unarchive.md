@@ -20,6 +20,6 @@ Restaure le client archivé, identifié par son ID. Ce client peut à nouveau ê
 
 ## Réponse
 
-{% api_block %}
+{% api_block('json') %}
 Status: 200 OK
 {% endapi_block %}

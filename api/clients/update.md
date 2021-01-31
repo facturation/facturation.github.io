@@ -21,6 +21,6 @@ Mise à jour d'un client existant.
 
 ## Réponse
 
-{% api_block %}
+{% api_block('json') %}
   Status: 200 OK
 {% endapi_block %}

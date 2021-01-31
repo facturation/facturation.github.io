@@ -24,7 +24,7 @@ Obtenir le détail du client n° ID
 
 ## Réponse
 
-{% api_block %}
+{% api_block('json') %}
 {
   "account_code": "411PANDORA",
   "api_custom": null,

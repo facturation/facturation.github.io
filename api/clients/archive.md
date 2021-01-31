@@ -20,6 +20,6 @@ Archive le client identifié par son ID, ce qui permet de le masquer de la liste
 
 ## Réponse
 
-{% api_block %}
+{% api_block('json') %}
 Status: 200 OK
 {% endapi_block %}

@@ -25,7 +25,7 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 
 ## Réponse
 
-{% api_block %}
+{% api_block('json') %}
 Status: 201 Created
 Location: /firms/FIRM_ID/customers/ID.json
 

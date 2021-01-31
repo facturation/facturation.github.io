@@ -21,6 +21,6 @@ Supprime le client identifié par son ID, ainsi que tous les devis associés à 
 
 ## Réponse
 
-{% api_block -%}
+{% api_block('json') %}
 Status: 200 OK
 {% endapi_block %}

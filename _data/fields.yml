@@ -1,0 +1,1264 @@
+---
+customer:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: company_name
+  mode: modifiable
+  title: Société
+  type: string(255)
+  help: 
+- key: civility
+  mode: modifiable
+  title: Civilité
+  type: string(255)
+  help: 
+- key: first_name
+  mode: modifiable
+  title: Prénom
+  type: string(255)
+  help: 
+- key: last_name
+  mode: modifiable
+  title: Nom
+  type: string(255)
+  help: 
+- key: short_name
+  mode: modifiable
+  title: Nom mnémotechnique
+  type: string(255)
+  help: 
+- key: street
+  mode: modifiable
+  title: Adresse de facturation
+  type: string(255)
+  help: 
+- key: city
+  mode: modifiable
+  title: Ville
+  type: string(255)
+  help: 
+- key: zip_code
+  mode: modifiable
+  title: Code postal
+  type: string(20)
+  help: 
+- key: country
+  mode: modifiable
+  title: Pays
+  type: string(2)
+  help: Code ISO à 2 lettres du pays, en majuscules
+- key: phone
+  mode: modifiable
+  title: Téléphone
+  type: string(255)
+  help: 
+- key: fax
+  mode: modifiable
+  title: Fax
+  type: string(255)
+  help: 
+- key: email
+  mode: modifiable
+  title: Email
+  type: text
+  help: 
+- key: mobile
+  mode: modifiable
+  title: Mobile
+  type: string(255)
+  help: 
+- key: website
+  mode: modifiable
+  title: Site web
+  type: string(255)
+  help: 
+- key: notes
+  mode: modifiable
+  title: Notes internes
+  type: text
+  help: 
+- key: vat_number
+  mode: modifiable
+  title: N° TVA
+  type: string(30)
+  help: 
+- key: siret
+  mode: modifiable
+  title: Siret
+  type: string(100)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: account_code
+  mode: modifiable
+  title: Compte client
+  type: string(11)
+  help: 
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: sepa_iban
+  mode: modifiable
+  title: IBAN
+  type: string(34)
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_bic
+  mode: modifiable
+  title: BIC
+  type: string(11)
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_rum
+  mode: modifiable
+  title: RUM
+  type: string(35)
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_signature_on
+  mode: modifiable
+  title: Date de signature du mandat SEPA
+  type: date
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
+- key: individual
+  mode: modifiable
+  title: Particulier
+  type: boolean
+  help: 
+- key: reference
+  mode: modifiable
+  title: Référence client
+  type: string(255)
+  help: 
+- key: penalty
+  mode: modifiable
+  title: Pénalités de retard
+  type: decimal(8,3)
+  help: 
+- key: discount
+  mode: modifiable
+  title: Taux d'escompte
+  type: decimal(8,3)
+  help: 
+- key: pay_before
+  mode: modifiable
+  title: Délai de paiement
+  type: string(255)
+  help: 
+- key: validity
+  mode: modifiable
+  title: Durée de validité d'un devis
+  type: int(11)
+  help: 
+- key: last_invoiced_on
+  mode: lecture
+  title: Dernière facture le
+  type: date
+  help: 
+- key: last_paid_on
+  mode: lecture
+  title: Dernier règlement le
+  type: date
+  help: 
+- key: currency
+  mode: modifiable
+  title: Devise
+  type: string(3)
+  help: 
+- key: language
+  mode: modifiable
+  title: Langue des PDF
+  type: string(255)
+  help: 
+- key: default_vat
+  mode: modifiable
+  title: Taux de TVA
+  type: decimal(8,3)
+  help: 
+- key: vat_country
+  mode: modifiable
+  title: Code pays des taux TVA à appliquer
+  type: string(3)
+  help: 
+- key: vat_exemption
+  mode: modifiable
+  title: Motif d'exonération de TVA
+  type: string(255)
+  help: 
+- key: field1
+  mode: modifiable
+  title: Champ libre 1
+  type: string(255)
+  help: 
+- key: field2
+  mode: modifiable
+  title: Champ libre 2
+  type: string(255)
+  help: 
+- key: field3
+  mode: modifiable
+  title: Champ libre 3
+  type: string(255)
+  help: 
+- key: field4
+  mode: modifiable
+  title: Champ libre 4
+  type: string(255)
+  help: 
+- key: field5
+  mode: modifiable
+  title: Champ libre 5
+  type: string(255)
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+supplier:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: company_name
+  mode: modifiable
+  title: Société
+  type: string(255)
+  help: 
+- key: civility
+  mode: modifiable
+  title: Civilité
+  type: string(255)
+  help: 
+- key: first_name
+  mode: modifiable
+  title: Prénom
+  type: string(255)
+  help: 
+- key: last_name
+  mode: modifiable
+  title: Nom
+  type: string(255)
+  help: 
+- key: short_name
+  mode: modifiable
+  title: Nom mnémotechnique
+  type: string(255)
+  help: 
+- key: street
+  mode: modifiable
+  title: Adresse de facturation
+  type: string(255)
+  help: 
+- key: city
+  mode: modifiable
+  title: Ville
+  type: string(255)
+  help: 
+- key: zip_code
+  mode: modifiable
+  title: Code postal
+  type: string(20)
+  help: 
+- key: country
+  mode: modifiable
+  title: Pays
+  type: string(2)
+  help: Code ISO à 2 lettres du pays, en majuscules
+- key: phone
+  mode: modifiable
+  title: Téléphone
+  type: string(255)
+  help: 
+- key: fax
+  mode: modifiable
+  title: Fax
+  type: string(255)
+  help: 
+- key: email
+  mode: modifiable
+  title: Email
+  type: text
+  help: 
+- key: mobile
+  mode: modifiable
+  title: Mobile
+  type: string(255)
+  help: 
+- key: website
+  mode: modifiable
+  title: Site web
+  type: string(255)
+  help: 
+- key: notes
+  mode: modifiable
+  title: Notes internes
+  type: text
+  help: 
+- key: vat_number
+  mode: modifiable
+  title: N° TVA
+  type: string(30)
+  help: 
+- key: siret
+  mode: modifiable
+  title: Siret
+  type: string(100)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: account_code
+  mode: modifiable
+  title: Compte fournisseur
+  type: string(11)
+  help: 
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: sepa_iban
+  mode: modifiable
+  title: IBAN
+  type: string(34)
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_bic
+  mode: modifiable
+  title: BIC
+  type: string(11)
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_rum
+  mode: modifiable
+  title: RUM
+  type: 
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: sepa_signature_on
+  mode: modifiable
+  title: Date de signature du mandat SEPA
+  type: 
+  help: Lecture autorisée uniquement avec la clé API de l'administrateur de l'entreprise
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
+- key: reverse_charge
+  mode: modifiable
+  title: Auto-liquidation
+  type: boolean
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+quote:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: customer_id
+  mode: modifiable
+  title: Client
+  type: int(11)
+  help: 
+- key: customer_identity
+  mode: lecture
+  title: Nom de la société ou du client
+  type: 
+  help: 
+- key: title
+  mode: modifiable
+  title: Objet
+  type: string(255)
+  help: 
+- key: language
+  mode: modifiable
+  title: Langue du PDF
+  type: string(2)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: followup_id
+  mode: modifiable
+  title: Suivi commercial
+  type: int(11)
+  help: 
+- key: invoiced_on
+  mode: modifiable
+  title: Date du devis
+  type: date
+  help: 
+- key: term_on
+  mode: modifiable
+  title: Valide jusqu'au
+  type: date
+  help: 
+- key: draft
+  mode: lecture
+  title: Brouillon
+  type: boolean
+  help: 
+- key: total
+  mode: lecture
+  title: Montant total HT
+  type: decimal(15,3)
+  help: 
+- key: total_with_vat
+  mode: lecture
+  title: Montant total TTC
+  type: decimal(15,3)
+  help: 
+- key: currency
+  mode: modifiable
+  title: Devise
+  type: string(3)
+  help: 
+- key: rebate_percentage
+  mode: modifiable
+  title: Réduction globale
+  type: decimal(8,3)
+  help: 
+- key: vat_exemption
+  mode: modifiable
+  title: Motif d'exonération de TVA
+  type: string(255)
+  help: 
+- key: vat_country
+  mode: modifiable
+  title: Code pays des taux TVA à appliquer
+  type: string(2)
+  help: 
+- key: tax_title
+  mode: modifiable
+  title: Intitulé de la taxe additionnelle sur le total HT
+  type: string(255)
+  help: 
+- key: tax_percent
+  mode: modifiable
+  title: Pourcentage de la taxe additionnelle sur le total HT
+  type: decimal(5,2)
+  help: 
+- key: penalty
+  mode: modifiable
+  title: Pénalités de retard
+  type: decimal(8,3)
+  help: 
+- key: pay_before
+  mode: modifiable
+  title: Délai de paiement
+  type: string(16)
+  help: 
+- key: discount
+  mode: modifiable
+  title: Taux d'escompte
+  type: decimal(8,3)
+  help: 
+- key: precompte
+  mode: modifiable
+  title: 'translation missing: fr.activerecord.attributes.quote.precompte'
+  type: boolean
+  help: 
+- key: activity_title
+  mode: modifiable
+  title: Nature de l'activité
+  type: string(255)
+  help: 
+- key: service_personne
+  mode: modifiable
+  title: Service à la personne
+  type: boolean
+  help: 
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help: 
+- key: information
+  mode: modifiable
+  title: Informations complémentaires
+  type: text
+  help: 
+- key: internal_note
+  mode: modifiable
+  title: Note interne
+  type: text
+  help: 
+- key: purchase_number
+  mode: modifiable
+  title: Bon de commande
+  type: string(100)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: user_id
+  mode: modifiable
+  title: Géré par
+  type: int(11)
+  help: 
+- key: public_download_url
+  mode: lecture
+  title: Url de téléchargement publique
+  type: 
+  help: 
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+- key: quote_status
+  mode: modifiable
+  title: Statut du devis
+  type: int(11)
+  help: 
+- key: quote_ref
+  mode: lecture
+  title: Devis n°
+  type: int(11)
+  help: 
+- key: ignore_quote
+  mode: modifiable
+  title: Ne pas faire de suivi de facturation
+  type: boolean
+  help: 
+- key: fully_invoiced
+  mode: lecture
+  title: Devis soldé?
+  type: boolean
+  help: 
+- key: amount_invoiced
+  mode: lecture
+  title: Montant déjà facturé
+  type: decimal(15,3)
+  help: 
+- key: invoice_ids
+  mode: lecture
+  title: Tableau des IDs des factures associées à ce devis
+  type: array
+  help: 
+- key: estimated_total_in_main_currency
+  mode: lecture
+  title: Total TTC estimé en euro
+  type: decimal
+  help: 
+invoice:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: customer_id
+  mode: modifiable
+  title: Client
+  type: int(11)
+  help: 
+- key: customer_identity
+  mode: lecture
+  title: Nom de la société ou du client
+  type: 
+  help: 
+- key: title
+  mode: modifiable
+  title: Objet
+  type: string(255)
+  help: 
+- key: language
+  mode: modifiable
+  title: Langue du PDF
+  type: string(2)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: followup_id
+  mode: modifiable
+  title: Suivi commercial
+  type: int(11)
+  help: 
+- key: invoiced_on
+  mode: modifiable
+  title: Date facture
+  type: date
+  help: 
+- key: term_on
+  mode: modifiable
+  title: Date d'échéance
+  type: date
+  help: 
+- key: draft
+  mode: lecture
+  title: Brouillon
+  type: boolean
+  help: 
+- key: total
+  mode: lecture
+  title: Montant total HT
+  type: decimal(15,3)
+  help: 
+- key: total_with_vat
+  mode: lecture
+  title: Montant total TTC
+  type: decimal(15,3)
+  help: 
+- key: currency
+  mode: modifiable
+  title: Devise
+  type: string(3)
+  help: 
+- key: rebate_percentage
+  mode: modifiable
+  title: Réduction globale
+  type: decimal(8,3)
+  help: 
+- key: vat_exemption
+  mode: modifiable
+  title: Motif d'exonération de TVA
+  type: string(255)
+  help: 
+- key: vat_country
+  mode: modifiable
+  title: Code pays des taux TVA à appliquer
+  type: string(2)
+  help: 
+- key: tax_title
+  mode: modifiable
+  title: Intitulé de la taxe additionnelle sur le total HT
+  type: string(255)
+  help: 
+- key: tax_percent
+  mode: modifiable
+  title: Pourcentage de la taxe additionnelle sur le total HT
+  type: decimal(5,2)
+  help: 
+- key: penalty
+  mode: modifiable
+  title: Pénalités de retard
+  type: decimal(8,3)
+  help: 
+- key: pay_before
+  mode: modifiable
+  title: Délai de paiement
+  type: string(16)
+  help: 
+- key: discount
+  mode: modifiable
+  title: Taux d'escompte
+  type: decimal(8,3)
+  help: 
+- key: precompte
+  mode: modifiable
+  title: 'translation missing: fr.activerecord.attributes.invoice.precompte'
+  type: boolean
+  help: 
+- key: activity_title
+  mode: modifiable
+  title: Nature de l'activité
+  type: string(255)
+  help: 
+- key: service_personne
+  mode: modifiable
+  title: Service à la personne
+  type: boolean
+  help: 
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help: 
+- key: information
+  mode: modifiable
+  title: Informations complémentaires
+  type: text
+  help: 
+- key: internal_note
+  mode: modifiable
+  title: Note interne
+  type: text
+  help: 
+- key: purchase_number
+  mode: modifiable
+  title: Bon de commande
+  type: string(100)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: user_id
+  mode: modifiable
+  title: Géré par
+  type: int(11)
+  help: 
+- key: public_download_url
+  mode: lecture
+  title: Url de téléchargement publique
+  type: 
+  help: 
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+- key: delivery_on
+  mode: modifiable
+  title: Livré/Réalisé le
+  type: date
+  help: 
+- key: quote_id
+  mode: lecture
+  title: ID Devis associé
+  type: int(11)
+  help: 
+- key: invoice_ref
+  mode: lecture
+  title: N° de facture
+  type: string(128)
+  help: 
+- key: external_ref
+  mode: modifiable
+  title: N° de facture externe
+  type: string(255)
+  help: 
+- key: full_invoice_ref
+  mode: lecture
+  title: N° de facture intégral (incluant le prefixe)
+  type: string(140)
+  help: 
+- key: payment_mode
+  mode: modifiable
+  title: Mode de règlement
+  type: int(11)
+  help: 
+- key: paid_on
+  mode: modifiable
+  title: Payé le
+  type: date
+  help: 
+- key: payment_ref
+  mode: modifiable
+  title: Référence du paiement
+  type: string(255)
+  help: 
+- key: paid_in_main_currency
+  mode: modifiable
+  title: Equivalent en euros
+  type: decimal
+  help: 
+- key: estimated_total_in_main_currency
+  mode: lecture
+  title: Total TTC estimé en euro
+  type: decimal
+  help: 
+- key: refund_id
+  mode: lecture
+  title: Avoir sur la facture n°ID
+  type: int(11)
+  help: Si la facture est un avoir généré via notre système automatisé, ce champ contient
+    l'ID de la facture annulée
+- key: pay_url
+  mode: lecture
+  title: Url de paiement en ligne (option GOLD requise)
+  type: 
+  help: 
+- key: balance
+  mode: lecture
+  title: Montant restant dû
+  type: 
+  help: 
+- key: external
+  mode: lecture
+  title: Facture externe
+  type: boolean
+  help: 
+item:
+- key: id
+  mode: modifiable
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: quantity
+  mode: modifiable
+  title: Quantité
+  type: decimal(12,4)
+  help: 
+- key: measure
+  mode: modifiable
+  title: Unité de mesure
+  type: string(32)
+  help: 
+- key: title
+  mode: modifiable
+  title: Libellé
+  type: text
+  help: 
+- key: unit_price
+  mode: modifiable
+  title: Prix unitaire
+  type: decimal(15,3)
+  help: 
+- key: vat
+  mode: modifiable
+  title: Taux de TVA
+  type: decimal(5,3)
+  help: 
+- key: product_id
+  mode: modifiable
+  title: Identifiant du produit
+  type: int(11)
+  help: 
+- key: position
+  mode: modifiable
+  title: Ligne n°
+  type: int(11)
+  help: 
+- key: total
+  mode: lecture
+  title: Total HT
+  type: decimal(15,3)
+  help: 
+- key: optional
+  mode: modifiable
+  title: En option
+  type: boolean
+  help: Ce champ n'est utilisé que pour les devis. Lorsque la valeur de ce champ est
+    'true', la ligne est considérée comme une option, elle n'est donc pas prise en
+    compte dans le calcul du total, et toutes les lignes optionnelles sont regroupées
+    en fin de devis dans un bloc spécifique.
+- key: style
+  mode: modifiable
+  title: Style de formattage
+  type: string(20)
+  help: Par défaut (ie valeur vide), ce champ indique une ligne de facturation standard.
+    La valeur 'comment' permet d'indiquer qu'il s'agit d'une ligne de commentaire,
+    la valeur 'title' permet d'indiquer qu'il s'agit d'une ligne de titre (mise en
+    gras automatiquement) et la valeur 'new_page' permet d'indiquer qu'il s'agit d'un
+    saut de page.
+- key: nature
+  mode: modifiable
+  title: Type
+  type: int(11)
+  help: la nature de la prestation n'est à préciser que pour les auto-entrepreneurs
+    et les micro-entrepreneurs, afin de calculer correctement les cotisations sociales.
+purchase:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: supplier_id
+  mode: modifiable
+  title: Fournisseur
+  type: int(11)
+  help: 
+- key: supplier_identity
+  mode: lecture
+  title: Nom du fournisseur
+  type: string(255)
+  help: 
+- key: title
+  mode: modifiable
+  title: Nature/Libellé
+  type: text
+  help: 
+- key: ref
+  mode: modifiable
+  title: Réf. facture
+  type: string(255)
+  help: 
+- key: total_with_vat
+  mode: modifiable
+  title: Montant TTC
+  type: decimal(15,3)
+  help: 
+- key: vat_amount
+  mode: modifiable
+  title: Montant TVA
+  type: decimal(15,3)
+  help: 
+- key: total
+  mode: lecture
+  title: Montant HT
+  type: decimal(15,3)
+  help: 
+- key: currency
+  mode: modifiable
+  title: Devise
+  type: string(3)
+  help: 
+- key: invoiced_on
+  mode: modifiable
+  title: Date de facture
+  type: date
+  help: 
+- key: term_on
+  mode: modifiable
+  title: Date d'échéance
+  type: date
+  help: 
+- key: paid_on
+  mode: modifiable
+  title: Réglé le
+  type: date
+  help: 
+- key: payment_mode
+  mode: modifiable
+  title: Mode de règlement
+  type: int(11)
+  help: 
+- key: payment_ref
+  mode: modifiable
+  title: Référence du paiement
+  type: string(255)
+  help: 
+- key: paid_in_main_currency
+  mode: modifiable
+  title: Equivalent en euros
+  type: decimal
+  help: 
+- key: estimated_total_in_main_currency
+  mode: lecture
+  title: Total TTC estimé en euro
+  type: decimal
+  help: 
+- key: draft
+  mode: modifiable
+  title: Brouillon
+  type: boolean
+  help: 
+- key: reverse_charge
+  mode: modifiable
+  title: Auto-liquidation
+  type: boolean
+  help: 
+- key: prepaid
+  mode: modifiable
+  title: Pré-paiement
+  type: boolean
+  help: 
+- key: notes
+  mode: modifiable
+  title: Notes / Remarques
+  type: text
+  help: 
+- key: skip_export
+  mode: modifiable
+  title: Exclure de l'export comptable
+  type: boolean
+  help: 
+- key: serial_number
+  mode: lecture
+  title: Numéro de pièce
+  type: int(11)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help: 
+- key: accounting_asset
+  mode: modifiable
+  title: Immobilisation
+  type: boolean
+  help: 
+- key: asset_end_on
+  mode: modifiable
+  title: Date de sortie de l'immo.
+  type: date
+  help: 
+- key: asset_end_reason
+  mode: modifiable
+  title: Motif de sortie de l'immobilisation
+  type: string(255)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
+category:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: title
+  mode: modifiable
+  title: Libellé
+  type: string(255)
+  help: 
+- key: status
+  mode: modifiable
+  title: Affectation
+  type: tinyint(4)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+followup:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: title
+  mode: modifiable
+  title: Libellé
+  type: string(255)
+  help: 
+- key: status
+  mode: modifiable
+  title: Affectation
+  type: int(11)
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+product:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int(11)
+  help: 
+- key: ref
+  mode: modifiable
+  title: Référence interne
+  type: string(255)
+  help: 
+- key: title
+  mode: modifiable
+  title: Libellé
+  type: text
+  help: 
+- key: unit_price
+  mode: modifiable
+  title: Prix unitaire HT
+  type: decimal(15,3)
+  help: 
+- key: vat
+  mode: modifiable
+  title: Taux de TVA
+  type: decimal(8,3)
+  help: 
+- key: measure
+  mode: modifiable
+  title: Unité de mesure
+  type: string(32)
+  help: 
+- key: nature
+  mode: modifiable
+  title: Type de facturation
+  type: int(11)
+  help: 
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int(11)
+  help: 
+- key: notes
+  mode: modifiable
+  title: Notes internes
+  type: text
+  help: 
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help: 
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help: 
+- key: field1
+  mode: modifiable
+  title: Champ libre 1
+  type: string(255)
+  help: 
+- key: field2
+  mode: modifiable
+  title: Champ libre 2
+  type: string(255)
+  help: 
+- key: field3
+  mode: modifiable
+  title: Champ libre 3
+  type: string(255)
+  help: 
+- key: field4
+  mode: modifiable
+  title: Champ libre 4
+  type: string(255)
+  help: 
+- key: field5
+  mode: modifiable
+  title: Champ libre 5
+  type: string(255)
+  help: 
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help: 
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help: 
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint(20)
+  help: 
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help: 
