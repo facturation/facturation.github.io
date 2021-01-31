@@ -16,7 +16,7 @@ liste des suivis commerciaux, par groupe de {{ site.api.per_page }} résultats.
 * `title` : recherche partielle sur le libellé du suivi
 * `status` : rechercher par type de suivi (i.e. type d'affectation)
 
-## Remarques:
+### Remarques:
 
 Il existe deux codes de suivis gérés par le système, qui sont non modifiables et non supprimables, et qui n'apparaissent donc pas dans la liste des suivis que vous avez défini. Il s'agit des codes suivants:
 

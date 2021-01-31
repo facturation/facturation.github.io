@@ -10,7 +10,7 @@ nav_order: 200
 
 Création d'un nouveau client. On obtient en retour le code JSON du client créé, avec l'ID qui lui a été attribué.
 
-## Remarque
+### Remarque
 
 Par défaut, en l'absence d'indication spécifique, chaque client créé est de type professionnel, et si vous n'avez pas indiqué de nom d'entreprise, celui ci est automatiquement dérivé du prénom et du nom du client. Lorsque vous créez un client particulier, vous devez donc le préciser en affectant la valeur `true` au champ `individual`.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Achats'
+title: 'Règlements'
 has_children: true
-nav_order: 600
+nav_order: 400
 ---
