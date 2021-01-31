@@ -5,7 +5,7 @@ title: 'Créer un client'
 parent: 'Clients'
 nav_order: 200
 ---
-{% assign request = site.data.urls['customers']['create'] -%}
+{% assign request = site.data.urls.customers.create -%}
 ## {{ request.method }} {{ request.url }}
 
 Création d'un nouveau client. On obtient en retour le code JSON du client créé, avec l'ID qui lui a été attribué.
@@ -17,9 +17,9 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 ## Requête
 
 {% api_block %}
-  {% curl_cmd(write: true)-%}
-  -X POST -d '{"company_name":"A small company","individual":false}' \
-  "{{ request.url | api_url }}"
+{% curl_cmd(write: true)-%}
+-X POST -d '{"company_name":"A small company","individual":false}' \
+"{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

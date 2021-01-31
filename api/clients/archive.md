@@ -5,7 +5,7 @@ title: 'Archiver un client'
 parent: 'Clients'
 nav_order: 1000
 ---
-{% assign request = site.data.urls['customers']['archive'] -%}
+{% assign request = site.data.urls.customers.archive -%}
 ## {{ request.method }} {{ request.url }}
 
 Archive le client identifié par son ID, ce qui permet de le masquer de la liste des clients.
@@ -13,8 +13,8 @@ Archive le client identifié par son ID, ce qui permet de le masquer de la liste
 ## Requête
 
 {% api_block %}
-  {% curl_cmd -%}
-  -X POST "{{ request.url | api_url }}"
+{% curl_cmd -%}
+-X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

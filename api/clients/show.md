@@ -5,7 +5,7 @@ title: Détails d'un client
 parent: 'Clients'
 nav_order: 300
 ---
-{% assign request = site.data.urls['customers']['show'] -%}
+{% assign request = site.data.urls.customers.show -%}
 ## {{ request.method }} {{ request.url }}
 
 Obtenir le détail du client n° ID
@@ -17,8 +17,8 @@ Obtenir le détail du client n° ID
 ## Requête
 
 {% api_block %}
-  {% curl_cmd -%}
-  "{{ request.url | api_url }}"
+{% curl_cmd -%}
+"{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

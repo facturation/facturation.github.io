@@ -5,7 +5,7 @@ title: 'Liste des clients'
 parent: 'Clients'
 nav_order: 100
 ---
-{% assign request = site.data.urls['customers']['find'] -%}
+{% assign request = site.data.urls.customers.find -%}
 ## {{ request.method }} {{ request.url }}
 
 Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
@@ -45,7 +45,7 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Requête
 
 {% api_block %}
-  {% curl_cmd %} "{{ request.url | api_url }}"
+{% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

@@ -1,15 +1,14 @@
 ---
 layout: default
 nav_title: 'supprimer'
-title: 'Supprimer un client'
-parent: 'Clients'
+title: 'Supprimer un devis'
+parent: 'Devis'
 nav_order: 500
 ---
-{% assign request = site.data.urls.customers.destroy -%}
+{% assign request = site.data.urls.quotes.destroy -%}
 ## {{ request.method }} {{ request.url }}
 
-Supprime le client identifié par son ID, ainsi que tous les devis associés à ce client.
-<strong>Un client ne peut être supprimé que s'il n'a jamais été facturé.</strong>
+Supprime le devis identifié par son ID.
 
 ## Requête
 

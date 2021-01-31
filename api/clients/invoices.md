@@ -13,7 +13,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 ## Requête
 
 {% api_block %}
-  {% curl_cmd %} "{{ request.url | api_url }}"
+{% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

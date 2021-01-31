@@ -13,7 +13,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 ## Requête
 
 {% api_block %}
-  {% curl_cmd %} "{{ request.url | api_url }}"
+{% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse

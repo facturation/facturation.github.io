@@ -490,3 +490,18 @@ purchases_type_choices:
   - - Prévisionnel
     - forecast
   internal: true
+quote_statuses_choices:
+  data:
+  - - En cours (devis non soldés en attente ou accepté)
+    - pending
+  - - A facturer (devis acceptés et non soldés)
+    - to_invoice
+  - - Soldé
+    - invoiced
+  - - En attente
+    - '0'
+  - - Accepté
+    - '1'
+  - - Refusé
+    - '9'
+  internal: true
