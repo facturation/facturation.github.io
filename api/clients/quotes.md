@@ -20,8 +20,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 ## Réponse
 
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la <%= link_to("liste des devis", api_doc_url(id: 'devis')) %>.
-
+La réponse est donc une redirection vers la requête à exécuter sur la liste des devis.
 
 {% api_block('json') %}
 Status: 302 Redirected

@@ -20,7 +20,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 ## Réponse
 
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la <%= link_to("liste des factures", api_doc_url(id: 'factures')) %>.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
 
 {% api_block('json') %}
 Status: 302 Redirected
