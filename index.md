@@ -86,7 +86,7 @@ Voici un exemple de création à l'aide de curl :
 
 {% api_block %}
 {% curl_cmd write: true %} -d '{"company_name":"WORLD INC"}' \
- "{{ site.data.urls['customers']['find']['url'] | api_url }}"
+"{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
 Si la création réussi, le code HTTP de retour est "201 Created" et les entêtes de la réponse contiennent une entrée "Location" indiquant l'url d'accès au nouvel élément créé. De plus, le résultat contient le détail JSON de la ressource créée.
@@ -105,8 +105,8 @@ A noter que lors d'une requête de modification, vous n'avez besoin de transmett
 Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous devez utiliser une requête de type DELETE. Par exemple:
 
 {% api_block %}
-  {% curl_cmd -%}
-  -X DELETE "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
+{% curl_cmd -%}
+-X DELETE "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
 {% endapi_block %}
 
 Les requêtes de suppression ne nécessitent pas de "Content-Type" puisqu'elles ne contiennent pas de JSON. Si la suppression réussie, vous obtenez le code HTTP "200 OK"

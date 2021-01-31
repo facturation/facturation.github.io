@@ -2,7 +2,6 @@
 layout: default
 title: 'archiver'
 custom_title: 'Archiver un client'
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 1000
 ---

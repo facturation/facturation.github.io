@@ -2,7 +2,6 @@
 layout: default
 title: modifier
 custom_title: Modifier un client
-grand_parent: Méthodes
 parent: Clients
 nav_order: 400
 ---

@@ -65,3 +65,4 @@ api:
 
 exclude:
   - _plugins/
+  - old/

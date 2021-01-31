@@ -1,4 +1,5 @@
 
+Certains champs peuvent avoir des [valeurs spécifiques](/values/)
 
 | Champs | libellé | Type | Accès |
 |:-------|:--------|:-----|:------|

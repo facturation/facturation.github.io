@@ -10,7 +10,6 @@ language:
   - - Néerlandais
     - nl
 payment_mode_purchase:
-  field: payment_mode
   data:
   - - Non payé
     - 0
@@ -47,7 +46,6 @@ payment_mode_purchase:
   - - Autre
     - 99
 payment_mode_bill:
-  field: payment_mode
   data:
   - - Non payé
     - 0
@@ -458,13 +456,11 @@ nature:
   - - Non applicable
     - 9
 status_category:
-  field: category
   data:
     Achats/Ventes: 0
     Achats uniquement: 2
     Ventes uniquement: 1
 status_followup:
-  field: followup
   data:
     Devis/Factures: 0
     Devis uniquement: 1
@@ -477,3 +473,20 @@ quote_status:
     - '1'
   - - Refusé
     - '9'
+purchases_type_choices:
+  data:
+  - - En attente
+    - pending
+  - - Brouillon
+    - draft
+  - - Non payé
+    - unpaid
+  - - Payé
+    - paid
+  - - Pré-paiement
+    - prepaid
+  - - Exclus des exports
+    - excluded
+  - - Prévisionnel
+    - forecast
+  internal: true

@@ -2,7 +2,6 @@
 layout: default
 title: 'lister'
 custom_title: 'Liste des clients'
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 100
 ---

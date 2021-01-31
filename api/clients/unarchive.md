@@ -2,7 +2,6 @@
 layout: default
 title: 'désarchiver'
 custom_title: 'Restaurer un client'
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 1050
 ---

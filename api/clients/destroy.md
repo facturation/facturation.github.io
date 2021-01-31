@@ -2,7 +2,6 @@
 layout: default
 title: 'supprimer'
 custom_title: 'Supprimer un client'
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 500
 ---

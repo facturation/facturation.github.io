@@ -2,7 +2,6 @@
 layout: default
 title: devis
 custom_title: Devis d'un client
-grand_parent: Méthodes
 parent: Clients
 nav_order: 2000
 ---

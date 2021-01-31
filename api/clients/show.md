@@ -2,7 +2,6 @@
 layout: default
 title: détails
 custom_title: Détails d'un client
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 300
 ---

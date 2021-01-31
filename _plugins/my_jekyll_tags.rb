@@ -16,7 +16,7 @@ module MyJekyllTags
 
     # curl_cmd write: true, user_agent: 'toto'
     def render(context)
-      res = "curl -i -S -u login:password -H '#{user_agent}: MonApp (patrick@camping.test)' \\\n"
+      res = "curl -i -S -u Identifiant:CleApi -H '#{user_agent}: MonApp (patrick@camping.test)' \\\n"
       write_mode? ? "#{res} -H 'Content-Type: application/json; charset=utf-8' \\\n" : res
     end
 

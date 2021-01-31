@@ -2,7 +2,6 @@
 layout: default
 title: 'créer'
 custom_title: 'Créer un client'
-grand_parent: "Méthodes"
 parent: 'Clients'
 nav_order: 200
 ---

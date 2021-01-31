@@ -2,7 +2,6 @@
 layout: default
 title: factures
 custom_title: Factures d'un client
-grand_parent: Méthodes
 parent: Clients
 nav_order: 2000
 ---
