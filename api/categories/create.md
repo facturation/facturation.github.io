@@ -22,11 +22,11 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 
 {% api_block('json') -%}
 Status: 201 Created
-Location: /firms/<%= api_firm_id %>/categories/5010.json
-...
+Location: /firms/FIRM_ID/categories/5010.json
+
 {
-"id": 5010,
-"status": 1,
-"title": "Prestation de services"
+  "id": 5010,
+  "status": 1,
+  "title": "Prestation de services"
 }
 {% endapi_block %}

@@ -1,14 +1,14 @@
 ---
 layout: default
 title: détails
-custom_title: Détails d'une catégorie
-parent: 'Catégories'
+custom_title: Détails d'un suivi commercial
+parent: 'Suivis'
 nav_order: 300
 ---
-{% assign request = site.data.urls.categories.show -%}
+{% assign request = site.data.urls.followups.show -%}
 ## {{ request.method }} {{ request.url }}
 
-Obtenir le détail de la catégorie n° ID.
+Obtenir le détail du suivi commercial n° ID.
 
 ## Requête
 
@@ -22,7 +22,7 @@ Obtenir le détail de la catégorie n° ID.
 {% api_block('json') -%}
 {
   "id": 1,
-  "status": 2,
-  "title": "Affranchissement"
+  "status": 1,
+  "title": 'En attente de facturation'
 }
 {% endapi_block %}
