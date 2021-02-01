@@ -15,7 +15,7 @@ nav_order: 20000
 ## Librairies
   Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
 
-  * En Ruby ou Rails, vous pouvez utiliser [cette librairie](https://facturation.pro/facturation.rb)
+  * En Ruby ou Rails, vous pouvez utiliser [cette librairie](https://www.facturation.pro/facturation.rb)
   * [Unirest](http://unirest.io/) propose des librairies en PHP, Java, Ruby, Python et Objective-C pour utiliser facilement une API REST telle que la notre.
   * En PHP, il existe des librairies qui permettent de s'interconnecter avec une API de type ActiveResource (cf. [ActiveResource](https://github.com/Indatus/ActiveResource) ou bien [PhpActiveResource](https://github.com/phurni/PhpActiveResource)).
 

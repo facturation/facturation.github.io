@@ -1,7 +1,7 @@
 module MyJekyllTags
   module UrlForFilter
     def api_url(input)
-      host = Jekyll.env == "production" ? "https://facturation.pro" : "https://facturation.test"
+      host = Jekyll.env == "production" ? "https://www.facturation.pro" : "https://facturation.test"
       "#{host}#{input}"
     end
   end

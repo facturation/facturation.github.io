@@ -38,7 +38,7 @@ color_scheme: api
 aux_links_new_tab: true
 aux_links:
   "Facturation.pro":
-    - "https://facturation.pro"
+    - "https://www.facturation.pro"
 
 # paramètres spécifique à la documentation de l'API
 api:
