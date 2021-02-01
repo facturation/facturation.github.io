@@ -19,6 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: API facturation
+# logo: /assets/logo-monae-matpe.png
 email: support@facturation.pro
 description: >- # this means to ignore newlines until "baseurl:"
   API officielle du service facturation.pro (MonAE.fr et MaTPE.com)
