@@ -479,7 +479,7 @@ quote:
   help: 
 - key: precompte
   mode: modifiable
-  title: 'translation missing: fr.activerecord.attributes.quote.precompte'
+  title: Précompte des cotisations
   type: boolean
   help: 
 - key: activity_title
@@ -695,7 +695,7 @@ invoice:
   help: 
 - key: precompte
   mode: modifiable
-  title: 'translation missing: fr.activerecord.attributes.invoice.precompte'
+  title: Précompte des cotisations
   type: boolean
   help: 
 - key: activity_title

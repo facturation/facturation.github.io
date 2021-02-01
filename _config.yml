@@ -45,6 +45,8 @@ api:
   per_page: 30
   seo_title: "API de facturation en ligne pour entreprise"
 
+incremental: true
+
 # plugins:
 #   - jekyll-feed
 
