@@ -41,16 +41,3 @@ Location: /firms/FIRM_ID/assets/1.json
   "visible": true
 }
 {% endapi_block %}
-
-Ajoute une pièce jointe au devis ID.<br/>
-
-### Paramètres
-
-### Requête
-
-
-### Réponse
-
-<%= api_block(false) do %>
-
-<% end %>

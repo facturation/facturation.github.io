@@ -18,7 +18,7 @@ Le total de chaque ligne de facturation ainsi que le total du devis sont calcul√
 {% curl_cmd(write: true)-%}
 -X POST -d '{
 "currency": "EUR",
-"customer_id": <%= api_customer_id %>,
+"customer_id": 1,
 "invoiced_on": "2013-07-29",
 "language": "fr",
 "pay_before": "60fm",
