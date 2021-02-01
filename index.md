@@ -3,7 +3,7 @@ layout: default
 title: "Accueil"
 nav_order: 1
 ---
-Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](http:s//monae.fr) et [MaTPE](https://matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://facturation.pro), ou via vos propres services en vous appuyant sur notre API.
+Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](https://www.monae.fr) et [MaTPE](https://www.matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://www.facturation.pro), ou via vos propres services en vous appuyant sur notre API.
 
 1. TOC
 {:toc}
