@@ -14,7 +14,7 @@ Permet d'envoyer un devis par courriel.
 * Le champ `to` est automatiquement rempli avec l'adresse email enregistrée dans la fiche du client si vous ne précisez rien.
 * Les champs `cc` et `bcc` sont automatiquement remplis avec les adresses que vous avez renseignées dans la page Paramètres / Email de votre compte si vous ne précisez rien.
 
-## Remarques
+### Remarques
 
 Cette fonctionnalité n'est accessible que si vous avez configuré votre propre serveur SMTP dans l'onglet "Paramètres" / "Email" de votre entreprise.
 

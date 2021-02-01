@@ -1,10 +1,10 @@
 ---
 - key: today
   title: Date du jour
-  example: 31/01/2021
+  example: 01/02/2021
 - key: month
   title: Ce mois ci
-  example: janvier 2021
+  example: février 2021
 - key: quarter
   title: Ce trimestre
   example: T1 2021
@@ -13,7 +13,7 @@
   example: '2021'
 - key: previous_month
   title: Le mois dernier
-  example: décembre 2020
+  example: janvier 2021
 - key: previous_quarter
   title: Le trimestre dernier
   example: T4 2020
@@ -22,7 +22,7 @@
   example: '2020'
 - key: next_month
   title: Le mois prochain
-  example: février 2021
+  example: mars 2021
 - key: next_quarter
   title: Le trimestre prochain
   example: T2 2021

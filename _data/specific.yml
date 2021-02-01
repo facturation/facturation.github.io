@@ -505,3 +505,26 @@ quote_statuses_choices:
   - - Refusé
     - '9'
   internal: true
+bills_type_choices:
+  data:
+  - - Tout
+    - ''
+  - - Payés
+    - paid
+  - - Non payés
+    - unpaid
+  - - Echus / A relancer
+    - term
+  - - Factures
+    - invoice
+  - - Factures externes
+    - external
+  - - Avoirs
+    - refund
+  - - Acomptes
+    - down_payment
+  - - Brouillons
+    - draft
+  - - NOVA
+    - nova
+  internal: true
