@@ -2,7 +2,7 @@
 layout: default
 title: "Accueil"
 nav_order: 1
-description: "API JSON de facturation pour entreprise, pour facturer automatiquement vos clients à partir de votre propre service ou système d'information."
+description: "API JSON de facturation pour facturer automatiquement les clients de votre entreprise, à partir de votre site ou de votre système d'information."
 ---
 Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](https://www.monae.fr) et [MaTPE](https://www.matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://www.facturation.pro), ou via vos propres services en vous appuyant sur notre API.
 
