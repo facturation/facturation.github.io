@@ -21,6 +21,8 @@
   title: Montant total TTC
 - key: currency
   title: Devise
+- key: balance
+  title: Total restant à facturer
 - key: collaborator
   title: Collaborateur
 - key: public_download_url
@@ -33,8 +35,10 @@
   title: ID suivi commercial
 - key: followup
   title: Libellé suivi commercial
-- key: balance
-  title: Total restant à facturer
+- key: api_id
+  title: API - Référence numérique libre
+- key: api_custom
+  title: API - Texte libre
 - key: fully_invoiced
   title: Devis soldé?
 - key: amount_invoiced

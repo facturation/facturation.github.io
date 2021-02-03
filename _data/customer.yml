@@ -45,3 +45,7 @@
   title: Champ libre 4
 - key: field5
   title: Champ libre 5
+- key: api_id
+  title: API - Référence numérique libre
+- key: api_custom
+  title: API - Texte libre
