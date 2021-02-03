@@ -10,5 +10,5 @@ Pour ajouter une pièce jointe, consultez la documentation de la fonction `uploa
 
 * [devis](/api/devis/upload.html)
 * [facture](/api/factures/upload.html)
-* [achats](/api/achats/upload.html)
-* [clients](/api/clients/upload.html)
+* [achat](/api/achats/upload.html)
+* [client](/api/clients/upload.html)

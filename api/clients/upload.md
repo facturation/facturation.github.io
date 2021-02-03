@@ -1,7 +1,7 @@
 ---
 layout: default
 nav_title: upload
-title: Ajouter une fichier
+title: Ajouter un fichier
 parent: Clients
 nav_order: 1100
 ---
