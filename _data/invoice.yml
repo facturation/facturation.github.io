@@ -17,16 +17,18 @@
   title: Langue du PDF
 - key: total
   title: Montant total HT
+- key: formatted_total
+  title: Montant total HT (texte incluant la devise du document)
 - key: total_with_vat
   title: Montant total TTC
-- key: currency
-  title: Devise
+- key: formatted_total_with_vat
+  title: Montant total TTC (texte incluant la devise du document)
 - key: balance
   title: Montant restant dû
-- key: collaborator
-  title: Collaborateur
-- key: public_download_url
-  title: Url publique de téléchargement
+- key: formatted_balance
+  title: Montant restant dû (texte incluant la devise du document)
+- key: currency
+  title: Devise
 - key: category_id
   title: ID catégorie
 - key: category
@@ -35,6 +37,10 @@
   title: ID suivi commercial
 - key: followup
   title: Libellé suivi commercial
+- key: collaborator
+  title: Collaborateur
+- key: public_download_url
+  title: Url publique de téléchargement
 - key: api_id
   title: API - Référence numérique libre
 - key: api_custom
