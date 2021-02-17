@@ -11,14 +11,14 @@ Lorsque vous souhaitez faire varier votre contenu en fonction du titre de votre 
 
 {% raw %}
 ```liquid
-{% if customer.civility == 'Monsieur' -%}
-Cher %{civilite} %{nom},
+{% if customer.civility == 'Maître' -%}
+Cher Confrère,
+{% elsif customer.civility == 'Monsieur' -%}
+Cher %{customer.civility} %{customer.last_name},
 {% elsif customer.civility == 'Madame' or customer.civility == 'Mademoiselle' -%}
-Chère %{civilite} %{nom},
-{% else customer.civility == 'Maître' -%}
-Cher Maître %{nom},
+Chère %{customer.civility} %{customer.last_name},
 {% else %}
-Bonjour %{nom}
+Bonjour %{customer.civility} %{customer.last_name}
 {% endif -%}
 ```
 {% endraw %}
