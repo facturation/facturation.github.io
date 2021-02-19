@@ -14,11 +14,11 @@ Lorsque vous souhaitez faire varier votre contenu en fonction du titre de votre 
 {% if customer.civility == 'Maître' -%}
 Cher Confrère,
 {% elsif customer.civility == 'Monsieur' -%}
-Cher %{customer.civility} %{customer.last_name},
+Cher {{customer.civility}} {{customer.last_name}},
 {% elsif customer.civility == 'Madame' or customer.civility == 'Mademoiselle' -%}
-Chère %{customer.civility} %{customer.last_name},
+Chère {{customer.civility}} {{customer.last_name}},
 {% else %}
-Bonjour %{customer.civility} %{customer.last_name}
+Bonjour {{customer.civility}} {{customer.last_name}}
 {% endif -%}
 ```
 {% endraw %}
