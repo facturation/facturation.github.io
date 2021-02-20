@@ -5,7 +5,7 @@ title: Ajouter un fichier
 parent: Devis
 nav_order: 1100
 ---
-{% assign request = site.data.urls.quotes.upload -%}
+{% assign request = site.data.urls.invoices.upload -%}
 ## {{ request.method }} {{ request.url }}
 
 Ajoute une pièce jointe à la facture ID.
@@ -34,7 +34,7 @@ Location: /firms/FIRM_ID/assets/1.json
 
 {
   "id": 1,
-  "quote_id": 1,
+  "invoice_id": 1,
   "document_name":"justificatif.pdf",
   "document_size":18884,
   "download_url":"https://www.facturation.pro/firms/FIRM_ID/assets/1/download",

@@ -5,7 +5,7 @@ title: Modifier une facture
 parent: Factures
 nav_order: 400
 ---
-{% assign request = site.data.urls.quotes.update -%}
+{% assign request = site.data.urls.invoices.update -%}
 ## {{ request.method }} {{ request.url }}
 
 Mise à jour d'une facture. Tout ce qui influe sur le montant de la facturation ne peut pas être modifié. Pour annuler une facture, vous devez faire un avoir.
