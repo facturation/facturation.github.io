@@ -530,7 +530,12 @@ quote:
 - key: public_download_url
   mode: lecture
   title: Url de téléchargement publique
-  type: 
+  type: string(255)
+  help: 
+- key: items
+  mode: lecture
+  title: Lignes de facturation
+  type: array
   help: 
 - key: api_id
   mode: modifiable
@@ -746,7 +751,12 @@ invoice:
 - key: public_download_url
   mode: lecture
   title: Url de téléchargement publique
-  type: 
+  type: string(255)
+  help: 
+- key: items
+  mode: lecture
+  title: Lignes de facturation
+  type: array
   help: 
 - key: api_id
   mode: modifiable
