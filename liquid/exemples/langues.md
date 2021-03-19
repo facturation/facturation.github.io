@@ -7,7 +7,7 @@ parent: 'Exemples'
 nav_order: 100
 ---
 
-Si vous souhaitez utiliser plusieurs langues pour les informations complémentaires globales de vos documents, vous pouvez utiliser le code suivant :
+Si vous souhaitez utiliser plusieurs langues pour les informations complémentaires globales de vos documents (menu Paramètres / Facturation), vous pouvez utiliser le code suivant :
 
 {% raw %}
 ```liquid

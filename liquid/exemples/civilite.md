@@ -7,7 +7,7 @@ parent: 'Exemples'
 nav_order: 100
 ---
 
-Lorsque vous souhaitez faire varier votre contenu en fonction du titre de votre interlocuteur, vous pouvez utiliser la syntaxe suivante
+Lorsque vous souhaitez faire varier le contenu de vos informations complémentaires (menu Paramètres / Facturation) en fonction du titre de votre interlocuteur, vous pouvez utiliser la syntaxe suivante :
 
 {% raw %}
 ```liquid
@@ -22,3 +22,5 @@ Bonjour {{customer.civility}} {{customer.last_name}}
 {% endif -%}
 ```
 {% endraw %}
+
+Vous pouvez adapter ce code pour faire des tests sur n'importe lequel des champs disponibles en Liquid.
