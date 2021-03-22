@@ -385,7 +385,7 @@ quote:
 - key: customer_identity
   mode: lecture
   title: Nom de la société ou du client
-  type: 
+  type: string(255)
   help: 
 - key: title
   mode: modifiable
@@ -533,8 +533,13 @@ quote:
   type: string(255)
   help: 
 - key: items
-  mode: lecture
+  mode: modifiable
   title: Lignes de facturation
+  type: array
+  help: 
+- key: files
+  mode: lecture
+  title: Fichiers joints
   type: array
   help: 
 - key: api_id
@@ -606,7 +611,7 @@ invoice:
 - key: customer_identity
   mode: lecture
   title: Nom de la société ou du client
-  type: 
+  type: string(255)
   help: 
 - key: title
   mode: modifiable
@@ -754,8 +759,13 @@ invoice:
   type: string(255)
   help: 
 - key: items
-  mode: lecture
+  mode: modifiable
   title: Lignes de facturation
+  type: array
+  help: 
+- key: files
+  mode: lecture
+  title: Fichiers joints
   type: array
   help: 
 - key: api_id
@@ -848,6 +858,11 @@ invoice:
   mode: lecture
   title: Facture externe
   type: boolean
+  help: 
+- key: settlements
+  mode: lecture
+  title: Liste des règlements
+  type: array
   help: 
 item:
 - key: id
@@ -1073,6 +1088,11 @@ purchase:
   mode: lecture
   title: Date définitive de la suppression
   type: date
+  help: 
+- key: files
+  mode: lecture
+  title: Liste des justificatifs
+  type: array
   help: 
 - key: api_id
   mode: modifiable
