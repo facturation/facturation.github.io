@@ -95,7 +95,7 @@ Si la création réussi, le code HTTP de retour est "201 Created" et les entête
 Sur un principe similaire, la mise à jour des enregistrements se fait à l'aide d'une requête de type PATCH. Par exemple:
 
 {% api_block %}
-{% curl_cmd(write: true) %} -X PATCH \
+{% curl_cmd write: true %} -X PATCH \
  -d '{"company_name":"BIG CORP S.A.S"}' \
  "{{ site.data.urls['customers']['update']['url'] | api_url }}"
 {% endapi_block %}

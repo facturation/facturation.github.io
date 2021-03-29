@@ -19,7 +19,7 @@ Effectue un avoir de la facture n° ID
 
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X POST "{{ request.url | api_url }}?api_id=32&api_custom=remboursement+suite+plainte+client"
 {% endapi_block %}
 

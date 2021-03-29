@@ -13,7 +13,7 @@ Mise à jour d'un achat existant.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{"title": "Serveur virtuel"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

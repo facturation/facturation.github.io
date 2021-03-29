@@ -17,7 +17,7 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{
 "invoice_id": 1,
 "total": "100.0",

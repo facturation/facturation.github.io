@@ -13,7 +13,7 @@ Mise à jour d'un client existant.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{"company_name":"A big company","email":"boss@bigcompany.com"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

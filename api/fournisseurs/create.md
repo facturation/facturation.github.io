@@ -13,7 +13,7 @@ Création d'un nouveau fournisseur. On obtient en retour le code JSON du fournis
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{"company_name":"Office Depot"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

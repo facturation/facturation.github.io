@@ -13,7 +13,7 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{"supplier_id": 1, "invoiced_on": "2013-06-28","title": "Restaurant","total_with_vat": "100","vat_amount": "16,39"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

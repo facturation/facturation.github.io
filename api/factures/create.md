@@ -20,7 +20,7 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{
 "currency": "EUR",
 "customer_id": 1,

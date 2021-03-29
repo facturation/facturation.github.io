@@ -17,7 +17,7 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{"company_name":"A small company","individual":false}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

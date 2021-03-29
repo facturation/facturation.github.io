@@ -18,7 +18,7 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{
 "id": "ID",
 "api_custom": null,

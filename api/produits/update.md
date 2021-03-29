@@ -13,7 +13,7 @@ Mise à jour d'un produit existant.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Optimisation module Prestashop","api_custom":"CUSTOM_SHOP"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

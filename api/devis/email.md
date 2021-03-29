@@ -21,7 +21,7 @@ Cette fonctionnalité n'est accessible que si vous avez configuré votre propre 
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -d '{
 "to": "machin@test.com",
 "cc": "bidule@test.com",

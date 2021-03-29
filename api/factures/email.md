@@ -23,7 +23,7 @@ Permet d'envoyer une facture finalisée par courriel.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -d '{
 "to": "machin@test.com",
 "cc": "bidule@test.com",

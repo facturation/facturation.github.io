@@ -13,7 +13,7 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true)-%}
+{% curl_cmd write: true-%}
 -X POST -d '{"ref":"PAIMENT","title":"Developpement passerelle de paiement","unit_price":200.0,"vat":0.200}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

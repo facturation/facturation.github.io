@@ -13,7 +13,7 @@ Mise à jour d'un suivi commercial existante.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Relancer le client","status":"2"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

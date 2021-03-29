@@ -13,7 +13,7 @@ Mise à jour d'une catégorie existante.
 ## Requête
 
 {% api_block %}
-{% curl_cmd(write: true) -%}
+{% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Outil SEO","status":"2"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
