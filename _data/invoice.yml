@@ -49,3 +49,9 @@
   title: Référence du devis associé
 - key: url_pay
   title: Lien de règlement en ligne (option GOLD requise)
+- key: payment_mode
+  title: Mode de règlement
+- key: paid_on
+  title: Payé le
+- key: payment_ref
+  title: Référence du paiement
