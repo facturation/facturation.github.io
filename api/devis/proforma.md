@@ -8,7 +8,7 @@ nav_order: 600
 {% assign request = site.data.urls.quotes.download -%}
 ## {{ request.method }} {{ request.url }}?proforma=1
 
-Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engagez à appliquer les prix indiqué dans ce devis. Cette methode vous permet donc de télécharger le devis n° ID sous forme de facture PDF proforma .
+Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engagez à appliquer les prix indiqués dans ce devis. Cette methode vous permet donc de télécharger le devis n° ID sous forme de facture PDF proforma .
 
 ## Requête
 
