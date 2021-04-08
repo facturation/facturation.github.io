@@ -2,7 +2,7 @@
 layout: default
 nav_title: upload
 title: Ajouter un fichier
-parent: Devis
+parent: Factures
 nav_order: 1100
 ---
 {% assign request = site.data.urls.invoices.upload -%}
