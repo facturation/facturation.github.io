@@ -23,7 +23,7 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au 
 {% api_block %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
-"{{ request.url }}filename=justificatif.pdf&visible=1"
+"{{ request.url }}?filename=justificatif.pdf&visible=1"
 {% endapi_block %}
 
 ## Réponse
