@@ -50,7 +50,7 @@ Pour pouvoir utiliser le protocole OAuth, vous devez obligatoirement disposer d'
 
 Lorsque vous développez une application pour votre propre usage interne, vous pouvez utiliser une authentification par clé API, plus rapide à mettre en oeuvre pour un usage personnel. Dans ce cas, chaque requête API doit être authentifiée à l'aide des informations ci-dessous, via le protocole "[HTTP Basic Authentication](http://www.ietf.org/rfc/rfc2617.txt)".<br/>
 
-Vos codes d'accès à l'API sont disponible dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte. Si vous venez juste de créer un compte sur notre outil, vous devez activer votre compte via le lien reçu avant de pouvoir récupérer vos codes.
+Vos codes d'accès à l'API sont disponible dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client). Si vous venez juste de créer un compte sur notre outil, vous devez activer votre compte via le lien reçu avant de pouvoir récupérer vos codes.
 
 A tout moment, vous pouvez générer un nouveau mot de passe API depuis votre compte.
 
@@ -63,7 +63,7 @@ Exemple:
 ## Paramètre FIRM_ID
 
 Comme vous allez le constater en parcourant la documentation de l'API, toutes les requêtes sont préfixées par le chemin /firms/FIRM_ID . Le paramètre FIRM_ID correspond à l'identifiant de l'entreprise sur laquelle vous souhaitez travailler.<br/>
-Vous pouvez retrouver la liste des identifiants de votre compte dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte.
+Vous pouvez retrouver la liste des identifiants de votre compte dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client).
 
 
 ## Test de l'API
