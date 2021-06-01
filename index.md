@@ -169,11 +169,12 @@ Afin de suivre vos quotas, vous pouvez consulter les champs d'entête suivant:
 * X-RateLimit-Remaining: nombre total de requêtes restantes
 
 
-Ces limites sont suffisante pour un usage normal de notre API. Si vous atteignez régulièrement ces limites, alors nous vous invitons à optimiser vos scripts, par exemple :
-* en évitant de parcourir l'ensemble de vos données, mais uniquement en parcourant les données récemment modifiées (via les paramètres de tri)
+Ces limites sont suffisantes pour un usage normal de notre API. Si vous atteignez régulièrement ces limites, alors nous vous invitons à optimiser vos scripts, par exemple :
 * en mettant en cache (temporaire ou permanent) les données qui ne changent pas pour ne pas avoir besoin de récupérer ces données en permanence en temps réel
+* en évitant de parcourir l'ensemble de vos données, mais uniquement en parcourant les données récemment modifiées (via les paramètres de tri)
 * en temporisant vos requêtes pour les étaler dans le temps
 * en diminuant la fréquence d'exécution de vos scripts
+* en vérifiant que vous n'avez pas des scripts inutiles qui tournent en boucle (anciens tests, boucles infinies, tache cron oubliée, etc)
 
 
 ## Compatibilité JSONP
