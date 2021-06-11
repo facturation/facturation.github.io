@@ -210,6 +210,11 @@ customer:
   title: Motif d'exonération de TVA
   type: string(255)
   help: 
+- key: invoice_email
+  mode: modifiable
+  title: Email facturation
+  type: text
+  help: 
 - key: soft_deleted
   mode: lecture
   title: Enregistrement marqué comme à supprimer
@@ -830,7 +835,7 @@ invoice:
   help: 
 - key: paid_in_main_currency
   mode: modifiable
-  title: Equivalent en euros
+  title: Equivalent du total TTC en euros
   type: decimal
   help: 
 - key: estimated_total_in_main_currency
