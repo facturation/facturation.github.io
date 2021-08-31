@@ -869,6 +869,11 @@ invoice:
   title: Liste des règlements
   type: array
   help: 
+- key: recurring_invoice_id
+  mode: lecture
+  title: ID de la facture récurrente associée
+  type: int(11)
+  help: 
 item:
 - key: id
   mode: modifiable
