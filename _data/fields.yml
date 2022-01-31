@@ -864,6 +864,11 @@ invoice:
   title: Facture externe
   type: boolean
   help: 
+- key: overdue_at
+  mode: modifiable
+  title: Dernière relance
+  type: datetime
+  help: 
 - key: settlements
   mode: lecture
   title: Liste des règlements

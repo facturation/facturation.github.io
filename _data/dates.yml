@@ -1,31 +1,31 @@
 ---
 - key: today
   title: Date du jour
-  example: 31/08/2021
+  example: 31/01/2022
 - key: month
   title: Ce mois ci
-  example: août 2021
+  example: janvier 2022
 - key: quarter
   title: Ce trimestre
-  example: T3 2021
+  example: T1 2022
 - key: year
   title: Cette année
-  example: '2021'
+  example: '2022'
 - key: previous_month
   title: Le mois dernier
-  example: juillet 2021
+  example: décembre 2021
 - key: previous_quarter
   title: Le trimestre dernier
-  example: T2 2021
+  example: T4 2021
 - key: previous_year
   title: L'année dernière
-  example: '2020'
+  example: '2021'
 - key: next_month
   title: Le mois prochain
-  example: septembre 2021
+  example: février 2022
 - key: next_quarter
   title: Le trimestre prochain
-  example: T4 2021
+  example: T2 2022
 - key: next_year
   title: L'année prochaine
-  example: '2022'
+  example: '2023'
