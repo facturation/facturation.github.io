@@ -447,6 +447,16 @@ quote:
   title: Réduction globale
   type: decimal(8,3)
   help: 
+- key: exchange_rate
+  mode: lecture
+  title: Taux de change
+  type: 
+  help: 
+- key: estimated_rate
+  mode: lecture
+  title: Taux de change estimé?
+  type: 
+  help: 
 - key: vat_exemption
   mode: modifiable
   title: Motif d'exonération de TVA
@@ -672,6 +682,16 @@ invoice:
   mode: modifiable
   title: Réduction globale
   type: decimal(8,3)
+  help: 
+- key: exchange_rate
+  mode: lecture
+  title: Taux de change
+  type: 
+  help: 
+- key: estimated_rate
+  mode: lecture
+  title: Taux de change estimé?
+  type: 
   help: 
 - key: vat_exemption
   mode: modifiable

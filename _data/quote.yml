@@ -45,6 +45,9 @@
   title: API - Référence numérique libre
 - key: api_custom
   title: API - Texte libre
+- key: exchange_rate
+  title: Taux de change (indicatif sur un devis ou une facture non réglée, définitif
+    sur une facture réglée)
 - key: fully_invoiced
   title: Devis soldé?
 - key: amount_invoiced
