@@ -12,6 +12,8 @@ nav_order: 20000
 
   Pour configurer vos tests sur cet outil, vous devez ajouter un nouveau "hook" et le configurer avec le mode "An API, Forward and Track Requests", en utilisant comme valeur pour le champ target `https://www.facturation.pro/` et en cochant la case "Rewrite host"
 
+  Si besoin, il existe des services alternatifs plus ou moins évolués tel que [hookdeck.com](https://hookdeck.com/) ou bien [RequestBin](https://requestbin.com/) pour déboguer vos requêtes.
+
 ## Librairies
   Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
 
