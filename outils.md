@@ -28,7 +28,6 @@ nav_order: 20000
   * [PHPmonAE](https://github.com/Atome-TM/PHPmonAE)  : librairie PHP.
   * Bundle pour [PHP Symfony 3](https://github.com/Tiloweb/tiloweb-matpe) et [Symphony 4](https://github.com/Isoka/monae-symfony4-service)
   * Module [Prestashop](https://store.comexpertise.com/fr/modules/prestashop/module-facturationpro-monaematpe-pour-prestashop)
-  * Module [Woocommerce](https://www.symbioseo.fr/boutique/plugins/woocommerce-facturation-matpe-monae/)
   * Package [Laravel](https://github.com/atome-dev/laravel-facturationpro-api)
 
   Si vous avez construit une librairie ou une extension publique, n'hésitez pas à nous le faire savoir pour qu'elle soit ajoutée sur cette page.
