@@ -968,6 +968,12 @@ item:
   type: int(11)
   help: la nature de la prestation n'est à préciser que pour les auto-entrepreneurs
     et les micro-entrepreneurs, afin de calculer correctement les cotisations sociales.
+- key: sap_nature
+  mode: modifiable
+  title: Code activité
+  type: 
+  help: Le code d'activité d'une prestation de service à la personne ne doit être
+    précisé que s'il s'agit d'une facture de service à la personne
 purchase:
 - key: id
   mode: lecture

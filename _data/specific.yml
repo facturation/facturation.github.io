@@ -525,6 +525,6 @@ bills_type_choices:
     - down_payment
   - - Brouillons
     - draft
-  - - NOVA
+  - - Nova
     - nova
   internal: true
