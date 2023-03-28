@@ -215,6 +215,31 @@ customer:
   title: Email facturation
   type: text
   help: 
+- key: field1
+  mode: modifiable
+  title: Champ libre 1
+  type: string(255)
+  help: 
+- key: field2
+  mode: modifiable
+  title: Champ libre 2
+  type: string(255)
+  help: 
+- key: field3
+  mode: modifiable
+  title: Champ libre 3
+  type: string(255)
+  help: 
+- key: field4
+  mode: modifiable
+  title: Champ libre 4
+  type: string(255)
+  help: 
+- key: field5
+  mode: modifiable
+  title: Champ libre 5
+  type: string(255)
+  help: 
 - key: soft_deleted
   mode: lecture
   title: Enregistrement marqué comme à supprimer
@@ -1252,6 +1277,31 @@ product:
   mode: lecture
   title: Modifié le
   type: datetime(3)
+  help: 
+- key: field1
+  mode: modifiable
+  title: Champ libre 1
+  type: string(255)
+  help: 
+- key: field2
+  mode: modifiable
+  title: Champ libre 2
+  type: string(255)
+  help: 
+- key: field3
+  mode: modifiable
+  title: Champ libre 3
+  type: string(255)
+  help: 
+- key: field4
+  mode: modifiable
+  title: Champ libre 4
+  type: string(255)
+  help: 
+- key: field5
+  mode: modifiable
+  title: Champ libre 5
+  type: string(255)
   help: 
 - key: soft_deleted
   mode: lecture
