@@ -8,7 +8,7 @@ nav_order: 400
 {% assign request = site.data.urls.invoices.update -%}
 ## {{ request.method }} {{ request.url }}
 
-Mise à jour d'une facture. Tout ce qui influe sur le montant de la facturation ne peut pas être modifié. Pour annuler une facture, vous devez faire un avoir.
+Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des données est modifiable, par contre, une fois la facture finalisée, tout ce qui influe sur le montant de la facturation ne peut plus être modifié. Pour annuler une facture, vous devez faire un avoir.
 
 La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
 
