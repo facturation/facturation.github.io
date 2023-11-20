@@ -17,6 +17,12 @@
   title: Code postal
 - key: country
   title: Pays
+- key: phone
+  title: Téléphone
+- key: fax
+  title: Fax
+- key: email
+  title: Email
 - key: individual
   title: Particulier
 - key: language

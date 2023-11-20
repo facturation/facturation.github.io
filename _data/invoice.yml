@@ -7,6 +7,8 @@
   title: Date facture
 - key: term_on
   title: Date d'échéance
+- key: delivery_on
+  title: Livré/Réalisé le
 - key: reference
   title: Numéro de facture
 - key: purchase_number
