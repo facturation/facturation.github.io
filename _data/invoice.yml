@@ -50,8 +50,12 @@
 - key: exchange_rate
   title: Taux de change (indicatif sur un devis ou une facture non réglée, définitif
     sur une facture réglée)
+- key: estimated_exchange_rate
+  title: Taux de change indicatif, à la veille de la date du devis ou de la facture
 - key: linked_quote_ref
   title: Référence du devis associé
+- key: linked_quote_date
+  title: Date du devis associé
 - key: url_pay
   title: Lien de règlement en ligne (option GOLD requise)
 - key: payment_mode

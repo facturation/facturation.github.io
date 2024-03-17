@@ -989,9 +989,9 @@ item:
   type: string(20)
   help: Par défaut (ie valeur vide), ce champ indique une ligne de facturation standard.
     La valeur 'comment' permet d'indiquer qu'il s'agit d'une ligne de commentaire,
-    la valeur 'title' permet d'indiquer qu'il s'agit d'une ligne de titre (mise en
-    gras automatiquement) et la valeur 'new_page' permet d'indiquer qu'il s'agit d'un
-    saut de page.
+    la valeur 'title' permet d'indiquer une ligne de titre (mise en gras automatiquement),
+    la value 'subtotal' permet d'indiquer une ligne de sous-total et la valeur 'new_page'
+    permet d'indiquer un saut de page.
 - key: nature
   mode: modifiable
   title: Type
