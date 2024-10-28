@@ -54,6 +54,10 @@
   title: Taux de change indicatif, à la veille de la date du devis ou de la facture
 - key: fully_invoiced
   title: Devis soldé?
+- key: quote_ref
+  title: Référence du devis (utilisable a la fois sur les devis et les factures)
+- key: quote_date
+  title: Date du devis (utilisable a la fois sur les devis et les factures)
 - key: amount_invoiced
   title: Montant déjà facturé
 - key: formatted_amount_invoiced
