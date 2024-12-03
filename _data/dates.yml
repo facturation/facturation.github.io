@@ -1,10 +1,10 @@
 ---
 - key: today
   title: Date du jour
-  example: 28/10/2024
+  example: 03/12/2024
 - key: month
   title: Ce mois ci
-  example: octobre 2024
+  example: décembre 2024
 - key: quarter
   title: Ce trimestre
   example: T4 2024
@@ -13,7 +13,7 @@
   example: '2024'
 - key: previous_month
   title: Le mois dernier
-  example: septembre 2024
+  example: novembre 2024
 - key: previous_quarter
   title: Le trimestre dernier
   example: T3 2024
@@ -22,7 +22,7 @@
   example: '2023'
 - key: next_month
   title: Le mois prochain
-  example: novembre 2024
+  example: janvier 2025
 - key: next_quarter
   title: Le trimestre prochain
   example: T1 2025
