@@ -36,6 +36,7 @@ twitter:
 # Build settings
 theme: "just-the-docs"
 color_scheme: api
+
 aux_links_new_tab: true
 aux_links:
   "Facturation.pro":
