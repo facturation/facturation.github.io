@@ -7,4 +7,4 @@ nav_order: 200
 
 Voici la liste des toutes les devises utilisables dans notre outil
 
-{% include values.html entries=site.data.specific.currency.data field='currency' %}
+{% include values.md entries=site.data.specific.currency.data field='currency' %}

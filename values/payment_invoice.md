@@ -6,4 +6,4 @@ nav_order: 300
 ---
 Voici les valeurs spécifiques de modes de règlement pour une vente
 
-{% include values.html entries=site.data.specific.payment_mode_bill.data field='payment_mode' %}
+{% include values.md entries=site.data.specific.payment_mode_bill.data field='payment_mode' %}

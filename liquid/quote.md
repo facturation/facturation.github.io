@@ -10,5 +10,5 @@ Les informations spécifiques à un devis sont disponibles via l'objet `bill`.
 | Attribut | Infos |
 |:---------|:------|
 {% for item in site.data.quote -%}
-| \{\{ bill.{{ item.key }} \}\} | {{ item.title }}
-{% endfor -%}
+| \{\{ bill.{{ item.key }} \}\} | {{ item.title }}|
+{% endfor %}

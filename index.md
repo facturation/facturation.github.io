@@ -15,7 +15,13 @@ Une API (i.e. Application Programming Interface) est un ensemble normalisé de c
 L'utilisation de notre API nécessite des compétences en développement web. Si vous n'avez pas de telles compétences, vous devrez vous adresser à un prestataire informatique (SSII, studio de développement, développeur indépendant, etc.) afin de voir avec lui s'il peut vous développer ce que vous souhaitez.
 
 ## API au format JSON
-  Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+
+## URL d'accès à l'API
+
+Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base suivante:
+`https://www.facturation.pro/`
+
 
 ## Identifiez votre application
 Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Agent** avec le nom de votre application et un lien vers un formulaire de contact ou bien votre adresse email, afin que nous puissions vous contacter si nous constatons un problème dans l'utilisation que vous faites de notre API. En l'absence d'informations valides de contact, votre accès à l'API pourra être suspendu sans préavis en cas d'utilisation abusive de l'API.

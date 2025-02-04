@@ -12,6 +12,10 @@ require "pathname"
 # Chemin vers le répertoire api
 BASE_DIR = Pathname.new(File.join(__dir__, ".."))
 
+def process_content(content)
+  content.strip.gsub(/^#/im, "##") + "\n\n"
+end
+
 def process_directory(dir)
   content = ""
 
@@ -38,7 +42,7 @@ def process_directory(dir)
   content << "# #{parent}\n\n" if parent
   files_with_metadata.sort_by { |f| f[:nav_order] }.each do |file|
     content << "## #{file[:title]}\n\n" if file[:title]
-    content << file[:content].strip + "\n\n"
+    content << process_content(file[:content])
   end
 
   content
@@ -46,7 +50,7 @@ end
 
 def process_file(file)
   parsed = FrontMatterParser::Parser.parse_file(file)
-  parsed.content
+  process_content(parsed.content)
 end
 
 # Parcourir les sous-répertoires du dossier api

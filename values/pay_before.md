@@ -6,7 +6,7 @@ nav_order: 400
 ---
 Voici les valeurs spécifiques des délais de paiement
 
-{% include values.html entries=site.data.specific.pay_before.data field='pay_before' %}
+{% include values.md entries=site.data.specific.pay_before.data field='pay_before' %}
 
 
 **Remarque**

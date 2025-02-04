@@ -6,4 +6,4 @@ nav_order: 600
 ---
 Voici les valeurs spécifiques d'affectation pour un suivi commercial
 
-{% include values.html entries=site.data.specific.status_followup.data field='status' %}
+{% include values.md entries=site.data.specific.status_followup.data field='status' %}

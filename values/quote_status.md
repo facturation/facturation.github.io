@@ -6,4 +6,4 @@ nav_order: 700
 ---
 Voici les valeurs spécifiques d'état d'un devis
 
-{% include values.html entries=site.data.specific.quote_status.data field='quote_status' %}
+{% include values.md entries=site.data.specific.quote_status.data field='quote_status' %}

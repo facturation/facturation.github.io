@@ -10,5 +10,5 @@ Notre outil vous propose différentes périodes qui sont calculées par rapport 
 | Attribut | Infos | Exemple |
 |:---------|:------|:--------|
 {% for item in site.data.dates -%}
-| \{\{ period.{{ item.key }} \}\} | {{ item.title }} | {{ item.example }}
-{% endfor -%}
+| \{\{ period.{{ item.key }} \}\} | {{ item.title }} | {{ item.example }}|
+{% endfor %}

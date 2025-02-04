@@ -5,18 +5,16 @@ title: Documentation 1-page
 
 Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](https://www.monae.fr) et [MaTPE](https://www.matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://www.facturation.pro), ou via vos propres services en vous appuyant sur notre API.
 
-1. TOC
-{:toc}
 
-## Introduction
+### Introduction
 
 Une API (i.e. Application Programming Interface) est un ensemble normalisé de classes et de méthodes permettant, via n'importe quel langage de programmation, d'interagir avec un service web tel que le notre. Nous mettons à votre disposition une API de type "[REST](http://fr.wikipedia.org/wiki/Representational_state_transfer)", qui vous permet de manipuler les données de votre compte afin d'intégrer dans votre propre application ou site web des modules complémentaires spécifiques s'appuyant sur les données de votre compte. Vous pouvez ainsi utiliser notre API pour par exemple générer des statistiques spécifiques, automatiser votre facturation (en particulier lors de la facturation d'abonnement ou d'objet via un site d'ecommerce), exporter vos données dans un format spécifique non proposé par notre outil web, et plus généralement créer de nouvelles fonctionnalités propres à vos besoins spécifiques.
 L'utilisation de notre API nécessite des compétences en développement web. Si vous n'avez pas de telles compétences, vous devrez vous adresser à un prestataire informatique (SSII, studio de développement, développeur indépendant, etc.) afin de voir avec lui s'il peut vous développer ce que vous souhaitez.
 
-## API au format JSON
+### API au format JSON
   Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
 
-## Identifiez votre application
+### Identifiez votre application
 Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Agent** avec le nom de votre application et un lien vers un formulaire de contact ou bien votre adresse email, afin que nous puissions vous contacter si nous constatons un problème dans l'utilisation que vous faites de notre API. En l'absence d'informations valides de contact, votre accès à l'API pourra être suspendu sans préavis en cas d'utilisation abusive de l'API.
 
 **Voici des exemples de User-Agent:**
@@ -33,19 +31,19 @@ Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Ag
 {% curl_cmd user_agent: 'X-User-Agent' %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
-## Authentification
+### Authentification
 
 Notre API supporte deux protocoles d'identification:
 * via le protocole OAuth2: cette méthode d'authentification est recommandée dès lors que votre application sera utilisée par de multiples utilisateurs.
 * via une clé API: cette méthode d'authentification est destinée essentiellement au développement d'applications pour votre propre usage.
 
-### Authentification via OAuth2
+#### Authentification via OAuth2
 
 Lorsque vous développez une application destinée à être publique et à être utilisée par vos propres utilisateurs, nous vous encourageons à authentifier vos requêtes API via le protocole [OAuth 2](http://oauth.net/) pour plus de simplicité et de sécurité pour vos clients. Ce protocole évite à vos utilisateurs d'avoir à communiquer leurs identifiants de connexion API manuellement, et propose donc une expérience utilisateur plus fluide lorsque celui ci souhaite autoriser votre application à accéder à ses données.
 
 Pour pouvoir utiliser le protocole OAuth, vous devez obligatoirement disposer d'un compte sur notre service (un compte gratuit est suffisant) et [enregistrer votre application](https://www.facturation.pro/oauth/applications) sur notre service.
 
-### Authentification par clé API
+#### Authentification par clé API
 
 Lorsque vous développez une application pour votre propre usage interne, vous pouvez utiliser une authentification par clé API, plus rapide à mettre en oeuvre pour un usage personnel. Dans ce cas, chaque requête API doit être authentifiée à l'aide des informations ci-dessous, via le protocole "[HTTP Basic Authentication](http://www.ietf.org/rfc/rfc2617.txt)".<br/>
 
@@ -59,23 +57,23 @@ Exemple:
   {% curl_cmd %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
-## Paramètre FIRM_ID
+### Paramètre FIRM_ID
 
 Comme vous allez le constater en parcourant la documentation de l'API, toutes les requêtes sont préfixées par le chemin /firms/FIRM_ID . Le paramètre FIRM_ID correspond à l'identifiant de l'entreprise sur laquelle vous souhaitez travailler.<br/>
 Vous pouvez retrouver la liste des identifiants de votre compte dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client).
 
 
-## Test de l'API
+### Test de l'API
 
 Afin de tester votre application, nous vous conseillons de [créer une nouvelle entreprise](https://www.facturation.pro/firms/new) et de ne pas passer cette entreprise en production. Vous disposerez alors d'une entreprise sur laquelle vous pourrez faire vos tests librement, sans que cela n'impacte vos données de production. Vous pouvez à tout moment ré-initialiser cette entreprise si vos données dépassent les limites de la version gratuite.
 
-## Lecture des données
+### Lecture des données
 
 L'API propose généralement deux types d'accès en lecture aux données : liste et détail. Les accès de type "détail" retourne un enregistrement unique, alors que les accès de type "liste" retournent un ensemble d'enregistrements.
 
 Toutes les requêtes de consultation sont faites avec la méthode GET. Lorsque une requête de lecture réussi, vous obtenez une réponse au format JSON accompagné du code HTTP "200 OK". Ce type d'url peut être consulté depuis un navigateur.
 
-## Ecriture des données
+### Ecriture des données
 
 La création, la modification et la suppression de données est facile a implémenter, mais ne peut pas être réalisée directement depuis un navigateur. Quel que soit le langage de développement que vous utilisez, un utilitaire tel que "curl" vous permet de faire facilement des essais et explorer l'API.
 
@@ -112,14 +110,14 @@ Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous
 Les requêtes de suppression ne nécessitent pas de "Content-Type" puisqu'elles ne contiennent pas de JSON. Si la suppression réussie, vous obtenez le code HTTP "200 OK"
 
 
-## Champs disponibles
+### Champs disponibles
 
 A la fin de chaque rubrique de la documentation de l'API, nous vous indiquons la liste des champs disponibles pour l'objet concerné, avec pour chaque champs le type de donnée qu'il accepte et si ce champs est accessible en écriture ou non.<br/>
 Les dates doivent toujours être transmises au format AAAA-MM-DD (AAAA: année, MM: numéro du mois de 01 à 12, DD: numéro du jour de 01 à 31).<br/>
 Certains champs n'acceptent que des valeurs pré-définies, et dans ce cas, la liste des valeurs possibles est précisée dans la documentation.
 
 
-## Pagination
+### Pagination
 
 Les requêtes de type liste (liste de clients, de factures, de devis, ...) retournent les X premiers résultats trouvés, ainsi qu'une entête "X-Pagination" contenant un hash JSON avec les informations de pagination suivantes: nombre total d'enregistrements (total_entries), nombre d'enregistrements par page (per_page), page courante (current_page), nombre total de pages (total_pages).
 
@@ -135,7 +133,7 @@ X-Pagination:{"current_page":1,"total_pages":10,"per_page":30,"total_entries":30
 Vous pouvez accéder aux différentes pages d'une liste en utilisant le paramètre "page=N" dans vos requêtes, ou N est le numéro de page souhaité.
 
 
-## Gestion des erreurs
+### Gestion des erreurs
 
 Si une requête échoue, vous obtiendrez des codes d'erreur HTTP spécifiques, accompagnés d'un message d'erreur.
 Par exemple, pour un enregistrement non trouvé, la réponse peut ressembler à:
@@ -155,7 +153,7 @@ Voici quelques erreurs spécifiques:
 * Pour les autres codes d'erreurs, consultez la réponse retournée par le système qui contient généralement plus d'informations sur les erreurs rencontrées dans le champ "errors"
 
 
-## Limitations du nombre de requêtes
+### Limitations du nombre de requêtes
 
 Notre API vous autorise à réaliser :
 * 600 requêtes par période de 5 minutes, soit en moyenne deux requêtes par seconde
@@ -176,7 +174,7 @@ Ces limites sont suffisantes pour un usage normal de notre API. Si vous atteigne
 * en vérifiant que vous n'avez pas des scripts inutiles qui tournent en boucle (anciens tests, boucles infinies, tache cron oubliée, etc)
 
 
-## Compatibilité JSONP
+### Compatibilité JSONP
 
 L'API est compatible avec le format JSONP, vous permettant d'accéder aux méthodes de type "GET" via du javascript. Il vous suffit d'indiquer votre callback en ajoutant le paramètre "callback=monCallBack" à l'url demandée.
 
@@ -204,16 +202,17 @@ afficherInfo({
 {% endapi_block %}
 
 
+
 # Achats
 
 ## Liste des achats
 
 {% assign request = site.data.urls.purchases.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste des achats, par groupe de {{ site.api.per_page }} résultats.
 
-## Optimisation des requêtes
+### Optimisation des requêtes
 
 Par défaut, l'API retourne les informations de chaque achat, sauf les fichiers joints, afin d'optimiser les performances de vos requêtes. Pour obtenir la liste des fichiers joints à un achat spécifique, il vous suffit de faire une requête sur l'achat concerné.
 
@@ -222,7 +221,7 @@ Vous avez la possibilité d'inclure la liste des fichiers joints de chaque achat
   - 1 pour inclure la liste des pièces jointes
   - 0 (par défaut) pour ne pas inclure la liste des pièces jointes
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `api_id` : recherche exacte sur le champ api_id
@@ -238,7 +237,7 @@ Vous avez la possibilité d'inclure la liste des fichiers joints de chaque achat
   {% endfor %}
 * `accounting_entry`: recherche sur le code d'imputation (abonnement Entreprise)
 
-### Recherche par périodes
+#### Recherche par périodes
 
 Vous pouvez limiter votre recherche à une période spécifique en utilisant les paramètres optionnels suivants:
 * `period_start` : période de début
@@ -247,7 +246,7 @@ Vous pouvez limiter votre recherche à une période spécifique en utilisant les
 
 Le format des périodes peut être AAAA-MM (année-mois) ou bien AAAA-MM-JJ (année-mois-jour)
 
-### Tri
+#### Tri
 
 Par défaut, les achats sont triés par ordre décroissant de date d'achat.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -262,13 +261,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - updated: tri par date de dernière modification d'un achat (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
 
 
-## Requête
+### Requête
 
 {% api_block %}
   {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
   [{
@@ -311,11 +310,11 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer un achat
 
 {% assign request = site.data.urls.purchases.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistrement créé, avec l'ID qui lui a été attribué
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -323,7 +322,7 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 201 Created
@@ -352,18 +351,18 @@ Location: /firms/FIRM_ID/purchases/ID.json
 ## Détails d'un achat
 
 {% assign request = site.data.urls.purchases.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail de l'achat n° ID
 
-## Requête
+### Requête
 
 {% api_block %}
   {% curl_cmd -%}
   "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 {
@@ -389,11 +388,11 @@ Obtenir le détail de l'achat n° ID
 ## Modifier un achat
 
 {% assign request = site.data.urls.purchases.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un achat existant.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -401,7 +400,7 @@ Mise à jour d'un achat existant.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -410,18 +409,18 @@ Status: 200 OK
 ## Supprimer un achat
 
 {% assign request = site.data.urls.purchases.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime l'achat identifié par son ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -430,16 +429,16 @@ Status: 200 OK
 ## Ajouter une pièce jointe
 
 {% assign request = site.data.urls.purchases.upload -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Ajouter une pièce jointe à l'achat ID.<br/>
 
-## Paramètres
+### Paramètres
 
 * Le fichier doit être transmis sous forme de formulaire multipart (ie `multipart/form-data`), à l'aide de la variable `upload_file`.
 * Par défaut, le fichier sera stocké avec le nom qu'il avait sur votre système. Si vous le souhaitez, vous pouvez forcer un autre nom de fichier à l'aide de la variable `filename`
 
-## Requête
+### Requête
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à l'achat possédant l'ID 1, avec le nom "achat_123.pdf"
 
@@ -449,7 +448,7 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 "{{ request.url }}?filename=achat_123.pdf"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block %}
   Status: 201 Created
@@ -469,12 +468,12 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 Les achats récurrents sont gérés uniquement via l'interface web. Cependant, vous pouvez obtenir des informations sommaires sur la liste des achats récurrents configurés à l'aide des méthodes suivantes:
 
 {% assign request = site.data.urls.purchases.recurring_list -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir la liste des achats récurrents
 
 {% assign request = site.data.urls.purchases.recurring_show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir des informations sur l'achat récurrent ID
 
@@ -489,24 +488,24 @@ Obtenir des informations sur l'achat récurrent ID
 ## Liste des catégories
 
 {% assign request = site.data.urls.categories.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 
 liste des catégories, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `title` : recherche partielle sur le libellé de la catégorie
 * `status` : rechercher par type de catégorie (i.e. type d'affectation)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -533,11 +532,11 @@ liste des catégories, par groupe de {{ site.api.per_page }} résultats.
 ## Créer une catégorie
 
 {% assign request = site.data.urls.categories.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'une nouvelle catégorie. On obtient en retour le code JSON de la catégorie créé, avec l'ID qui lui a été attribué.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -545,7 +544,7 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -561,18 +560,18 @@ Location: /firms/FIRM_ID/categories/5010.json
 ## Détails d'une catégorie
 
 {% assign request = site.data.urls.categories.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail de la catégorie n° ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -585,11 +584,11 @@ Obtenir le détail de la catégorie n° ID.
 ## Modifier une catégorie
 
 {% assign request = site.data.urls.categories.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'une catégorie existante.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -597,7 +596,7 @@ Mise à jour d'une catégorie existante.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -606,18 +605,18 @@ Status: 200 OK
 ## Supprimer une catégorie
 
 {% assign request = site.data.urls.categories.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime la catégorie identifiée par son ID. Cette opération ne supprime pas les documents rattachés à cette catégorie.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -634,11 +633,11 @@ Status: 200 OK
 ## Liste des clients
 
 {% assign request = site.data.urls.customers.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels :
+### Paramètres optionnels :
 
 * `page` : numéro de page
 * `api_id` : recherche exacte sur le champ api_id
@@ -656,7 +655,7 @@ Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
     - `individual` : retourne uniquement les particuliers actifs
     - `archived` : retourne uniquement les clients archivés
 
-### Tri
+#### Tri
 
 Par défaut, les clients sont triés par ordre croissant de nom mnémotechnique.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -670,13 +669,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
     - `updated` : tri par date de dernière modification
 
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [{
@@ -749,15 +748,15 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer un client
 
 {% assign request = site.data.urls.customers.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouveau client. On obtient en retour le code JSON du client créé, avec l'ID qui lui a été attribué.
 
-### Remarque
+#### Remarque
 
 Par défaut, en l'absence d'indication spécifique, chaque client créé est de type professionnel, et si vous n'avez pas indiqué de nom d'entreprise, celui ci est automatiquement dérivé du prénom et du nom du client. Lorsque vous créez un client particulier, vous devez donc le préciser en affectant la valeur `true` au champ `individual`.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -765,7 +764,7 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 201 Created
@@ -809,22 +808,22 @@ Location: /firms/FIRM_ID/customers/ID.json
 ## Détails d'un client
 
 {% assign request = site.data.urls.customers.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du client n° ID
 
-## Paramètres optionnels :
+### Paramètres optionnels :
 
 * `with_sepa` : par défaut, les données SEPA ne sont pas retournée par l'API. Seule la clé API de l'administrateur de la société permet d'accéder aux données SEPA, et vous devez explicitement demander ces informations en utilisant la valeur 1. Lorsque vous demandez à accéder aux informations SEPA avec une clé API autre que celle de l'administrateur du compte, le système retourne une erreur de type 403
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 {
@@ -865,11 +864,11 @@ Obtenir le détail du client n° ID
 ## Modifier un client
 
 {% assign request = site.data.urls.customers.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un client existant.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -877,7 +876,7 @@ Mise à jour d'un client existant.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
   Status: 200 OK
@@ -886,19 +885,19 @@ Mise à jour d'un client existant.
 ## Supprimer un client
 
 {% assign request = site.data.urls.customers.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le client identifié par son ID, ainsi que tous les devis associés à ce client.
 <strong>Un client ne peut être supprimé que s'il n'a jamais été facturé.</strong>
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -907,18 +906,18 @@ Status: 200 OK
 ## Archiver un client
 
 {% assign request = site.data.urls.customers.archive -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Archive le client identifié par son ID, ce qui permet de le masquer de la liste des clients.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -927,18 +926,18 @@ Status: 200 OK
 ## Restaurer un client
 
 {% assign request = site.data.urls.customers.unarchive -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Restaure le client archivé, identifié par son ID. Ce client peut à nouveau être facturé et redevient visible dans la liste des clients.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -947,16 +946,16 @@ Status: 200 OK
 ## Ajouter un fichier
 
 {% assign request = site.data.urls.customers.upload -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Ajouter un fichier à la fiche client ID.<br/>
 
-## Paramètres
+### Paramètres
 
 * Le fichier doit être transmis sous forme de formulaire multipart (ie `multipart/form-data`), à l'aide de la variable `upload_file`.
 * Par défaut, le fichier sera stocké avec le nom qu'il avait sur votre système. Si vous le souhaitez, vous pouvez forcer un autre nom de fichier à l'aide de la variable `filename`
 
-## Requête
+### Requête
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, avec le nom "contrat_123.pdf"
 
@@ -966,7 +965,7 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, av
 "{{ request.url }}?filename=contrat_123.pdf"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block %}
 Status: 201 Created
@@ -984,17 +983,17 @@ Location: /firms/FIRM_ID/assets/1.json
 ## Devis d'un client
 
 {% assign request = site.data.urls.customers.quotes -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des devis.
@@ -1007,17 +1006,17 @@ Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
 ## Factures d'un client
 
 {% assign request = site.data.urls.customers.invoices -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 liste des factures du client ID, par groupe de {{ site.api.per_page }} résultats.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
@@ -1040,18 +1039,18 @@ Location: /firms/{FIRM_ID}/invoices.json?customer_id=180371
 ## Compte utilisateur
 
 {% assign request = site.data.urls.account.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Affiche les informations sur le compte de l'utilisateur.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -1073,18 +1072,18 @@ Affiche les informations sur le compte de l'utilisateur.
 ## Liste des commandes d'abonnement
 
 {% assign request = site.data.urls.account.orders -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Retourne la liste des factures d'abonnements payées pour la société ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 [
@@ -1113,12 +1112,12 @@ Retourne la liste des factures d'abonnements payées pour la société ID.
 
 {% assign request = site.data.urls.quotes.find -%}
 
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste des devis, par groupe de {{ site.api.per_page }} résultats.<br/>
 Chaque devis est composé d'un ensemble de lignes de facturation (items).
 
-## Optimisation des requêtes
+### Optimisation des requêtes
 
 Par défaut, l'API retourne les informations de chaque devis, sauf les lignes de facturation et les fichiers joints, afin d'optimiser les performances de vos requêtes. Pour obtenir les lignes de facturation d'un devis spécifique (ou bien la liste des pièces jointes), il vous suffit de faire une requête sur le devis concerné.
 
@@ -1128,7 +1127,7 @@ Vous avez la possibilité d'inclure les lignes de facturation et la liste des fi
   - 1 pour inclure les lignes de facturation et la liste des pièces jointes
   - 0 (par défaut) pour ne pas inclure les lignes de facturation et la liste des pièces jointes
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 - `page` : numéro de page
 - `api_id` : recherche exacte sur le champ api_id
@@ -1148,7 +1147,7 @@ Vous avez la possibilité d'inclure les lignes de facturation et la liste des fi
 - `accounting_entry` : recherche par code d'imputation (abonnement Entreprise)
 - `user_id` : limiter les résultats aux devis gérés par un collaborateur spécifique
 
-### Recherche par périodes
+#### Recherche par périodes
 
 Vous pouvez limiter votre recherche à une période spécifique en utilisant les paramètres optionnels suivants:
 
@@ -1157,7 +1156,7 @@ Vous pouvez limiter votre recherche à une période spécifique en utilisant les
 
 Le format des périodes peut être AAAA-MM (année-mois) ou bien AAAA-MM-JJ (année-mois-jour)
 
-### Tri
+#### Tri
 
 Par défaut, les devis sont triés par ordre décroissant de numéro de devis.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants:
@@ -1172,13 +1171,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création d'un devis (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'un devis (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -1273,13 +1272,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer un devis
 
 {% assign request = site.data.urls.quotes.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouveau devis. On obtient en retour le code JSON de l'enregistrement créé, avec l'ID qui lui a été attribué.<br/>
 Un devis doit contenir au moins une ligne de facturation (champs `items`)<br/>
 Le total de chaque ligne de facturation ainsi que le total du devis sont calculés automatiquement et ne doivent pas être transmis.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -1308,7 +1307,7 @@ Le total de chaque ligne de facturation ainsi que le total du devis sont calcul�
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 201 Created
@@ -1375,19 +1374,19 @@ Location: /firms/FIRM_ID/quotes/411585.json
 ## Détails d'un devis
 
 {% assign request = site.data.urls.quotes.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du devis n° ID<br/>
 Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -1438,7 +1437,7 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
 ## Modifier un devis
 
 {% assign request = site.data.urls.quotes.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un devis existant.
 
@@ -1447,7 +1446,7 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 * Pour modifier une ligne de facturation, l'id de l'item doit être spécifié.
 * Pour supprimer une ligne de facturation, il suffit de passer l'id et un champ `_destroy` avec la valeur "1"
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -1477,7 +1476,7 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 200 OK
@@ -1486,18 +1485,18 @@ Status: 200 OK
 ## Supprimer un devis
 
 {% assign request = site.data.urls.quotes.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le devis identifié par son ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -1506,54 +1505,54 @@ Status: 200 OK
 ## Télécharger un devis
 
 {% assign request = site.data.urls.quotes.download -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Télécharger le devis n° ID au format PDF.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
  -o devis.pdf "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 Vous obtenez le fichier PDF du devis demandé.
 
 ## Télécharger une facture pro-forma
 
 {% assign request = site.data.urls.quotes.download -%}
-## {{ request.method }} {{ request.url }}?proforma=1
+### {{ request.method }} {{ request.url }}?proforma=1
 
 Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engagez à appliquer les prix indiqués dans ce devis. Cette methode vous permet donc de télécharger le devis n° ID sous forme de facture PDF proforma .
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
  -o proforma.pdf "{{ request.url | api_url }}?proforma=1"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 Vous obtenez le fichier PDF de la facture proforma demandée.
 
 ## Convertir un devis en facture
 
 {% assign request = site.data.urls.quotes.invoice -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Conversion du devis ID en facture.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
  -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
-### Réponse
+#### Réponse
 
 {% api_block('json') %}
 Status: 201 Created
@@ -1619,7 +1618,7 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
 ## Envoyer un devis par courriel
 
 {% assign request = site.data.urls.quotes.email -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Permet d'envoyer un devis par courriel.
 
@@ -1627,11 +1626,11 @@ Permet d'envoyer un devis par courriel.
 * Le champ `to` est automatiquement rempli avec l'adresse email enregistrée dans la fiche du client si vous ne précisez rien.
 * Les champs `cc` et `bcc` sont automatiquement remplis avec les adresses que vous avez renseignées dans la page Paramètres / Email de votre compte si vous ne précisez rien.
 
-### Remarques
+#### Remarques
 
 Cette fonctionnalité n'est accessible que si vous avez configuré votre propre serveur SMTP dans l'onglet "Paramètres" / "Email" de votre entreprise.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -1645,7 +1644,7 @@ Cette fonctionnalité n'est accessible que si vous avez configuré votre propre 
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -1654,17 +1653,17 @@ Status: 201 Created
 ## Ajouter une fichier
 
 {% assign request = site.data.urls.quotes.upload -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Ajoute une pièce jointe au devis ID.
 
-## Paramètres
+### Paramètres
 
 * Le fichier doit être transmis sous forme de formulaire multipart (ie "multipart/form-data"), à l'aide de la variable `upload_file`.
 * Par défaut, le fichier sera stocké avec le nom qu'il avait sur votre système. Si vous le souhaitez, vous pouvez forcer un autre nom de fichier à l'aide de la variable `filename`
 * Si vous souhaitez rendre visible ce fichier au client, il suffit de l'indiquer en affectant la valeur 1 la variable `visible`
 
-## Requête
+### Requête
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au devis possédant l'ID 1, en le renommant en "justificatif.pdf" et en le rendant visible par le client
 
@@ -1674,7 +1673,7 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au 
 "{{ request.url }}?filename=justificatif.pdf&visible=1"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block %}
 Status: 201 Created
@@ -1695,7 +1694,7 @@ Location: /firms/FIRM_ID/assets/1.json
 {% include fields.md fields=site.data.fields.quote %}
 
 
-## Ligne de facturation
+### Ligne de facturation
 
 Les lignes de facturations sont transmises sous forme d'un tableau de lignes, dans le champ ```items``` du devis.
 
@@ -1709,12 +1708,12 @@ Les lignes de facturations sont transmises sous forme d'un tableau de lignes, da
 
 {% assign request = site.data.urls.invoices.find -%}
 
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste des factures, par groupe de {{ site.api.per_page }} résultats.<br/>
 Chaque facture est composée d'un ensemble de lignes de facturation (items).
 
-## Optimisation des requêtes
+### Optimisation des requêtes
 
 Par défaut, l'API retourne les informations de chaque facture, sauf les lignes de facturation et les fichiers joints, afin d'optimiser les performances de vos requêtes. Pour obtenir les lignes de facturation d'une facture spécifique (ou bien la liste des pièces jointes), il vous suffit de faire une requête sur la facture concernée.
 
@@ -1727,7 +1726,7 @@ Vous avez la possibilité d'inclure plus ou moins d'informations avec chaque fac
   - 1 pour inclure la liste des règlements partiels enregistrés pour chaque facture
   - 0 (par défaut) pour ne pas inclure la liste des règlements partiels
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 - `page` : numéro de page
 - `api_id` : recherche exacte sur le champ api_id
@@ -1748,7 +1747,7 @@ Vous avez la possibilité d'inclure plus ou moins d'informations avec chaque fac
 - `accounting_entry`: recherche par code d'imputation (abonnement Entreprise)
 - `user_id` : limiter les résultats aux factures gérées par un collaborateur spécifique
 
-### Recherche par périodes
+#### Recherche par périodes
 
 Vous pouvez limiter votre recherche à une période spécifique en utilisant les paramètres optionnels suivants:
 
@@ -1758,7 +1757,7 @@ Vous pouvez limiter votre recherche à une période spécifique en utilisant les
 
 Le format des périodes peut être AAAA-MM (année-mois) ou bien AAAA-MM-JJ (année-mois-jour)
 
-### Tri
+#### Tri
 
 Par défaut, les factures sont triées par ordre décroissant de numéro de facture.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -1775,13 +1774,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création d'une facture (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'une facture (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -1903,18 +1902,18 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer une facture
 
 {% assign request = site.data.urls.invoices.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'une nouvelle facture. On obtient en retour le code JSON de l'enregistrement créé, avec l'ID qui lui a été attribué.<br/>
 Une facture doit au moins contenir une ligne de facturation (champs items)<br/>
 Le total de chaque ligne de facturation ainsi que le total de la facture sont calculés automatiquement et ne doivent pas être transmis.
 
-### Remarques
+#### Remarques
 
 * Si vous souhaitez créer une facture en mode brouillon, ajoutez le paramètre `type_doc=draft` à l'url.
 * Si vous souhaitez **importer une facture externe** (i.e. enregistrer dans votre compte une **facture créée dans un autre outil**, pour en tenir compte dans les statistiques et les exports de votre entreprise), ajoutez le paramètre `external=1` à l'url. Dans ce cas, vous devez obligatoirement préciser le numéro de la facture d'origine dans le champs "external_ref".
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -1943,7 +1942,7 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 201 Created
@@ -2009,19 +2008,19 @@ Location: /firms/FIRM_ID/invoices/1.json
 ## Détails d'une facture
 
 {% assign request = site.data.urls.invoices.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail de la facture n° ID<br/>
 Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -2085,21 +2084,21 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 ## Modifier une facture
 
 {% assign request = site.data.urls.invoices.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des données est modifiable, par contre, une fois la facture finalisée, tout ce qui influe sur le montant de la facturation ne peut plus être modifié. Pour annuler une facture, vous devez faire un avoir.
 
 La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
 
-## Paramètres
+### Paramètres
 
 * `type_doc` : par défaut une facture reste dans son état (brouillon ou finalisée) lors de sa mise à jour. Si vous souhaitez changer le status d'une facture brouillon, utilisez la valeur `final` pour finaliser la facture, ou bien `draft` pour rester en mode brouillon. Une facture finalisée ne peut pas changer de status.
 
-### Remarques
+#### Remarques
 
 Pour enregistrer différents modes de règlement sur une facture, utilisez le mécanisme des [règlements multiples](/api/reglements). Veuillez noter que le système de règlement multiple est uniquement prévu pour enregistrer les différents modes de règlement d'une facture, il ne s'agit pas d'un système de gestion des paiements en plusieurs fois. Pour un paiement en plusieurs fois, les méthodes légales sont de facturer vos prestations sous forme de X factures d'acompte et d'une facture de solde, ou bien de passer par un organisme de crédit pour mettre en place des solutions de crédit gratuit ou payant pour vos clients.
 
-## Requête
+### Requête
 
 Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal le 6 juin 2020
 
@@ -2109,7 +2108,7 @@ Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal 
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 200 OK
@@ -2118,19 +2117,19 @@ Status: 200 OK
 ## Supprimer une facture
 
 {% assign request = site.data.urls.invoices.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime la facture identifiée par son ID à condition que cette facture soit un brouillon.
 Si la facture a été finalisée, elle ne sera pas supprimée et vous recevrez un message d'erreur.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2139,38 +2138,38 @@ Status: 200 OK
 ## Télécharger une facture
 
 {% assign request = site.data.urls.invoices.download -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Télécharger la facture n° ID au format PDF
 
-### Remarques
+#### Remarques
 
 Lorsqu'une facture est réglée, le système vous retourne par défaut la facture acquittée. Si vous souhaitez obtenir la facture originale (sans les informations de règlement), ajoutez le paramètre `original=1` à l'url.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
  -o facture.pdf "{{ request.url | api_url }}?original=1"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 Vous obtenez le fichier PDF de la facture demandée
 
 ## Avoir sur une facture
 
 {% assign request = site.data.urls.invoices.refund -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Effectue un avoir de la facture n° ID
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `api_id` : mémorisation d'un ID spécifique pour l'avoir
 * `api_custom` : mémorisation d'une information libre pour l'avoir
 
-## Requête
+### Requête
 
 
 {% api_block %}
@@ -2178,7 +2177,7 @@ Effectue un avoir de la facture n° ID
 -X POST "{{ request.url | api_url }}?api_id=32&api_custom=remboursement+suite+plainte+client"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -2217,7 +2216,7 @@ Effectue un avoir de la facture n° ID
 ## Envoyer une facture par courriel
 
 {% assign request = site.data.urls.invoices.email -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Permet d'envoyer une facture finalisée par courriel.
 
@@ -2226,12 +2225,12 @@ Permet d'envoyer une facture finalisée par courriel.
 * Les champs `cc` et `bcc` sont automatiquement remplis avec les adresses que vous avez renseignées dans la page Paramètres / Email de votre compte si vous ne précisez rien.
 
 
-### Remarques
+#### Remarques
 
 * Cette fonctionnalité n'est accessible que si vous avez configuré votre propre serveur SMTP dans l'onglet "Paramètres" / "Email" de votre entreprise.
 * Seules les factures finalisées peuvent être envoyée par courriel: les brouillons ou les factures externes ne peuvent pas être transmise par courriel.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -2245,7 +2244,7 @@ Permet d'envoyer une facture finalisée par courriel.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -2261,29 +2260,29 @@ Si vous souhaitez ajouter ou supprimer des règlements partiels, vous pouvez con
 Les factures récurrentes sont gérées uniquement via l'interface web. Cependant, vous pouvez obtenir des informations sommaires sur la liste des factures récurrentes configurées à l'aide des méthodes suivantes :
 
 {% assign request = site.data.urls.invoices.recurring_list -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir la liste des factures récurrentes
 
 {% assign request = site.data.urls.invoices.recurring_show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir des informations sur la facture récurrente ID
 
 ## Ajouter un fichier
 
 {% assign request = site.data.urls.invoices.upload -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Ajoute une pièce jointe à la facture ID.
 
-## Paramètres
+### Paramètres
 
 * Le fichier doit être transmis sous forme de formulaire multipart (ie "multipart/form-data"), à l'aide de la variable `upload_file`.
 * Par défaut, le fichier sera stocké avec le nom qu'il avait sur votre système. Si vous le souhaitez, vous pouvez forcer un autre nom de fichier à l'aide de la variable `filename`
 * Si vous souhaitez rendre visible ce fichier au client, il suffit de l'indiquer en affectant la valeur 1 la variable `visible`
 
-## Requête
+### Requête
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à la facture possédant l'ID 1, en le renommant en "justificatif.pdf" et en le rendant visible par le client
 
@@ -2293,7 +2292,7 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 "{{ request.url }}?filename=justificatif.pdf&visible=1"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block %}
 Status: 201 Created
@@ -2313,7 +2312,7 @@ Location: /firms/FIRM_ID/assets/1.json
 
 {% include fields.md fields=site.data.fields.invoice %}
 
-## Ligne de facturation
+### Ligne de facturation
 
 Les lignes de facturations sont transmises sous forme d'un tableau de lignes, dans le champ ```items``` de la facture
 
@@ -2326,16 +2325,16 @@ Les lignes de facturations sont transmises sous forme d'un tableau de lignes, da
 ## Liste des pièces jointes aux devis
 
 {% assign request = site.data.urls.files.quotes -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste de toutes les pièces jointes aux devis, par groupe de {{ site.api.per_page }} résultats.<br/>
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `quote_id` : ID du devis, cela permet de récupérer la liste des pièces jointes d'un devis spécifique, sachant que cette liste est aussi renvoyée dans la requête permettant d'obtenir le détail d'un devis.
 
-### Tri
+#### Tri
 
 Par défaut, les pièces jointes sont triées par ordre décroissant de création.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -2348,13 +2347,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - updated: tri par date de mise à jour
   - created: tri par date de création
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2380,16 +2379,16 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Liste des pièces jointes aux factures
 
 {% assign request = site.data.urls.files.invoices -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste de toutes les pièces jointes aux factures, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `invoice_id` : ID de de la facture, cela permet de récupérer la liste des pièces jointes d'une facture spécifique, sachant que cette liste est aussi renvoyée dans la requête permettant d'obtenir le détail d'une facture.
 
-### Tri
+#### Tri
 
 Par défaut, les pièces jointes sont triées par ordre décroissant de création.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -2402,13 +2401,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - updated: tri par date de mise à jour
   - created: tri par date de création
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2434,16 +2433,16 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Liste des fichiers clients
 
 {% assign request = site.data.urls.files.customers -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste de toutes les pièces jointes aux fiches clients, par groupe de {{ site.api.per_page }} résultats.<br/>
 
-### Paramètres optionnels
+#### Paramètres optionnels
 
 * `page` : numéro de page
 * `customer_id` : ID du client, cela permet de récupérer la liste des pièces jointes d'un client spécifique
 
-### Tri
+#### Tri
 
 Par défaut, les pièces jointes sont triées par ordre décroissant de création.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -2456,13 +2455,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - updated: tri par date de mise à jour
   - created: tri par date de création
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2488,16 +2487,16 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Liste des pièces jointes aux achats
 
 {% assign request = site.data.urls.files.purchases -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste de toutes les pièces jointes aux achats, par groupe de {{ site.api.per_page }} résultats.<br/>
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `purchase_id` : ID de l'achat, cela permet de récupérer la liste des pièces jointes d'un achat spécifique, sachant que cette liste est aussi renvoyée dans la requête permettant d'obtenir le détail d'un achat.
 
-### Tri
+#### Tri
 
 Par défaut, les pièces jointes sont triées par ordre décroissant de création.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -2510,13 +2509,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - updated: tri par date de mise à jour
   - created: tri par date de création
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2551,18 +2550,18 @@ Pour ajouter une pièce jointe, consultez la documentation de la fonction `uploa
 ## Supprimer un fichier
 
 {% assign request = site.data.urls.files.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le fichier identifié par son ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2575,11 +2574,11 @@ Status: 200 OK
 ## Liste des fournisseurs
 
 {% assign request = site.data.urls.suppliers.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 liste des fournisseurs, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `api_id` : recherche exacte sur le champ api_id
@@ -2591,7 +2590,7 @@ liste des fournisseurs, par groupe de {{ site.api.per_page }} résultats.
 * `account_code` : recherche sur une partie du code du compte fournisseur (abonnement Entreprise)
 * `accounting_entry` : recherche sur le code d'imputation par défaut (abonnement Entreprise)
 
-### Tri
+#### Tri
 
 Par défaut, les fournisseurs sont triés par ordre croissant de nom mnémotechnique.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
@@ -2602,13 +2601,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création
   - updated: tri par date de dernière modification
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2661,11 +2660,11 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer un fournisseur
 
 {% assign request = site.data.urls.suppliers.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouveau fournisseur. On obtient en retour le code JSON du fournisseur créé, avec l'ID qui lui a été attribué.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -2673,7 +2672,7 @@ Création d'un nouveau fournisseur. On obtient en retour le code JSON du fournis
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -2706,18 +2705,18 @@ Location: /firms/FIRM_ID/suppliers/49097.json
 ## Détails d'un fournisseur
 
 {% assign request = site.data.urls.suppliers.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du fournisseur n°ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -2747,11 +2746,11 @@ Obtenir le détail du fournisseur n°ID.
 ## Modifier un fournisseur
 
 {% assign request = site.data.urls.suppliers.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un fournisseur existant.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -2759,7 +2758,7 @@ Mise à jour d'un fournisseur existant.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2768,22 +2767,22 @@ Status: 200 OK
 ## Supprimer un fournisseur
 
 {% assign request = site.data.urls.suppliers.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le fournisseur identifié par son ID, **ainsi que tous les achats associés** à ce fournisseur.
 
-### Remarque
+#### Remarque
 
 Certains fournisseurs sont gérés automatiquement par l'application (RSI, URSSAF, Facturation.pro, ...) et ne peuvent pas être supprimé dès lors que des achats ont été enregistrés pour ce fournisseur. Ces fournisseurs sont créés (ou recréés en cas de suppression) par le système quand c'est nécessaire.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2800,11 +2799,11 @@ Status: 200 OK
 ## Liste des produits
 
 {% assign request = site.data.urls.products.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 liste des produits, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `ref` : recherche partielle sur la référence produit
@@ -2812,7 +2811,7 @@ liste des produits, par groupe de {{ site.api.per_page }} résultats.
 * `api_id` : recherche exacte sur le champ api_id
 * `api_custom` : recherche partielle sur le champ api_custom
 
-### Tri
+#### Tri
 
 Par défaut, les produits sont triés par ordre croissant de libellé.
 Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants:
@@ -2824,13 +2823,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création d'un devis (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'un devis (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -2861,11 +2860,11 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 ## Créer un produit
 
 {% assign request = site.data.urls.products.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouveau produit. On obtient en retour le code JSON du produit créé, avec l'ID qui lui a été attribué.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -2873,7 +2872,7 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -2892,18 +2891,18 @@ Location: /firms/FIRM_ID/products/46127.json
 ## Détails d'un produit
 
 {% assign request = site.data.urls.products.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du produitn° ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -2922,11 +2921,11 @@ Obtenir le détail du produitn° ID.
 ## Modifier un produit
 
 {% assign request = site.data.urls.products.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un produit existant.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -2934,7 +2933,7 @@ Mise à jour d'un produit existant.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2943,18 +2942,18 @@ Status: 200 OK
 ## Supprimer un produit
 
 {% assign request = site.data.urls.products.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le produit identifié par son ID. Cette opération ne supprime pas les lignes de facturation associées à ce produit.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -2971,17 +2970,17 @@ Status: 200 OK
 ## Liste des règlements
 
 {% assign request = site.data.urls.settlements.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Liste les différents règlements enregistrés pour la facture n° INVOICE_ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -3006,15 +3005,15 @@ Liste les différents règlements enregistrés pour la facture n° INVOICE_ID.
 ## Créer un règlement
 
 {% assign request = site.data.urls.settlements.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Enregistre un nouveau règlement partiel pour la facture n° INVOICE_ID. On obtient en retour le code JSON du règlement créé, avec l'ID qui lui a été attribué
 
-### Remarque
+#### Remarque
 
 Lorsque le règlement enregistré solde la facture, la facture est automatiquement marquée comme payée à la date et avec le mode de règlement du dernier règlement enregistré.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -3028,7 +3027,7 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -3047,18 +3046,18 @@ Location: /firms/FIRM_ID/invoices/1/settlements/1.json
 ## Détails d'un règlement
 
 {% assign request = site.data.urls.settlements.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du règlement n° ID pour la facture n° INVOICE_ID
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -3074,18 +3073,18 @@ Obtenir le détail du règlement n° ID pour la facture n° INVOICE_ID
 ## Supprimer un règlement
 
 {% assign request = site.data.urls.settlements.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le règlement identifié par son ID. A noter que la suppression de l'un des règlements d'une facture entièrement soldée remet automatiquement la facture dans l'état "non payée".
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -3098,17 +3097,17 @@ Status: 200 OK
 ## Liste des suivis commerciaux
 
 {% assign request = site.data.urls.followups.find -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 liste des suivis commerciaux, par groupe de {{ site.api.per_page }} résultats.
 
-## Paramètres optionnels
+### Paramètres optionnels
 
 * `page` : numéro de page
 * `title` : recherche partielle sur le libellé du suivi
 * `status` : rechercher par type de suivi (i.e. type d'affectation)
 
-### Remarques:
+#### Remarques:
 
 Il existe deux codes de suivis gérés par le système, qui sont non modifiables et non supprimables, et qui n'apparaissent donc pas dans la liste des suivis que vous avez défini. Il s'agit des codes suivants:
 
@@ -3117,13 +3116,13 @@ Il existe deux codes de suivis gérés par le système, qui sont non modifiables
 
 Ces codes s'utilisent sur les devis et les factures comme n'importe lequel de vos suivis personnalisés, en utilisant l'id indiqué ci dessus dans le champs `followup_id` du devis ou de la facture.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 [
@@ -3146,11 +3145,11 @@ Ces codes s'utilisent sur les devis et les factures comme n'importe lequel de vo
 ## Créer un suivi commercial
 
 {% assign request = site.data.urls.followups.create -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Création d'un nouveau suivi commercial. On obtient en retour le code JSON du suivi créé, avec l'ID qui lui a été attribué.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true-%}
@@ -3158,7 +3157,7 @@ Création d'un nouveau suivi commercial. On obtient en retour le code JSON du su
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 Status: 201 Created
@@ -3174,18 +3173,18 @@ Location: /firms/FIRM_ID/followups/1234.json
 ## Détails d'un suivi commercial
 
 {% assign request = site.data.urls.followups.show -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Obtenir le détail du suivi commercial n° ID.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') -%}
 {
@@ -3198,11 +3197,11 @@ Obtenir le détail du suivi commercial n° ID.
 ## Modifier un suivi commercial
 
 {% assign request = site.data.urls.followups.update -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un suivi commercial existante.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd write: true -%}
@@ -3210,7 +3209,7 @@ Mise à jour d'un suivi commercial existante.
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -3219,18 +3218,18 @@ Status: 200 OK
 ## Supprimer un suivi commercial
 
 {% assign request = site.data.urls.followups.destroy -%}
-## {{ request.method }} {{ request.url }}
+### {{ request.method }} {{ request.url }}
 
 Supprime le suivi commercial identifié par son ID. Cette opération ne supprime pas les documents rattachés à ce suivi.
 
-## Requête
+### Requête
 
 {% api_block %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
-## Réponse
+### Réponse
 
 {% api_block('json') %}
 Status: 200 OK
@@ -3246,31 +3245,31 @@ Status: 200 OK
 
 ## language
 
-{% include values.html entries=site.data.specific.language.data field='language' %}
+{% include values.md entries=site.data.specific.language.data field='language' %}
 
 ## currency
 
 Voici la liste des toutes les devises utilisables dans notre outil
 
-{% include values.html entries=site.data.specific.currency.data field='currency' %}
+{% include values.md entries=site.data.specific.currency.data field='currency' %}
 
 ## payment_mode (facture)
 
 Voici les valeurs spécifiques de modes de règlement pour une vente
 
-{% include values.html entries=site.data.specific.payment_mode_bill.data field='payment_mode' %}
+{% include values.md entries=site.data.specific.payment_mode_bill.data field='payment_mode' %}
 
 ## payment_mode (achat)
 
 Voici les valeurs spécifiques de modes de règlement pour un achat
 
-{% include values.html entries=site.data.specific.payment_mode_purchase.data field='payment_mode' %}
+{% include values.md entries=site.data.specific.payment_mode_purchase.data field='payment_mode' %}
 
 ## pay_before
 
 Voici les valeurs spécifiques des délais de paiement
 
-{% include values.html entries=site.data.specific.pay_before.data field='pay_before' %}
+{% include values.md entries=site.data.specific.pay_before.data field='pay_before' %}
 
 
 **Remarque**
@@ -3281,25 +3280,25 @@ Si vous avez définit des valeurs personnalisées de délais de règlement, les 
 
 Voici les différentes nature possible pour les lignes de facturation lorsque vous gérez une auto-entreprise ou une micro-entreprise
 
-{% include values.html entries=site.data.specific.nature.data field='nature' %}
+{% include values.md entries=site.data.specific.nature.data field='nature' %}
 
 ## status (catégorie)
 
 Voici les valeurs spécifiques d'affectation pour une catégorie
 
-{% include values.html entries=site.data.specific.status_category.data field='status' %}
+{% include values.md entries=site.data.specific.status_category.data field='status' %}
 
 ## status (suivi commercial)
 
 Voici les valeurs spécifiques d'affectation pour un suivi commercial
 
-{% include values.html entries=site.data.specific.status_followup.data field='status' %}
+{% include values.md entries=site.data.specific.status_followup.data field='status' %}
 
 ## quote_status
 
 Voici les valeurs spécifiques d'état d'un devis
 
-{% include values.html entries=site.data.specific.quote_status.data field='quote_status' %}
+{% include values.md entries=site.data.specific.quote_status.data field='quote_status' %}
 
 
 
@@ -3309,53 +3308,47 @@ Voici les valeurs spécifiques d'état d'un devis
 
 Les informations spécifiques à une facture sont disponibles via l'objet `bill`.
 
-| Attribut | Infos |
-| :------- | :---- |
 
+| Attribut | Infos |
+|:---------|:------|
 {% for item in site.data.invoice -%}
 | \{\{ bill.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor -%}
+{% endfor %}
 
 ## Devis
 
 Les informations spécifiques à un devis sont disponibles via l'objet `bill`.
 
 | Attribut | Infos |
-| :------- | :---- |
-
+|:---------|:------|
 {% for item in site.data.quote -%}
 | \{\{ bill.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor -%}
+{% endfor %}
 
 ## Client
 
 Les informations spécifiques à un client sont disponibles via l'objet `customer`.
 Cet objet n'est disponible que dans un contexte où vous manipulez un devis ou une facture.
 
-| Attribut | Infos |
-| :------- | :---- |
 
+| Attribut | Infos |
+|:---------|:------|
 {% for item in site.data.customer -%}
 | \{\{ customer.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor -%}
+{% endfor %}
 
 ## Dates
 
 Notre outil vous propose différentes périodes qui sont calculées par rapport à la date de facturation (ou de génération dans le cas d'une facture récurrente ou d'un achat récurrent), via l'objet `period`.
 
 | Attribut | Infos | Exemple |
-| :------- | :---- | :------ |
-
+|:---------|:------|:--------|
 {% for item in site.data.dates -%}
 | \{\{ period.{{ item.key }} \}\} | {{ item.title }} | {{ item.example }}|
-{% endfor -%}
+{% endfor %}
 
 
-
-1. TOC
-   {:toc}
-
-## Déboguer
+### Déboguer
 
 Pour tester ou déboguer vos requêtes API, nous vous recommandons d'utiliser le service [WebhookApp](https://www.webhookapp.com/) qui vous permet de construire, d'exécuter et de sauvegarder facilement des requêtes API, et d'accéder à l'ensemble des informations retournées pour chaque requête (headers, contenu, etc.). Ce service vous permet aussi de <strong>partager les requêtes qui vous posent problème avec notre support</strong> : nous sommes ainsi en mesure de mieux vous guider lorsque vous rencontrez un problème d'utilisation avec notre API.
 
@@ -3363,7 +3356,7 @@ Pour configurer vos tests sur cet outil, vous devez ajouter un nouveau "hook" et
 
 Si besoin, il existe des services alternatifs plus ou moins évolués tel que [hookdeck.com](https://hookdeck.com/) ou bien [RequestBin](https://requestbin.com/) pour déboguer vos requêtes.
 
-## Librairies
+### Librairies
 
 Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
 
@@ -3371,7 +3364,7 @@ Notre API est de type REST, et elle est compatible [ActiveResource](https://gith
 - [Unirest](http://unirest.io/) propose des librairies en PHP, Java, Ruby, Python et Objective-C pour utiliser facilement une API REST telle que la notre.
 - En PHP, il existe des librairies qui permettent de s'interconnecter avec une API de type ActiveResource (cf. [ActiveResource](https://github.com/Indatus/ActiveResource) ou bien [PhpActiveResource](https://github.com/phurni/PhpActiveResource)).
 
-## Librairies tierces
+### Librairies tierces
 
 Voici une liste de librairies et d'extensions développées par des tiers qui peuvent vous aider à vous interconnecter avec MonAE et MaTPE. Cette liste est fournie à titre d'information, sans aucune garantie de notre part, et pour toute question au sujet de l'une de ces librairies (fonctionnement, bugs, commercialisation, ...), vous devez vous adresser directement à l'auteur concerné.
 

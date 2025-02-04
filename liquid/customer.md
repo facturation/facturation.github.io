@@ -12,5 +12,5 @@ Cet objet n'est disponible que dans un contexte où vous manipulez un devis ou u
 | Attribut | Infos |
 |:---------|:------|
 {% for item in site.data.customer -%}
-| \{\{ customer.{{ item.key }} \}\} | {{ item.title }}
-{% endfor -%}
+| \{\{ customer.{{ item.key }} \}\} | {{ item.title }}|
+{% endfor %}

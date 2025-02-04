@@ -5,7 +5,7 @@ nav_order: 20000
 ---
 
 1. TOC
-   {:toc}
+{:toc}
 
 ## Déboguer
 

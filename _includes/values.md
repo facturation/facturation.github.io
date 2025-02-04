@@ -3,5 +3,5 @@
 | Clé | libellé |
 |:-----|:---------|
 {% for item in include.entries -%}
-| {{ item[1] }} | {{ item[0] }}
-{% endfor -%}
+| {{ item[1] }} | {{ item[0] }}|
+{% endfor %}
