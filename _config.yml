@@ -75,3 +75,4 @@ api:
 exclude:
   - _plugins/
   - old/
+  - bin/
