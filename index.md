@@ -19,8 +19,9 @@ Notre API utilise le format JSON, sans élément racine (i.e. "root element") et
 
 ## URL d'accès à l'API
 
-Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base suivante:
-`https://www.facturation.pro/`
+Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base:
+`{% api_host %}`
+
 
 
 ## Identifiez votre application

@@ -6,6 +6,20 @@ module MyJekyllTags
     end
   end
 
+  class ApiHost < Liquid::Tag
+    def initialize(tag_name, params, tokens)
+      super
+      @params = eval("{#{params}}")
+    rescue SyntaxError
+      @params = {}
+    end
+
+    def render(context)
+      host = Jekyll.env == "production" ? "https://www.facturation.pro/" : "https://facturation.test/"
+      host
+    end
+  end
+
   class CurlTag < Liquid::Tag
     def initialize(tag_name, params, tokens)
       super
@@ -49,3 +63,4 @@ Liquid::Template.register_filter(MyJekyllTags::UrlForFilter)
 
 Liquid::Template.register_tag("curl_cmd", MyJekyllTags::CurlTag)
 Liquid::Template.register_tag("api_block", MyJekyllTags::ApiBlock)
+Liquid::Template.register_tag("api_host", MyJekyllTags::ApiHost)

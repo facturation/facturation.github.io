@@ -1,18 +1,30 @@
 ---
-layout: default
-title: Documentation 1-page
+layout: minimal
+title: Documentation pour LLM
+nav_exclude: true
+bare_mode: true
 ---
 
 Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](https://www.monae.fr) et [MaTPE](https://www.matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://www.facturation.pro), ou via vos propres services en vous appuyant sur notre API.
 
+  Ce contenu est spécifiquement conçu pour les intelligences artificielles (LLM), afin de pouvoir interroger une IA sur le fonctionnement de l'API du site Facturation.PRO et de lui permettre de générer des scripts pour interagir avec l'API.
 
+  Pour un accès direct par votre IA ou via un programme à cette documentation, vous pouvez récupérer le contenu directement :
+  ```curl https://facturation.dev/llm```
 ### Introduction
 
 Une API (i.e. Application Programming Interface) est un ensemble normalisé de classes et de méthodes permettant, via n'importe quel langage de programmation, d'interagir avec un service web tel que le notre. Nous mettons à votre disposition une API de type "[REST](http://fr.wikipedia.org/wiki/Representational_state_transfer)", qui vous permet de manipuler les données de votre compte afin d'intégrer dans votre propre application ou site web des modules complémentaires spécifiques s'appuyant sur les données de votre compte. Vous pouvez ainsi utiliser notre API pour par exemple générer des statistiques spécifiques, automatiser votre facturation (en particulier lors de la facturation d'abonnement ou d'objet via un site d'ecommerce), exporter vos données dans un format spécifique non proposé par notre outil web, et plus généralement créer de nouvelles fonctionnalités propres à vos besoins spécifiques.
 L'utilisation de notre API nécessite des compétences en développement web. Si vous n'avez pas de telles compétences, vous devrez vous adresser à un prestataire informatique (SSII, studio de développement, développeur indépendant, etc.) afin de voir avec lui s'il peut vous développer ce que vous souhaitez.
 
 ### API au format JSON
-  Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+
+### URL d'accès à l'API
+
+Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base:
+`{% api_host %}`
+
+
 
 ### Identifiez votre application
 Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Agent** avec le nom de votre application et un lien vers un formulaire de contact ou bien votre adresse email, afin que nous puissions vous contacter si nous constatons un problème dans l'utilisation que vous faites de notre API. En l'absence d'informations valides de contact, votre accès à l'API pourra être suspendu sans préavis en cas d'utilisation abusive de l'API.
@@ -3346,32 +3358,3 @@ Notre outil vous propose différentes périodes qui sont calculées par rapport 
 {% for item in site.data.dates -%}
 | \{\{ period.{{ item.key }} \}\} | {{ item.title }} | {{ item.example }}|
 {% endfor %}
-
-
-### Déboguer
-
-Pour tester ou déboguer vos requêtes API, nous vous recommandons d'utiliser le service [WebhookApp](https://www.webhookapp.com/) qui vous permet de construire, d'exécuter et de sauvegarder facilement des requêtes API, et d'accéder à l'ensemble des informations retournées pour chaque requête (headers, contenu, etc.). Ce service vous permet aussi de <strong>partager les requêtes qui vous posent problème avec notre support</strong> : nous sommes ainsi en mesure de mieux vous guider lorsque vous rencontrez un problème d'utilisation avec notre API.
-
-Pour configurer vos tests sur cet outil, vous devez ajouter un nouveau "hook" et le configurer avec le mode "An API, Forward and Track Requests", en utilisant comme valeur pour le champ target `https://www.facturation.pro/` et en cochant la case "Rewrite host"
-
-Si besoin, il existe des services alternatifs plus ou moins évolués tel que [hookdeck.com](https://hookdeck.com/) ou bien [RequestBin](https://requestbin.com/) pour déboguer vos requêtes.
-
-### Librairies
-
-Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
-
-- En Ruby ou Rails, vous pouvez utiliser [cette librairie](https://www.facturation.pro/facturation.rb)
-- [Unirest](http://unirest.io/) propose des librairies en PHP, Java, Ruby, Python et Objective-C pour utiliser facilement une API REST telle que la notre.
-- En PHP, il existe des librairies qui permettent de s'interconnecter avec une API de type ActiveResource (cf. [ActiveResource](https://github.com/Indatus/ActiveResource) ou bien [PhpActiveResource](https://github.com/phurni/PhpActiveResource)).
-
-### Librairies tierces
-
-Voici une liste de librairies et d'extensions développées par des tiers qui peuvent vous aider à vous interconnecter avec MonAE et MaTPE. Cette liste est fournie à titre d'information, sans aucune garantie de notre part, et pour toute question au sujet de l'une de ces librairies (fonctionnement, bugs, commercialisation, ...), vous devez vous adresser directement à l'auteur concerné.
-
-- Module [Prestashop](https://store.comexpertise.com/modules/prestashop/facturation.pro-monae-matpe/)
-- Module [WooCommerce](https://wpfacturationpro.fr/)
-- [PHPmonAE](https://github.com/Atome-TM/PHPmonAE) : librairie PHP.
-- Bundle pour [PHP Symfony 3](https://github.com/Tiloweb/tiloweb-matpe) et [Symphony 4](https://github.com/Isoka/monae-symfony4-service)
-- Package [Laravel](https://github.com/atome-dev/laravel-facturationpro-api)
-
-Si vous avez construit une librairie ou une extension publique, n'hésitez pas à nous le faire savoir pour qu'elle soit ajoutée sur cette page.
