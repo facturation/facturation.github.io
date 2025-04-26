@@ -12,14 +12,14 @@ Obtenir le détail du fournisseur n°ID.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "account_code": "401APPLE",
   "category_id": 4857,

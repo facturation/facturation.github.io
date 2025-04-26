@@ -19,7 +19,7 @@ Ajouter un fichier à la fiche client ID.<br/>
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, avec le nom "contrat_123.pdf"
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=contrat_123.pdf"
@@ -27,10 +27,11 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, av
 
 ## Réponse
 
-{% api_block %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/assets/1.json
-
+{% endapi_block %}
+{% api_block 'json' -%}
 {
   "id": 1,
   "customer_id": 1,

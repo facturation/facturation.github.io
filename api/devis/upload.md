@@ -20,7 +20,7 @@ Ajoute une pièce jointe au devis ID.
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au devis possédant l'ID 1, en le renommant en "justificatif.pdf" et en le rendant visible par le client
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=justificatif.pdf&visible=1"
@@ -28,10 +28,11 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au 
 
 ## Réponse
 
-{% api_block %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/assets/1.json
-
+{% endapi_block  %}
+{% api_block 'json' -%}
 {
   "id": 1,
   "quote_id": 1,

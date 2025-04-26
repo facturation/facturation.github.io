@@ -13,14 +13,14 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -51,30 +51,33 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
   "total": "700.0",
   "paid_in_main_currency": null,
   "vat_exemption": null,
-  "items": [{
-  "id": 949167,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 1",
-  "total": "500.0",
-  "unit_price": "500.0",
-  "vat": "0.200"
-  }, {
-  "id": 949168,
-  "nature": 9,
-  "optional": false,
-  "position": 2,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 2",
-  "total": "200.0",
-  "unit_price": "200.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block -%}

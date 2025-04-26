@@ -14,39 +14,43 @@ Le total de chaque ligne de facturation ainsi que le total du devis sont calcul�
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
-"currency": "EUR",
-"customer_id": 1,
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"pay_before": "60fm",
-"penalty": "0.0",
-"title": "Facturation mensuelle",
-"items": [{
-"position": 1,
-"quantity": "1.0",
-"title": "Affichage pub 1",
-"unit_price": "500",
-"vat": "0.200"
-}, {
-"position": 2,
-"quantity": "1.0",
-"title": "Affichage pub 2",
-"unit_price": "200",
-"vat": "0.200"
-}]
+  "currency": "EUR",
+  "customer_id": 1,
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "pay_before": "60fm",
+  "penalty": "0.0",
+  "title": "Facturation mensuelle",
+  "items": [
+    {
+      "position": 1,
+      "quantity": "1.0",
+      "title": "Affichage pub 1",
+      "unit_price": "500",
+      "vat": "0.200"
+    },
+    {
+      "position": 2,
+      "quantity": "1.0",
+      "title": "Affichage pub 2",
+      "unit_price": "200",
+      "vat": "0.200"
+    }
+  ]
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/quotes/411585.json
-
+{% endapi_block %}
+{% api_block 'json' -%}
 {
   "amount_invoiced": "0.0",
   "api_custom": null,
@@ -77,30 +81,30 @@ Location: /firms/FIRM_ID/quotes/411585.json
   "vat_exemption": null,
   "items": [
     {
-    "id": 949162,
-    "nature": 9,
-    "optional": false,
-    "position": 1,
-    "product_id": null,
-    "quantity": "1.0",
-    "style": null,
-    "title": "Affichage pub 1",
-    "total": "500.0",
-    "unit_price": "500.0",
-    "vat": "0.200"
-    }, {
-    "id": 949163,
-    "nature": 9,
-    "optional": false,
-    "position": 2,
-    "product_id": null,
-    "quantity": "1.0",
-    "style": null,
-    "title": "Affichage pub 2",
-    "total": "200.0",
-    "unit_price": "200.0",
-    "vat": "0.200"
+      "id": 949162,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949163,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
     }
   ]
-}
-{% endapi_block %}
+}{% endapi_block %}

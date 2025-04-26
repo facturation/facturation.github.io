@@ -12,7 +12,7 @@ Mise à jour d'un suivi commercial existante.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Relancer le client","status":"2"}' \
 "{{ request.url | api_url }}"
@@ -20,6 +20,6 @@ Mise à jour d'un suivi commercial existante.
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}

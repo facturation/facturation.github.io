@@ -12,7 +12,7 @@ Mise à jour d'un client existant.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"company_name":"A big company","email":"boss@bigcompany.com"}' \
 "{{ request.url | api_url }}"
@@ -20,6 +20,6 @@ Mise à jour d'un client existant.
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
   Status: 200 OK
 {% endapi_block %}

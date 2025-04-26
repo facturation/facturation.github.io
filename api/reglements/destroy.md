@@ -12,13 +12,13 @@ Supprime le règlement identifié par son ID. A noter que la suppression de l'un
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}

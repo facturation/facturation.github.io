@@ -32,34 +32,35 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": 4868,
-  "id": 46125,
-  "nature": 9,
-  "ref": "PRESTASHOP",
-  "title": "Developpement module Prestashop",
-  "unit_price": "100.0",
-  "vat": "0.200"
-  }, {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": 4868,
-  "id": 46126,
-  "nature": 9,
-  "ref": "WORDPRESS",
-  "title": "Developpement module Wordpress",
-  "unit_price": "150.0",
-  "vat": "0.200"
+    "api_custom": null,
+    "api_id": null,
+    "category_id": 4868,
+    "id": 46125,
+    "nature": 9,
+    "ref": "PRESTASHOP",
+    "title": "Developpement module Prestashop",
+    "unit_price": "100.0",
+    "vat": "0.200"
+  },
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": 4868,
+    "id": 46126,
+    "nature": 9,
+    "ref": "WORDPRESS",
+    "title": "Developpement module Wordpress",
+    "unit_price": "150.0",
+    "vat": "0.200"
   }
 ]
 {% endapi_block %}

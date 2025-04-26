@@ -12,7 +12,7 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"supplier_id": 1, "invoiced_on": "2013-06-28","title": "Restaurant","total_with_vat": "100","vat_amount": "16,39"}' \
 "{{ request.url | api_url }}"
@@ -20,10 +20,12 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/purchases/ID.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,

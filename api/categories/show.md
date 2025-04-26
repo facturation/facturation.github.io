@@ -12,14 +12,14 @@ Obtenir le détail de la catégorie n° ID.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "id": 1,
   "status": 2,

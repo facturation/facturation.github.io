@@ -13,14 +13,14 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "amount_invoiced": "0.0",
   "api_custom": null,
@@ -50,18 +50,20 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
   "total": "459.0",
   "vat_exemption": null,
   "invoice_ids": [],
-  "items": [{
-  "id": 949159,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
-  "total": "459.0",
-  "unit_price": "459.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949159,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
+      "total": "459.0",
+      "unit_price": "459.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block %}

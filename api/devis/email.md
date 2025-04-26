@@ -20,20 +20,20 @@ Cette fonctionnalité n'est accessible que si vous avez configuré votre propre 
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -d '{
-"to": "machin@test.com",
-"cc": "bidule@test.com",
-"bcc": "boss@test.com",
-"subject": "Votre devis",
-"message": "Comme convenu, veuillez trouver ci-joint le devis pour nos travaux."
+  "to": "machin@test.com",
+  "cc": "bidule@test.com",
+  "bcc": "boss@test.com",
+  "subject": "Votre devis",
+  "message": "Comme convenu, veuillez trouver ci-joint le devis pour nos travaux."
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 {% endapi_block %}

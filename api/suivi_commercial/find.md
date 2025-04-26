@@ -27,26 +27,28 @@ Ces codes s'utilisent sur les devis et les factures comme n'importe lequel de vo
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 4866,
-  "status": 1,
-  "title": "A facturer"
-  }, {
-  "id": 4867,
-  "status": 0,
-  "title": "A relancer"
-  }, {
-  "id": 4857,
-  "status": 2,
-  "title": "Envoyer produits"
+    "id": 4866,
+    "status": 1,
+    "title": "A facturer"
+  },
+  {
+    "id": 4867,
+    "status": 0,
+    "title": "A relancer"
+  },
+  {
+    "id": 4857,
+    "status": 2,
+    "title": "Envoyer produits"
   }
 ]
 {% endapi_block %}

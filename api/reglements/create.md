@@ -16,7 +16,7 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
 "invoice_id": 1,
@@ -30,10 +30,12 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/invoices/1/settlements/1.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 1,
   "invoice_id": 1,
@@ -41,5 +43,5 @@ Location: /firms/FIRM_ID/invoices/1/settlements/1.json
   "payment_mode": 1,
   "paid_on": "2021-01-15",
   "payment_ref": "XYZ"
-  }
+}
 {% endapi_block %}

@@ -16,7 +16,7 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"company_name":"A small company","individual":false}' \
 "{{ request.url | api_url }}"
@@ -24,10 +24,12 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 201 Created
 Location: /firms/FIRM_ID/customers/ID.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
   "account_code": "411ASMALLCO",
   "api_custom": null,
@@ -43,7 +45,7 @@ Location: /firms/FIRM_ID/customers/ID.json
   "email": null,
   "fax": null,
   "first_name": null,
-  "id": ID,
+  "id": 123123,
   "individual": false,
   "language": null,
   "last_invoiced_on": null,

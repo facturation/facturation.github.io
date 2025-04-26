@@ -35,56 +35,57 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "account_code": "401AMAZON",
-  "category_id": 4855,
-  "city": "",
-  "civility": null,
-  "company_name": "amazon",
-  "country": null,
-  "email": null,
-  "fax": "",
-  "first_name": "",
-  "id": 49091,
-  "last_name": "",
-  "mobile": "",
-  "notes": "",
-  "phone": "",
-  "short_name": "amazon",
-  "siret": null,
-  "street": "",
-  "vat_number": null,
-  "website": null,
-  "zip_code": ""
-  }, {
-  "account_code": "401APPLE",
-  "category_id": 4857,
-  "city": "",
-  "civility": null,
-  "company_name": "apple",
-  "country": null,
-  "email": null,
-  "fax": "",
-  "first_name": "",
-  "id": 49090,
-  "last_name": "",
-  "mobile": "",
-  "notes": "",
-  "phone": "",
-  "short_name": "apple",
-  "siret": null,
-  "street": "",
-  "vat_number": null,
-  "website": null,
-  "zip_code": ""
+    "account_code": "401AMAZON",
+    "category_id": 4855,
+    "city": "",
+    "civility": null,
+    "company_name": "amazon",
+    "country": null,
+    "email": null,
+    "fax": "",
+    "first_name": "",
+    "id": 49091,
+    "last_name": "",
+    "mobile": "",
+    "notes": "",
+    "phone": "",
+    "short_name": "amazon",
+    "siret": null,
+    "street": "",
+    "vat_number": null,
+    "website": null,
+    "zip_code": ""
+  },
+  {
+    "account_code": "401APPLE",
+    "category_id": 4857,
+    "city": "",
+    "civility": null,
+    "company_name": "apple",
+    "country": null,
+    "email": null,
+    "fax": "",
+    "first_name": "",
+    "id": 49090,
+    "last_name": "",
+    "mobile": "",
+    "notes": "",
+    "phone": "",
+    "short_name": "apple",
+    "siret": null,
+    "street": "",
+    "vat_number": null,
+    "website": null,
+    "zip_code": ""
   }
 ]
 {% endapi_block %}

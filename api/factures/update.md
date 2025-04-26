@@ -24,7 +24,7 @@ Pour enregistrer différents modes de règlement sur une facture, utilisez le m�
 
 Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal le 6 juin 2020
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"paid_on":"2020-04-06","payment_mode":1}' \
 "{{ request.url | api_url }}"
@@ -32,6 +32,6 @@ Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal 
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}

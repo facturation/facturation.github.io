@@ -16,7 +16,7 @@ Lorsqu'une facture est réglée, le système vous retourne par défaut la factur
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o facture.pdf "{{ request.url | api_url }}?original=1"
 {% endapi_block %}

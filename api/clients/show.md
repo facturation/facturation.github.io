@@ -16,14 +16,14 @@ Obtenir le détail du client n° ID
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 {
   "account_code": "411PANDORA",
   "api_custom": null,
@@ -39,7 +39,7 @@ Obtenir le détail du client n° ID
   "email": null,
   "fax": "",
   "first_name": "",
-  "id": ID,
+  "id": 123123,
   "individual": false,
   "language": null,
   "last_invoiced_on": "2012-07-28",

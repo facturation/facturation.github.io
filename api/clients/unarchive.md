@@ -12,13 +12,13 @@ Restaure le client archivé, identifié par son ID. Ce client peut à nouveau ê
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}

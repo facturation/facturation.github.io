@@ -1,32 +1,40 @@
 ---
-layout: minimal
+layout: raw
 title: Documentation pour LLM
 nav_exclude: true
+search_exclude: true
 bare_mode: true
 ---
 
-Retrouvez ici toutes les informations sur l'API de facturation en ligne de [MonAE](https://www.monae.fr) et [MaTPE](https://www.matpe.com). Notre service permet de facturer simplement et efficacement vos clients, que ce soit via l'extranet [Facturation.pro](https://www.facturation.pro), ou via vos propres services en vous appuyant sur notre API.
+Ce contenu est spécifiquement conçu pour les intelligences artificielles (LLM), afin de pouvoir interroger une IA sur le fonctionnement de l'API du site Facturation.PRO et de lui permettre de générer des scripts pour interagir avec l'API.
 
-  Ce contenu est spécifiquement conçu pour les intelligences artificielles (LLM), afin de pouvoir interroger une IA sur le fonctionnement de l'API du site Facturation.PRO et de lui permettre de générer des scripts pour interagir avec l'API.
+Pour un accès direct par votre IA ou via un programme à cette documentation, vous pouvez récupérer le contenu directement :
+```curl https://facturation.dev/llm```
 
-  Pour un accès direct par votre IA ou via un programme à cette documentation, vous pouvez récupérer le contenu directement :
-  ```curl https://facturation.dev/llm```
-### Introduction
+# INSTRUCTIONS GENERALES
 
-Une API (i.e. Application Programming Interface) est un ensemble normalisé de classes et de méthodes permettant, via n'importe quel langage de programmation, d'interagir avec un service web tel que le notre. Nous mettons à votre disposition une API de type "[REST](http://fr.wikipedia.org/wiki/Representational_state_transfer)", qui vous permet de manipuler les données de votre compte afin d'intégrer dans votre propre application ou site web des modules complémentaires spécifiques s'appuyant sur les données de votre compte. Vous pouvez ainsi utiliser notre API pour par exemple générer des statistiques spécifiques, automatiser votre facturation (en particulier lors de la facturation d'abonnement ou d'objet via un site d'ecommerce), exporter vos données dans un format spécifique non proposé par notre outil web, et plus généralement créer de nouvelles fonctionnalités propres à vos besoins spécifiques.
-L'utilisation de notre API nécessite des compétences en développement web. Si vous n'avez pas de telles compétences, vous devrez vous adresser à un prestataire informatique (SSII, studio de développement, développeur indépendant, etc.) afin de voir avec lui s'il peut vous développer ce que vous souhaitez.
+Tu es un assistant IA conçu pour aider les développeurs à utiliser l'API du service Facturation.PRO. Tu dois suivre ces principes :
+1. Utilise toujours des variables d'environnement pour les clés API et FIRM_ID, et rappele aux utilisateurs de définir ces variables.
+2. Génére du code prêt pour la production, correspondant parfaitement aux exigences.
+3. Implémente une gestion des erreurs et des tentatives appropriées en cas de panne réseau.
+4. Analyse correctement les réponses de l'API et valide les entrées.
+5. Utilise la solution la plus simple possible : évite de chaîner inutilement les API.
+6. N'utilise jamais de données fictives.
+7. Inclue les en-têtes d'authentification appropriés dans toutes les requêtes et privilégier l'authentification par clé API plutôt que OAuth.
+8. Rédige du code réutilisable et bien structuré.
+9. Pour les tâches en dehors des capacités de l'API de Facturation PRO, indique clairement que c'est « impossible » et explique pourquoi.
 
-### API au format JSON
-Notre API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
 
-### URL d'accès à l'API
+# INFORMATIONS
 
+## API au format JSON
+L'API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+
+## URL d'accès à l'API
 Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base:
 `{% api_host %}`
 
-
-
-### Identifiez votre application
+## Identifier l'application
 Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Agent** avec le nom de votre application et un lien vers un formulaire de contact ou bien votre adresse email, afin que nous puissions vous contacter si nous constatons un problème dans l'utilisation que vous faites de notre API. En l'absence d'informations valides de contact, votre accès à l'API pourra être suspendu sans préavis en cas d'utilisation abusive de l'API.
 
 **Voici des exemples de User-Agent:**
@@ -39,118 +47,59 @@ Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Ag
 * pour éviter toute erreur d'encodage de caractères, veuillez à ne pas utiliser de caractères accentués dans le champ User-Agent.
 * si vous n'êtes pas en mesure de changer le User-Agent transmis par le client que vous utilisez pour faire vos requêtes, vous pouvez transmettre un User-Agent conforme en envoyant dans votre requête une entête X-User-Agent. Par exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd user_agent: 'X-User-Agent' %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
-### Authentification
+## Authentification
 
 Notre API supporte deux protocoles d'identification:
 * via le protocole OAuth2: cette méthode d'authentification est recommandée dès lors que votre application sera utilisée par de multiples utilisateurs.
 * via une clé API: cette méthode d'authentification est destinée essentiellement au développement d'applications pour votre propre usage.
 
-#### Authentification via OAuth2
-
-Lorsque vous développez une application destinée à être publique et à être utilisée par vos propres utilisateurs, nous vous encourageons à authentifier vos requêtes API via le protocole [OAuth 2](http://oauth.net/) pour plus de simplicité et de sécurité pour vos clients. Ce protocole évite à vos utilisateurs d'avoir à communiquer leurs identifiants de connexion API manuellement, et propose donc une expérience utilisateur plus fluide lorsque celui ci souhaite autoriser votre application à accéder à ses données.
+### Authentification via OAuth2
 
 Pour pouvoir utiliser le protocole OAuth, vous devez obligatoirement disposer d'un compte sur notre service (un compte gratuit est suffisant) et [enregistrer votre application](https://www.facturation.pro/oauth/applications) sur notre service.
 
-#### Authentification par clé API
+### Authentification par clé API
 
-Lorsque vous développez une application pour votre propre usage interne, vous pouvez utiliser une authentification par clé API, plus rapide à mettre en oeuvre pour un usage personnel. Dans ce cas, chaque requête API doit être authentifiée à l'aide des informations ci-dessous, via le protocole "[HTTP Basic Authentication](http://www.ietf.org/rfc/rfc2617.txt)".<br/>
+Les codes d'accès à l'API sont disponible dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client). Si vous venez juste de créer un compte sur notre outil, vous devez activer votre compte via le lien reçu avant de pouvoir récupérer vos codes.
 
-Vos codes d'accès à l'API sont disponible dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client). Si vous venez juste de créer un compte sur notre outil, vous devez activer votre compte via le lien reçu avant de pouvoir récupérer vos codes.
+## Paramètre FIRM_ID
 
-A tout moment, vous pouvez générer un nouveau mot de passe API depuis votre compte.
-
-Vous pouvez utiliser un utilitaire tel que curl pour tester l'accès à l'API.
-Exemple:
-{% api_block %}
-  {% curl_cmd %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
-{% endapi_block %}
-
-### Paramètre FIRM_ID
-
-Comme vous allez le constater en parcourant la documentation de l'API, toutes les requêtes sont préfixées par le chemin /firms/FIRM_ID . Le paramètre FIRM_ID correspond à l'identifiant de l'entreprise sur laquelle vous souhaitez travailler.<br/>
+Toutes les requêtes sont préfixées par le chemin /firms/FIRM_ID . Le paramètre FIRM_ID correspond à l'identifiant de l'entreprise sur laquelle vous souhaitez travailler.<br/>
 Vous pouvez retrouver la liste des identifiants de votre compte dans la rubrique ["Clé API"](https://www.facturation.pro/account/api) de votre compte (i.e. en cliquant sur l'avatar en haut à droite de votre espace client).
 
 
-### Test de l'API
-
-Afin de tester votre application, nous vous conseillons de [créer une nouvelle entreprise](https://www.facturation.pro/firms/new) et de ne pas passer cette entreprise en production. Vous disposerez alors d'une entreprise sur laquelle vous pourrez faire vos tests librement, sans que cela n'impacte vos données de production. Vous pouvez à tout moment ré-initialiser cette entreprise si vos données dépassent les limites de la version gratuite.
-
-### Lecture des données
-
-L'API propose généralement deux types d'accès en lecture aux données : liste et détail. Les accès de type "détail" retourne un enregistrement unique, alors que les accès de type "liste" retournent un ensemble d'enregistrements.
-
-Toutes les requêtes de consultation sont faites avec la méthode GET. Lorsque une requête de lecture réussi, vous obtenez une réponse au format JSON accompagné du code HTTP "200 OK". Ce type d'url peut être consulté depuis un navigateur.
-
-### Ecriture des données
-
-La création, la modification et la suppression de données est facile a implémenter, mais ne peut pas être réalisée directement depuis un navigateur. Quel que soit le langage de développement que vous utilisez, un utilitaire tel que "curl" vous permet de faire facilement des essais et explorer l'API.
-
-Lorsque vous créez ou modifiez des données, vous transmettez du code JSON, et vous devez le faire savoir au système en ajoutant à vos requêtes l'entête:
-`Content-type: application/json; charset=utf-8`. Il vous suffit alors d'inclure vos données au format JSON dans le corps de votre requête pour que l'API effectue l'opération demandée.
-
-Voici un exemple de création à l'aide de curl :
-
-{% api_block %}
-{% curl_cmd write: true %} -d '{"company_name":"WORLD INC"}' \
-"{{ site.data.urls['customers']['find']['url'] | api_url }}"
-{% endapi_block %}
-
-Si la création réussi, le code HTTP de retour est "201 Created" et les entêtes de la réponse contiennent une entrée "Location" indiquant l'url d'accès au nouvel élément créé. De plus, le résultat contient le détail JSON de la ressource créée.
-
-Sur un principe similaire, la mise à jour des enregistrements se fait à l'aide d'une requête de type PATCH. Par exemple:
-
-{% api_block %}
-{% curl_cmd write: true %} -X PATCH \
- -d '{"company_name":"BIG CORP S.A.S"}' \
- "{{ site.data.urls['customers']['update']['url'] | api_url }}"
-{% endapi_block %}
-
-Lorsque la mise à jour réussie, vous obtenez en retour le code HTTP "200 OK".
-A noter que lors d'une requête de modification, vous n'avez besoin de transmettre que les données que vous souhaitez modifier, il n'est pas nécessaire de reprendre tous les champs.
-
-Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous devez utiliser une requête de type DELETE. Par exemple:
-
-{% api_block %}
-{% curl_cmd -%}
--X DELETE "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
-{% endapi_block %}
-
-Les requêtes de suppression ne nécessitent pas de "Content-Type" puisqu'elles ne contiennent pas de JSON. Si la suppression réussie, vous obtenez le code HTTP "200 OK"
-
-
-### Champs disponibles
+## Champs disponibles
 
 A la fin de chaque rubrique de la documentation de l'API, nous vous indiquons la liste des champs disponibles pour l'objet concerné, avec pour chaque champs le type de donnée qu'il accepte et si ce champs est accessible en écriture ou non.<br/>
 Les dates doivent toujours être transmises au format AAAA-MM-DD (AAAA: année, MM: numéro du mois de 01 à 12, DD: numéro du jour de 01 à 31).<br/>
 Certains champs n'acceptent que des valeurs pré-définies, et dans ce cas, la liste des valeurs possibles est précisée dans la documentation.
 
 
-### Pagination
+## Pagination
 
 Les requêtes de type liste (liste de clients, de factures, de devis, ...) retournent les X premiers résultats trouvés, ainsi qu'une entête "X-Pagination" contenant un hash JSON avec les informations de pagination suivantes: nombre total d'enregistrements (total_entries), nombre d'enregistrements par page (per_page), page courante (current_page), nombre total de pages (total_pages).
 
 Exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 HTTP/1.1 200 OK
 ...
 X-Pagination:{"current_page":1,"total_pages":10,"per_page":30,"total_entries":300}
 ...
 {% endapi_block %}
 
-Vous pouvez accéder aux différentes pages d'une liste en utilisant le paramètre "page=N" dans vos requêtes, ou N est le numéro de page souhaité.
+L'accès aux différentes pages d'une liste se fait en utilisant le paramètre "page=N" dans les requêtes, ou N est le numéro de page souhaité.
 
 
-### Gestion des erreurs
+## Gestion des erreurs
 
 Si une requête échoue, vous obtiendrez des codes d'erreur HTTP spécifiques, accompagnés d'un message d'erreur.
 Par exemple, pour un enregistrement non trouvé, la réponse peut ressembler à:
 
-{% api_block %}
+{% api_block 'shell' %}
 HTTP/1.1 404 The record could not be found
 Date: 2020-01-26 11:24:20 +0100
 ...
@@ -165,7 +114,7 @@ Voici quelques erreurs spécifiques:
 * Pour les autres codes d'erreurs, consultez la réponse retournée par le système qui contient généralement plus d'informations sur les erreurs rencontrées dans le champ "errors"
 
 
-### Limitations du nombre de requêtes
+## Limitations du nombre de requêtes
 
 Notre API vous autorise à réaliser :
 * 600 requêtes par période de 5 minutes, soit en moyenne deux requêtes par seconde
@@ -184,34 +133,6 @@ Ces limites sont suffisantes pour un usage normal de notre API. Si vous atteigne
 * en temporisant vos requêtes pour les étaler dans le temps
 * en diminuant la fréquence d'exécution de vos scripts
 * en vérifiant que vous n'avez pas des scripts inutiles qui tournent en boucle (anciens tests, boucles infinies, tache cron oubliée, etc)
-
-
-### Compatibilité JSONP
-
-L'API est compatible avec le format JSONP, vous permettant d'accéder aux méthodes de type "GET" via du javascript. Il vous suffit d'indiquer votre callback en ajoutant le paramètre "callback=monCallBack" à l'url demandée.
-
-Exemple de requête:
-
-{% api_block %}
-  {% curl_cmd %} "{{ site.data.urls['customers']['show']['url'] | api_url }}?callback=afficherInfo"
-{% endapi_block %}
-
-Résultat:
-
-{% api_block 'js' %}
-afficherInfo({
-  "account_code": "411004",
-  "city": "Dublin 4",
-  "civility": null,
-  "company_name": "Google AdSense Payments - VAT",
-  "country": "IE",
-  "currency": "EUR",
-  "id": 1,
-  "individual": false,
-  "street": "Gordon House\r\nBarrow Street",
-  "vat_number": "IE6388047V"
-})
-{% endapi_block %}
 
 
 
@@ -275,13 +196,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
   {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
   [{
   "api_custom": null,
   "api_id": null,
@@ -328,7 +249,7 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"supplier_id": 1, "invoiced_on": "2013-06-28","title": "Restaurant","total_with_vat": "100","vat_amount": "16,39"}' \
 "{{ request.url | api_url }}"
@@ -336,10 +257,12 @@ Création d'un nouvel achat. On obtient en retour le code JSON de l'enregistreme
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/purchases/ID.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -369,14 +292,14 @@ Obtenir le détail de l'achat n° ID
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
   {% curl_cmd -%}
   "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 {
   "api_custom": null,
   "api_id": null,
@@ -406,7 +329,7 @@ Mise à jour d'un achat existant.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title": "Serveur virtuel"}' \
 "{{ request.url | api_url }}"
@@ -414,7 +337,7 @@ Mise à jour d'un achat existant.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -427,14 +350,14 @@ Supprime l'achat identifié par son ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'shell' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -454,7 +377,7 @@ Ajouter une pièce jointe à l'achat ID.<br/>
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à l'achat possédant l'ID 1, avec le nom "achat_123.pdf"
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=achat_123.pdf"
@@ -462,17 +385,19 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 
 ### Réponse
 
-{% api_block %}
-  Status: 201 Created
-  Location: /firms/FIRM_ID/assets/1.json
+{% api_block 'plaintext' %}
+Status: 201 Created
+Location: /firms/FIRM_ID/assets/1.json
+{% endapi_block %}
 
-  {
+{% api_block 'json' %}
+{
   "id": 1,
   "purchase_id": 1,
   "document_name":"achat_123.pdf",
   "document_size":18884,
   "download_url":"https://www.facturation.pro/firms/FIRM_ID/assets/1/download"
-  }
+}
 {% endapi_block %}
 
 ## Gestion des achats récurrents
@@ -513,13 +438,13 @@ liste des catégories, par groupe de {{ site.api.per_page }} résultats.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
   "id": 4866,
@@ -550,7 +475,7 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"title":"Prestation de services","status":"1"}' \
 "{{ request.url | api_url }}"
@@ -558,10 +483,12 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/categories/5010.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
   "id": 5010,
   "status": 1,
@@ -578,14 +505,14 @@ Obtenir le détail de la catégorie n° ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "id": 1,
   "status": 2,
@@ -602,7 +529,7 @@ Mise à jour d'une catégorie existante.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Outil SEO","status":"2"}' \
 "{{ request.url | api_url }}"
@@ -610,7 +537,7 @@ Mise à jour d'une catégorie existante.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -623,14 +550,14 @@ Supprime la catégorie identifiée par son ID. Cette opération ne supprime pas 
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -683,13 +610,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [{
   "account_code": "411PANDORA",
   "api_custom": null,
@@ -770,7 +697,7 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"company_name":"A small company","individual":false}' \
 "{{ request.url | api_url }}"
@@ -778,10 +705,12 @@ Par défaut, en l'absence d'indication spécifique, chaque client créé est de 
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 201 Created
 Location: /firms/FIRM_ID/customers/ID.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
   "account_code": "411ASMALLCO",
   "api_custom": null,
@@ -797,7 +726,7 @@ Location: /firms/FIRM_ID/customers/ID.json
   "email": null,
   "fax": null,
   "first_name": null,
-  "id": ID,
+  "id": 123123,
   "individual": false,
   "language": null,
   "last_invoiced_on": null,
@@ -830,14 +759,14 @@ Obtenir le détail du client n° ID
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 {
   "account_code": "411PANDORA",
   "api_custom": null,
@@ -853,7 +782,7 @@ Obtenir le détail du client n° ID
   "email": null,
   "fax": "",
   "first_name": "",
-  "id": ID,
+  "id": 123123,
   "individual": false,
   "language": null,
   "last_invoiced_on": "2012-07-28",
@@ -882,7 +811,7 @@ Mise à jour d'un client existant.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"company_name":"A big company","email":"boss@bigcompany.com"}' \
 "{{ request.url | api_url }}"
@@ -890,7 +819,7 @@ Mise à jour d'un client existant.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
   Status: 200 OK
 {% endapi_block %}
 
@@ -904,14 +833,14 @@ Supprime le client identifié par son ID, ainsi que tous les devis associés à 
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -924,14 +853,14 @@ Archive le client identifié par son ID, ce qui permet de le masquer de la liste
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -944,14 +873,14 @@ Restaure le client archivé, identifié par son ID. Ce client peut à nouveau ê
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -971,7 +900,7 @@ Ajouter un fichier à la fiche client ID.<br/>
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, avec le nom "contrat_123.pdf"
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=contrat_123.pdf"
@@ -979,10 +908,11 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local, av
 
 ### Réponse
 
-{% api_block %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/assets/1.json
-
+{% endapi_block %}
+{% api_block 'json' -%}
 {
   "id": 1,
   "customer_id": 1,
@@ -1001,7 +931,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -1010,7 +940,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des devis.
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 302 Redirected
 Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
 {% endapi_block %}
@@ -1024,7 +954,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -1033,7 +963,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 302 Redirected
 Location: /firms/{FIRM_ID}/invoices.json?customer_id=180371
 {% endapi_block %}
@@ -1057,26 +987,26 @@ Affiche les informations sur le compte de l'utilisateur.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
-  "id":1,
+  "id": 1,
   "email": "moi@google.com",
-  "firms" : [
-  {
-  "id":1,
-  "name": "Ma petite entreprise"
-  },
-  {
-  "id":2,
-  "name": "Ma grosse entreprise"
-  }
+  "firms": [
+    {
+      "id": 1,
+      "name": "Ma petite entreprise"
+    },
+    {
+      "id": 2,
+      "name": "Ma grosse entreprise"
+    }
   ]
 }
 {% endapi_block %}
@@ -1090,28 +1020,28 @@ Retourne la liste des factures d'abonnements payées pour la société ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 [
   {
-  "title": "Abonnement Entreprise - 12 mois",
-  "amount": 48.00,
-  "payment_date": "2021-01-15",
-  "invoice_url": "/firms/ID/orders/11111111-4c0e-455d-9801-6aa2a9afcf34.pdf",
-  "refunded": false
+    "title": "Abonnement Entreprise - 12 mois",
+    "amount": 48.00,
+    "payment_date": "2021-01-15",
+    "invoice_url": "/firms/ID/orders/11111111-4c0e-455d-9801-6aa2a9afcf34.pdf",
+    "refunded": false
   },
   {
-  "title": "Abonnement Premium - 12 mois",
-  "amount": 30.00,
-  "payment_date": "2020-01-15",
-  "invoice_url": "/firms/ID/orders/11111111-6acb-479e-937f-2889dc4c3f59.pdf",
-  "refunded": false
+    "title": "Abonnement Premium - 12 mois",
+    "amount": 30.00,
+    "payment_date": "2020-01-15",
+    "invoice_url": "/firms/ID/orders/11111111-6acb-479e-937f-2889dc4c3f59.pdf",
+    "refunded": false
   }
 ]
 {% endapi_block %}
@@ -1185,99 +1115,104 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 [
-{
-"amount_invoiced": "0.0",
-"api_custom": null,
-"api_id": null,
-"category_id": null,
-"currency": "EUR",
-"customer_id": 180369,
-"discount": "0.0",
-"draft": false,
-"fully_invoiced": false,
-"id": 411583,
-"ignore_quote": false,
-"information": "",
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"pay_before": "30",
-"penalty": "0.0",
-"precompte": null,
-"quote_ref": 2,
-"quote_status": 0,
-"rebate_percentage": "0.0",
-"service_personne": false,
-"tax_percent": null,
-"tax_title": null,
-"term_on": "2013-08-28",
-"title": null,
-"total": "459.0",
-"vat_exemption": null,
-"invoice_ids": [],
-"items": [{
-"id": 949159,
-"nature": 9,
-"optional": false,
-"position": 1,
-"product_id": null,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
-"total": "459.0",
-"unit_price": "459.0",
-"vat": "0.200"
-}]
-}, {
-"amount_invoiced": "0.0",
-"api_custom": null,
-"api_id": null,
-"category_id": 4867,
-"currency": "EUR",
-"customer_id": 180366,
-"discount": "0.0",
-"draft": false,
-"fully_invoiced": false,
-"id": 411582,
-"ignore_quote": false,
-"information": "",
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"pay_before": "60fm",
-"penalty": "0.0",
-"precompte": null,
-"quote_ref": 1,
-"quote_status": 0,
-"rebate_percentage": "0.0",
-"service_personne": false,
-"tax_percent": null,
-"tax_title": null,
-"term_on": "2013-08-28",
-"title": null,
-"total": "1458.27",
-"vat_exemption": null,
-"invoice_ids": [],
-"items": [{
-"id": 949158,
-"nature": 9,
-"optional": false,
-"position": 1,
-"product_id": 0,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage de publicit\u00e9 d\u00e9cembre 2012",
-"total": "1458.27",
-"unit_price": "1458.27",
-"vat": "0.200"
-}]
-}
+  {
+    "amount_invoiced": "0.0",
+    "api_custom": null,
+    "api_id": null,
+    "category_id": null,
+    "currency": "EUR",
+    "customer_id": 180369,
+    "discount": "0.0",
+    "draft": false,
+    "fully_invoiced": false,
+    "id": 411583,
+    "ignore_quote": false,
+    "information": "",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "pay_before": "30",
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_ref": 2,
+    "quote_status": 0,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-08-28",
+    "title": null,
+    "total": "459.0",
+    "vat_exemption": null,
+    "invoice_ids": [],
+    "items": [
+      {
+        "id": 949159,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
+        "total": "459.0",
+        "unit_price": "459.0",
+        "vat": "0.200"
+      }
+    ]
+  },
+  {
+    "amount_invoiced": "0.0",
+    "api_custom": null,
+    "api_id": null,
+    "category_id": 4867,
+    "currency": "EUR",
+    "customer_id": 180366,
+    "discount": "0.0",
+    "draft": false,
+    "fully_invoiced": false,
+    "id": 411582,
+    "ignore_quote": false,
+    "information": "",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "pay_before": "60fm",
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_ref": 1,
+    "quote_status": 0,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-08-28",
+    "title": null,
+    "total": "1458.27",
+    "vat_exemption": null,
+    "invoice_ids": [],
+    "items": [
+      {
+        "id": 949158,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": 0,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage de publicit\u00e9 d\u00e9cembre 2012",
+        "total": "1458.27",
+        "unit_price": "1458.27",
+        "vat": "0.200"
+      }
+    ]
+  }
 ]
 {% endapi_block %}
 
@@ -1292,39 +1227,43 @@ Le total de chaque ligne de facturation ainsi que le total du devis sont calcul�
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
-"currency": "EUR",
-"customer_id": 1,
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"pay_before": "60fm",
-"penalty": "0.0",
-"title": "Facturation mensuelle",
-"items": [{
-"position": 1,
-"quantity": "1.0",
-"title": "Affichage pub 1",
-"unit_price": "500",
-"vat": "0.200"
-}, {
-"position": 2,
-"quantity": "1.0",
-"title": "Affichage pub 2",
-"unit_price": "200",
-"vat": "0.200"
-}]
+  "currency": "EUR",
+  "customer_id": 1,
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "pay_before": "60fm",
+  "penalty": "0.0",
+  "title": "Facturation mensuelle",
+  "items": [
+    {
+      "position": 1,
+      "quantity": "1.0",
+      "title": "Affichage pub 1",
+      "unit_price": "500",
+      "vat": "0.200"
+    },
+    {
+      "position": 2,
+      "quantity": "1.0",
+      "title": "Affichage pub 2",
+      "unit_price": "200",
+      "vat": "0.200"
+    }
+  ]
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/quotes/411585.json
-
+{% endapi_block %}
+{% api_block 'json' -%}
 {
   "amount_invoiced": "0.0",
   "api_custom": null,
@@ -1355,33 +1294,33 @@ Location: /firms/FIRM_ID/quotes/411585.json
   "vat_exemption": null,
   "items": [
     {
-    "id": 949162,
-    "nature": 9,
-    "optional": false,
-    "position": 1,
-    "product_id": null,
-    "quantity": "1.0",
-    "style": null,
-    "title": "Affichage pub 1",
-    "total": "500.0",
-    "unit_price": "500.0",
-    "vat": "0.200"
-    }, {
-    "id": 949163,
-    "nature": 9,
-    "optional": false,
-    "position": 2,
-    "product_id": null,
-    "quantity": "1.0",
-    "style": null,
-    "title": "Affichage pub 2",
-    "total": "200.0",
-    "unit_price": "200.0",
-    "vat": "0.200"
+      "id": 949162,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949163,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
     }
   ]
-}
-{% endapi_block %}
+}{% endapi_block %}
 
 ## Détails d'un devis
 
@@ -1393,14 +1332,14 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "amount_invoiced": "0.0",
   "api_custom": null,
@@ -1430,19 +1369,21 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
   "total": "459.0",
   "vat_exemption": null,
   "invoice_ids": [],
-  "items": [{
-  "id": 949159,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
-  "total": "459.0",
-  "unit_price": "459.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949159,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage publicitaire - Appel \u00e0 facture n\u00b03148",
+      "total": "459.0",
+      "unit_price": "459.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block %}
 
@@ -1460,37 +1401,40 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{
-"id": "ID",
-"api_custom": null,
-"api_id": null,
-"customer_id": 1,
-"title": "Creation internet",
-"quote_status": "1",
-"discount": "0.0",
-"information": "TEST",
-"pay_before": "30",
-"penalty": "3.0",
-"items": [{
-"position": "1",
-"product_id": "10",
-"quantity": "1.0",
-"title": "Campagne pub",
-"unit_price": "300.0",
-"nature": "2"
-}, {
-"id": "889",
-"_destroy": "1"
-}]
+  "id": "ID",
+  "api_custom": null,
+  "api_id": null,
+  "customer_id": 1,
+  "title": "Creation internet",
+  "quote_status": "1",
+  "discount": "0.0",
+  "information": "TEST",
+  "pay_before": "30",
+  "penalty": "3.0",
+  "items": [
+    {
+      "position": "1",
+      "product_id": "10",
+      "quantity": "1.0",
+      "title": "Campagne pub",
+      "unit_price": "300.0",
+      "nature": "2"
+    },
+    {
+      "id": "889",
+      "_destroy": "1"
+    }
+  ]
 }'
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
 
@@ -1503,14 +1447,14 @@ Supprime le devis identifié par son ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -1523,7 +1467,7 @@ Télécharger le devis n° ID au format PDF.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o devis.pdf "{{ request.url | api_url }}"
 {% endapi_block %}
@@ -1541,7 +1485,7 @@ Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engage
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o proforma.pdf "{{ request.url | api_url }}?proforma=1"
 {% endapi_block %}
@@ -1559,17 +1503,19 @@ Conversion du devis ID en facture.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -X POST "{{ request.url | api_url }}"
 {% endapi_block %}
 
 #### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 201 Created
 Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
   "api_custom": null,
   "api_id": null,
@@ -1599,31 +1545,34 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
   "title": "Facturation mensuelle",
   "total": "700.0",
   "vat_exemption": null,
-  "items": [{
-  "id": 949167,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 1",
-  "total": "500.0",
-  "unit_price": "500.0",
-  "vat": "0.200"
-  }, {
-  "id": 949168,
-  "nature": 9,
-  "optional": false,
-  "position": 2,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 2",
-  "total": "200.0",
-  "unit_price": "200.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block %}
 
@@ -1644,21 +1593,21 @@ Cette fonctionnalité n'est accessible que si vous avez configuré votre propre 
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -d '{
-"to": "machin@test.com",
-"cc": "bidule@test.com",
-"bcc": "boss@test.com",
-"subject": "Votre devis",
-"message": "Comme convenu, veuillez trouver ci-joint le devis pour nos travaux."
+  "to": "machin@test.com",
+  "cc": "bidule@test.com",
+  "bcc": "boss@test.com",
+  "subject": "Votre devis",
+  "message": "Comme convenu, veuillez trouver ci-joint le devis pour nos travaux."
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 {% endapi_block %}
 
@@ -1679,7 +1628,7 @@ Ajoute une pièce jointe au devis ID.
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au devis possédant l'ID 1, en le renommant en "justificatif.pdf" et en le rendant visible par le client
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=justificatif.pdf&visible=1"
@@ -1687,10 +1636,11 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local au 
 
 ### Réponse
 
-{% api_block %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/assets/1.json
-
+{% endapi_block  %}
+{% api_block 'json' -%}
 {
   "id": 1,
   "quote_id": 1,
@@ -1788,126 +1738,133 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
-{
-"api_custom": null,
-"api_id": null,
-"category_id": null,
-"currency": "EUR",
-"customer_id": 180366,
-"customer_name": "Big Corp",
-"external_ref": null,
-"discount": null,
-"draft": false,
-"id": 411588,
-"information": null,
-"invoice_ref": "201307-4",
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"paid_on": null,
-"pay_before": "60fm",
-"payment_mode": 0,
-"payment_ref": null,
-"penalty": "0.0",
-"precompte": null,
-"quote_id": null,
-"rebate_percentage": "0.0",
-"service_personne": false,
-"tax_percent": null,
-"tax_title": null,
-"term_on": "2013-09-30",
-"title": "Facturation mensuelle",
-"total": "700.0",
-"vat_exemption": null,
-"items": [{
-"id": 949167,
-"nature": 9,
-"optional": false,
-"position": 1,
-"product_id": null,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage pub 1",
-"total": "500.0",
-"unit_price": "500.0",
-"vat": "0.200"
-}, {
-"id": 949168,
-"nature": 9,
-"optional": false,
-"position": 2,
-"product_id": null,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage pub 2",
-"total": "200.0",
-"unit_price": "200.0",
-"vat": "0.200"
-}]
-}, {
-"api_custom": null,
-"api_id": null,
-"category_id": null,
-"currency": "EUR",
-"customer_id": 180366,
-"customer_name": "Big Corp",
-"external_ref": null,
-"discount": null,
-"draft": false,
-"id": 411587,
-"information": null,
-"invoice_ref": "201307-3",
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"paid_on": null,
-"pay_before": "60fm",
-"payment_mode": 0,
-"payment_ref": null,
-"penalty": "0.0",
-"precompte": null,
-"quote_id": null,
-"rebate_percentage": "0.0",
-"service_personne": false,
-"tax_percent": null,
-"tax_title": null,
-"term_on": "2013-09-30",
-"title": "Facturation mensuelle",
-"total": "700.0",
-"paid_in_main_currency": null,
-"vat_exemption": null,
-"items": [{
-"id": 949165,
-"nature": 9,
-"optional": false,
-"position": 1,
-"product_id": null,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage pub 1",
-"total": "500.0",
-"unit_price": "500.0",
-"vat": "0.200"
-}, {
-"id": 949166,
-"nature": 9,
-"optional": false,
-"position": 2,
-"product_id": null,
-"quantity": "1.0",
-"style": null,
-"title": "Affichage pub 2",
-"total": "200.0",
-"unit_price": "200.0",
-"vat": "0.200"
-}]
-}
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": null,
+    "currency": "EUR",
+    "customer_id": 180366,
+    "customer_name": "Big Corp",
+    "external_ref": null,
+    "discount": null,
+    "draft": false,
+    "id": 411588,
+    "information": null,
+    "invoice_ref": "201307-4",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "paid_on": null,
+    "pay_before": "60fm",
+    "payment_mode": 0,
+    "payment_ref": null,
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_id": null,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-09-30",
+    "title": "Facturation mensuelle",
+    "total": "700.0",
+    "vat_exemption": null,
+    "items": [
+      {
+        "id": 949167,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 1",
+        "total": "500.0",
+        "unit_price": "500.0",
+        "vat": "0.200"
+      },
+      {
+        "id": 949168,
+        "nature": 9,
+        "optional": false,
+        "position": 2,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 2",
+        "total": "200.0",
+        "unit_price": "200.0",
+        "vat": "0.200"
+      }
+    ]
+  },
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": null,
+    "currency": "EUR",
+    "customer_id": 180366,
+    "customer_name": "Big Corp",
+    "external_ref": null,
+    "discount": null,
+    "draft": false,
+    "id": 411587,
+    "information": null,
+    "invoice_ref": "201307-3",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "paid_on": null,
+    "pay_before": "60fm",
+    "payment_mode": 0,
+    "payment_ref": null,
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_id": null,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-09-30",
+    "title": "Facturation mensuelle",
+    "total": "700.0",
+    "paid_in_main_currency": null,
+    "vat_exemption": null,
+    "items": [
+      {
+        "id": 949165,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 1",
+        "total": "500.0",
+        "unit_price": "500.0",
+        "vat": "0.200"
+      },
+      {
+        "id": 949166,
+        "nature": 9,
+        "optional": false,
+        "position": 2,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 2",
+        "total": "200.0",
+        "unit_price": "200.0",
+        "vat": "0.200"
+      }
+    ]
+  }
 ]
 {% endapi_block %}
 
@@ -1927,39 +1884,44 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
-"currency": "EUR",
-"customer_id": 1,
-"invoiced_on": "2013-07-29",
-"language": "fr",
-"pay_before": "60fm",
-"penalty": "0.0",
-"title": "Facturation mensuelle",
-"items": [{
-"position": 1,
-"quantity": "1.0",
-"title": "Affichage pub 1",
-"unit_price": "500",
-"vat": "0.200"
-}, {
-"position": 2,
-"quantity": "1.0",
-"title": "Affichage pub 2",
-"unit_price": "200",
-"vat": "0.200"
-}]
+  "currency": "EUR",
+  "customer_id": 1,
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "pay_before": "60fm",
+  "penalty": "0.0",
+  "title": "Facturation mensuelle",
+  "items": [
+    {
+      "position": 1,
+      "quantity": "1.0",
+      "title": "Affichage pub 1",
+      "unit_price": "500",
+      "vat": "0.200"
+    },
+    {
+      "position": 2,
+      "quantity": "1.0",
+      "title": "Affichage pub 2",
+      "unit_price": "200",
+      "vat": "0.200"
+    }
+  ]
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/invoices/1.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -1989,31 +1951,34 @@ Location: /firms/FIRM_ID/invoices/1.json
   "title": "Facturation mensuelle",
   "total": "700.0",
   "vat_exemption": null,
-  "items": [{
-  "id": 949167,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 1",
-  "total": "500.0",
-  "unit_price": "500.0",
-  "vat": "0.200"
-  }, {
-  "id": 949168,
-  "nature": 9,
-  "optional": false,
-  "position": 2,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 2",
-  "total": "200.0",
-  "unit_price": "200.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block %}
 
@@ -2027,14 +1992,14 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -2065,31 +2030,34 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
   "total": "700.0",
   "paid_in_main_currency": null,
   "vat_exemption": null,
-  "items": [{
-  "id": 949167,
-  "nature": 9,
-  "optional": false,
-  "position": 1,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 1",
-  "total": "500.0",
-  "unit_price": "500.0",
-  "vat": "0.200"
-  }, {
-  "id": 949168,
-  "nature": 9,
-  "optional": false,
-  "position": 2,
-  "product_id": null,
-  "quantity": "1.0",
-  "style": null,
-  "title": "Affichage pub 2",
-  "total": "200.0",
-  "unit_price": "200.0",
-  "vat": "0.200"
-  }]
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
 }
 {% endapi_block -%}
 
@@ -2114,7 +2082,7 @@ Pour enregistrer différents modes de règlement sur une facture, utilisez le m�
 
 Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal le 6 juin 2020
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"paid_on":"2020-04-06","payment_mode":1}' \
 "{{ request.url | api_url }}"
@@ -2122,7 +2090,7 @@ Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal 
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2136,14 +2104,14 @@ Si la facture a été finalisée, elle ne sera pas supprimée et vous recevrez u
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2160,7 +2128,7 @@ Lorsqu'une facture est réglée, le système vous retourne par défaut la factur
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o facture.pdf "{{ request.url | api_url }}?original=1"
 {% endapi_block %}
@@ -2184,16 +2152,16 @@ Effectue un avoir de la facture n° ID
 ### Requête
 
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X POST "{{ request.url | api_url }}?api_id=32&api_custom=remboursement+suite+plainte+client"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
-  "api_custom": 'remboursement suite plainte client',
+  "api_custom": "remboursement suite plainte client",
   "api_id": 32,
   "category_id": null,
   "currency": "EUR",
@@ -2244,7 +2212,7 @@ Permet d'envoyer une facture finalisée par courriel.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -d '{
 "to": "machin@test.com",
@@ -2258,7 +2226,7 @@ Permet d'envoyer une facture finalisée par courriel.
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 {% endapi_block %}
 
@@ -2298,7 +2266,7 @@ Ajoute une pièce jointe à la facture ID.
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à la facture possédant l'ID 1, en le renommant en "justificatif.pdf" et en le rendant visible par le client
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=justificatif.pdf&visible=1"
@@ -2306,10 +2274,12 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 
 ### Réponse
 
-{% api_block %}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/assets/1.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 1,
   "invoice_id": 1,
@@ -2361,29 +2331,29 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 1,
-  "quote_id": 1,
-  "document_name": "contrat prestation.pdf",
-  "document_size": 18884,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
-  "title": "Devis n°1"
+    "id": 1,
+    "quote_id": 1,
+    "document_name": "contrat prestation.pdf",
+    "document_size": 18884,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
+    "title": "Devis n°1"
   },
   {
-  "id": 2,
-  "quote_id": 2,
-  "document_name": "contrat vente.pdf",
-  "document_size": 33442,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
-  "title": "Devis n°2"
+    "id": 2,
+    "quote_id": 2,
+    "document_name": "contrat vente.pdf",
+    "document_size": 33442,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
+    "title": "Devis n°2"
   }
 ]
 {% endapi_block %}
@@ -2415,29 +2385,29 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 1,
-  "invoice_id": 1,
-  "document_name": "contrat prestation.pdf",
-  "document_size": 18884,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
-  "title": "Facture n°1"
+    "id": 1,
+    "invoice_id": 1,
+    "document_name": "contrat prestation.pdf",
+    "document_size": 18884,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
+    "title": "Facture n°1"
   },
   {
-  "id": 2,
-  "invoice_id": 2,
-  "document_name": "contrat vente.pdf",
-  "document_size": 33442,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
-  "title": "Facture n°2"
+    "id": 2,
+    "invoice_id": 2,
+    "document_name": "contrat vente.pdf",
+    "document_size": 33442,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
+    "title": "Facture n°2"
   }
 ]
 {% endapi_block %}
@@ -2469,29 +2439,29 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 1,
-  "customer_id": 1,
-  "document_name": "contrat prestation.pdf",
-  "document_size": 18884,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
-  "title": "Facture n°1"
+    "id": 1,
+    "customer_id": 1,
+    "document_name": "contrat prestation.pdf",
+    "document_size": 18884,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
+    "title": "Facture n°1"
   },
   {
-  "id": 2,
-  "customer_id": 2,
-  "document_name": "contrat vente.pdf",
-  "document_size": 33442,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
-  "title": "Facture n°2"
+    "id": 2,
+    "customer_id": 2,
+    "document_name": "contrat vente.pdf",
+    "document_size": 33442,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
+    "title": "Facture n°2"
   }
 ]
 {% endapi_block %}
@@ -2523,29 +2493,29 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 1,
-  "purchase_id": 1,
-  "document_name": "facture_123.pdf",
-  "document_size": 18884,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
-  "title": "Location serveur dédié"
+    "id": 1,
+    "purchase_id": 1,
+    "document_name": "facture_123.pdf",
+    "document_size": 18884,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
+    "title": "Location serveur dédié"
   },
   {
-  "id": 2,
-  "purchase_id": 2,
-  "document_name": "bill_321.pdf",
-  "document_size": 33442,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
-  "title": "Comptabilité 05/2014"
+    "id": 2,
+    "purchase_id": 2,
+    "document_name": "bill_321.pdf",
+    "document_size": 33442,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
+    "title": "Comptabilité 05/2014"
   }
 ]
 {% endapi_block %}
@@ -2568,14 +2538,14 @@ Supprime le fichier identifié par son ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2615,56 +2585,57 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "account_code": "401AMAZON",
-  "category_id": 4855,
-  "city": "",
-  "civility": null,
-  "company_name": "amazon",
-  "country": null,
-  "email": null,
-  "fax": "",
-  "first_name": "",
-  "id": 49091,
-  "last_name": "",
-  "mobile": "",
-  "notes": "",
-  "phone": "",
-  "short_name": "amazon",
-  "siret": null,
-  "street": "",
-  "vat_number": null,
-  "website": null,
-  "zip_code": ""
-  }, {
-  "account_code": "401APPLE",
-  "category_id": 4857,
-  "city": "",
-  "civility": null,
-  "company_name": "apple",
-  "country": null,
-  "email": null,
-  "fax": "",
-  "first_name": "",
-  "id": 49090,
-  "last_name": "",
-  "mobile": "",
-  "notes": "",
-  "phone": "",
-  "short_name": "apple",
-  "siret": null,
-  "street": "",
-  "vat_number": null,
-  "website": null,
-  "zip_code": ""
+    "account_code": "401AMAZON",
+    "category_id": 4855,
+    "city": "",
+    "civility": null,
+    "company_name": "amazon",
+    "country": null,
+    "email": null,
+    "fax": "",
+    "first_name": "",
+    "id": 49091,
+    "last_name": "",
+    "mobile": "",
+    "notes": "",
+    "phone": "",
+    "short_name": "amazon",
+    "siret": null,
+    "street": "",
+    "vat_number": null,
+    "website": null,
+    "zip_code": ""
+  },
+  {
+    "account_code": "401APPLE",
+    "category_id": 4857,
+    "city": "",
+    "civility": null,
+    "company_name": "apple",
+    "country": null,
+    "email": null,
+    "fax": "",
+    "first_name": "",
+    "id": 49090,
+    "last_name": "",
+    "mobile": "",
+    "notes": "",
+    "phone": "",
+    "short_name": "apple",
+    "siret": null,
+    "street": "",
+    "vat_number": null,
+    "website": null,
+    "zip_code": ""
   }
 ]
 {% endapi_block %}
@@ -2678,7 +2649,7 @@ Création d'un nouveau fournisseur. On obtient en retour le code JSON du fournis
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"company_name":"Office Depot"}' \
 "{{ request.url | api_url }}"
@@ -2686,31 +2657,33 @@ Création d'un nouveau fournisseur. On obtient en retour le code JSON du fournis
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/suppliers/49097.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
-"account_code": "401OFFICEDE",
-"category_id": null,
-"city": null,
-"civility": null,
-"company_name": "Office Depot",
-"country": null,
-"email": null,
-"fax": null,
-"first_name": null,
-"id": 49097,
-"last_name": null,
-"mobile": null,
-"notes": null,
-"phone": null,
-"short_name": "Office Depot",
-"siret": null,
-"street": null,
-"vat_number": null,
-"website": null,
-"zip_code": null
+  "account_code": "401OFFICEDE",
+  "category_id": null,
+  "city": null,
+  "civility": null,
+  "company_name": "Office Depot",
+  "country": null,
+  "email": null,
+  "fax": null,
+  "first_name": null,
+  "id": 49097,
+  "last_name": null,
+  "mobile": null,
+  "notes": null,
+  "phone": null,
+  "short_name": "Office Depot",
+  "siret": null,
+  "street": null,
+  "vat_number": null,
+  "website": null,
+  "zip_code": null
 }
 {% endapi_block %}
 
@@ -2723,14 +2696,14 @@ Obtenir le détail du fournisseur n°ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "account_code": "401APPLE",
   "category_id": 4857,
@@ -2764,7 +2737,7 @@ Mise à jour d'un fournisseur existant.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"city":"Palo Alto","country":"US","street": "1 infinite loop"}' \
 "{{ request.url | api_url }}"
@@ -2772,7 +2745,7 @@ Mise à jour d'un fournisseur existant.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2789,14 +2762,14 @@ Certains fournisseurs sont gérés automatiquement par l'application (RSI, URSSA
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2837,34 +2810,35 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": 4868,
-  "id": 46125,
-  "nature": 9,
-  "ref": "PRESTASHOP",
-  "title": "Developpement module Prestashop",
-  "unit_price": "100.0",
-  "vat": "0.200"
-  }, {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": 4868,
-  "id": 46126,
-  "nature": 9,
-  "ref": "WORDPRESS",
-  "title": "Developpement module Wordpress",
-  "unit_price": "150.0",
-  "vat": "0.200"
+    "api_custom": null,
+    "api_id": null,
+    "category_id": 4868,
+    "id": 46125,
+    "nature": 9,
+    "ref": "PRESTASHOP",
+    "title": "Developpement module Prestashop",
+    "unit_price": "100.0",
+    "vat": "0.200"
+  },
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": 4868,
+    "id": 46126,
+    "nature": 9,
+    "ref": "WORDPRESS",
+    "title": "Developpement module Wordpress",
+    "unit_price": "150.0",
+    "vat": "0.200"
   }
 ]
 {% endapi_block %}
@@ -2878,7 +2852,7 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"ref":"PAIMENT","title":"Developpement passerelle de paiement","unit_price":200.0,"vat":0.200}' \
 "{{ request.url | api_url }}"
@@ -2886,10 +2860,12 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/products/46127.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 46127,
   "ref": "PAIMENT",
@@ -2897,7 +2873,6 @@ Location: /firms/FIRM_ID/products/46127.json
   "unit_price": "200.0",
   "vat": "0.200"
 }
-
 {% endapi_block %}
 
 ## Détails d'un produit
@@ -2909,14 +2884,14 @@ Obtenir le détail du produitn° ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -2939,7 +2914,7 @@ Mise à jour d'un produit existant.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Optimisation module Prestashop","api_custom":"CUSTOM_SHOP"}' \
 "{{ request.url | api_url }}"
@@ -2947,7 +2922,7 @@ Mise à jour d'un produit existant.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2960,14 +2935,14 @@ Supprime le produit identifié par son ID. Cette opération ne supprime pas les 
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -2988,28 +2963,28 @@ Liste les différents règlements enregistrés pour la facture n° INVOICE_ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 14064,
-  "invoice_id": 1,
-  "total": "1000.0",
-  "payment_mode": 2,
-  "paid_on": "2015-09-07",
-  "payment_ref": null
-  }, {
-  "id": 14065,
-  "invoice_id": 1,
-  "total": "2000.0",
-  "payment_mode": 4,
-  "paid_on": "2015-09-03"
-  "payement_ref": "ma référence"
+    "id": 14064,
+    "invoice_id": 1,
+    "total": "1000.0",
+    "payment_mode": 2,
+    "paid_on": "2015-09-07",
+    "payment_ref": null
+  },
+  {
+    "id": 14065,
+    "invoice_id": 1,
+    "total": "2000.0",
+    "payment_mode": 4,
+    "paid_on": "2015-09-03""payement_ref": "ma référence"
   }
 ]
 {% endapi_block %}
@@ -3027,7 +3002,7 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
 "invoice_id": 1,
@@ -3041,10 +3016,12 @@ Lorsque le règlement enregistré solde la facture, la facture est automatiqueme
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/invoices/1/settlements/1.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 1,
   "invoice_id": 1,
@@ -3052,7 +3029,7 @@ Location: /firms/FIRM_ID/invoices/1/settlements/1.json
   "payment_mode": 1,
   "paid_on": "2021-01-15",
   "payment_ref": "XYZ"
-  }
+}
 {% endapi_block %}
 
 ## Détails d'un règlement
@@ -3064,14 +3041,14 @@ Obtenir le détail du règlement n° ID pour la facture n° INVOICE_ID
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "id": 14064,
   "invoice_id": 1,
@@ -3091,14 +3068,14 @@ Supprime le règlement identifié par son ID. A noter que la suppression de l'un
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -3130,26 +3107,28 @@ Ces codes s'utilisent sur les devis et les factures comme n'importe lequel de vo
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 4866,
-  "status": 1,
-  "title": "A facturer"
-  }, {
-  "id": 4867,
-  "status": 0,
-  "title": "A relancer"
-  }, {
-  "id": 4857,
-  "status": 2,
-  "title": "Envoyer produits"
+    "id": 4866,
+    "status": 1,
+    "title": "A facturer"
+  },
+  {
+    "id": 4867,
+    "status": 0,
+    "title": "A relancer"
+  },
+  {
+    "id": 4857,
+    "status": 2,
+    "title": "Envoyer produits"
   }
 ]
 {% endapi_block %}
@@ -3163,7 +3142,7 @@ Création d'un nouveau suivi commercial. On obtient en retour le code JSON du su
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"title":"En attente de réponse","status":"1"}' \
 "{{ request.url | api_url }}"
@@ -3171,10 +3150,12 @@ Création d'un nouveau suivi commercial. On obtient en retour le code JSON du su
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/followups/1234.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 1234,
   "status": 1,
@@ -3191,18 +3172,18 @@ Obtenir le détail du suivi commercial n° ID.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
   "id": 1,
   "status": 1,
-  "title": 'En attente de facturation'
+  "title": "En attente de facturation"
 }
 {% endapi_block %}
 
@@ -3215,7 +3196,7 @@ Mise à jour d'un suivi commercial existante.
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Relancer le client","status":"2"}' \
 "{{ request.url | api_url }}"
@@ -3223,7 +3204,7 @@ Mise à jour d'un suivi commercial existante.
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -3236,14 +3217,14 @@ Supprime le suivi commercial identifié par son ID. Cette opération ne supprime
 
 ### Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
 
@@ -3314,47 +3295,19 @@ Voici les valeurs spécifiques d'état d'un devis
 
 
 
-# Personnalisation des contenus
+# RAPPELS
 
-## Facture
+Garde à l'esprit ces détails d'implémentation clés :
+- L'API est de type REST
+- Les opérations de liste prennent en charge la pagination.
+- Les erreurs doivent être systématiquement analysée en exposant la reponse JSON retournée.
+- Prendre soin de traiter correctement les erreurs liées aux limites imposées sur la fréquence des requêtes
 
-Les informations spécifiques à une facture sont disponibles via l'objet `bill`.
+Pour aider les développeurs :
 
+1. Utiliser des noms de méthode et des paramètres exacts.
+2. Fournir des exemples de code complets.
+3. Tenir compte de la gestion des erreurs.
+4. Expliquer les limitations pertinentes.
+5. Proposer des modèles optimaux pour leur cas d'utilisation.
 
-| Attribut | Infos |
-|:---------|:------|
-{% for item in site.data.invoice -%}
-| \{\{ bill.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor %}
-
-## Devis
-
-Les informations spécifiques à un devis sont disponibles via l'objet `bill`.
-
-| Attribut | Infos |
-|:---------|:------|
-{% for item in site.data.quote -%}
-| \{\{ bill.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor %}
-
-## Client
-
-Les informations spécifiques à un client sont disponibles via l'objet `customer`.
-Cet objet n'est disponible que dans un contexte où vous manipulez un devis ou une facture.
-
-
-| Attribut | Infos |
-|:---------|:------|
-{% for item in site.data.customer -%}
-| \{\{ customer.{{ item.key }} \}\} | {{ item.title }}|
-{% endfor %}
-
-## Dates
-
-Notre outil vous propose différentes périodes qui sont calculées par rapport à la date de facturation (ou de génération dans le cas d'une facture récurrente ou d'un achat récurrent), via l'objet `period`.
-
-| Attribut | Infos | Exemple |
-|:---------|:------|:--------|
-{% for item in site.data.dates -%}
-| \{\{ period.{{ item.key }} \}\} | {{ item.title }} | {{ item.example }}|
-{% endfor %}

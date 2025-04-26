@@ -12,7 +12,7 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"ref":"PAIMENT","title":"Developpement passerelle de paiement","unit_price":200.0,"vat":0.200}' \
 "{{ request.url | api_url }}"
@@ -20,10 +20,12 @@ Création d'un nouveau produit. On obtient en retour le code JSON du produit cr�
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/products/46127.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 46127,
   "ref": "PAIMENT",
@@ -31,5 +33,4 @@ Location: /firms/FIRM_ID/products/46127.json
   "unit_price": "200.0",
   "vat": "0.200"
 }
-
 {% endapi_block %}

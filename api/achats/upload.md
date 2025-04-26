@@ -19,7 +19,7 @@ Ajouter une pièce jointe à l'achat ID.<br/>
 
 Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à l'achat possédant l'ID 1, avec le nom "achat_123.pdf"
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -F "upload_file=@/tmp/test.pdf" \
 "{{ request.url }}?filename=achat_123.pdf"
@@ -27,15 +27,17 @@ Cette requête ajoute le fichier stocké dans "/tmp/test.pdf" du poste local à 
 
 ## Réponse
 
-{% api_block %}
-  Status: 201 Created
-  Location: /firms/FIRM_ID/assets/1.json
+{% api_block 'plaintext' %}
+Status: 201 Created
+Location: /firms/FIRM_ID/assets/1.json
+{% endapi_block %}
 
-  {
+{% api_block 'json' %}
+{
   "id": 1,
   "purchase_id": 1,
   "document_name":"achat_123.pdf",
   "document_size":18884,
   "download_url":"https://www.facturation.pro/firms/FIRM_ID/assets/1/download"
-  }
+}
 {% endapi_block %}

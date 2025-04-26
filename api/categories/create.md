@@ -12,7 +12,7 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"title":"Prestation de services","status":"1"}' \
 "{{ request.url | api_url }}"
@@ -20,10 +20,12 @@ Création d'une nouvelle catégorie. On obtient en retour le code JSON de la cat
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/categories/5010.json
+{% endapi_block %}
 
+{% api_block 'json' %}
 {
   "id": 5010,
   "status": 1,

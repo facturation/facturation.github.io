@@ -37,7 +37,7 @@ Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Ag
 * pour éviter toute erreur d'encodage de caractères, veuillez à ne pas utiliser de caractères accentués dans le champ User-Agent.
 * si vous n'êtes pas en mesure de changer le User-Agent transmis par le client que vous utilisez pour faire vos requêtes, vous pouvez transmettre un User-Agent conforme en envoyant dans votre requête une entête X-User-Agent. Par exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd user_agent: 'X-User-Agent' %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
@@ -63,7 +63,7 @@ A tout moment, vous pouvez générer un nouveau mot de passe API depuis votre co
 
 Vous pouvez utiliser un utilitaire tel que curl pour tester l'accès à l'API.
 Exemple:
-{% api_block %}
+{% api_block 'shell' %}
   {% curl_cmd %} "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
 
@@ -92,7 +92,7 @@ Lorsque vous créez ou modifiez des données, vous transmettez du code JSON, et 
 
 Voici un exemple de création à l'aide de curl :
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true %} -d '{"company_name":"WORLD INC"}' \
 "{{ site.data.urls['customers']['find']['url'] | api_url }}"
 {% endapi_block %}
@@ -101,7 +101,7 @@ Si la création réussi, le code HTTP de retour est "201 Created" et les entête
 
 Sur un principe similaire, la mise à jour des enregistrements se fait à l'aide d'une requête de type PATCH. Par exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true %} -X PATCH \
  -d '{"company_name":"BIG CORP S.A.S"}' \
  "{{ site.data.urls['customers']['update']['url'] | api_url }}"
@@ -112,7 +112,7 @@ A noter que lors d'une requête de modification, vous n'avez besoin de transmett
 
 Enfin, pour supprimer un enregistrement (si cette fonction est disponible), vous devez utiliser une requête de type DELETE. Par exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 -X DELETE "{{ site.data.urls['customers']['destroy']['url'] | api_url }}"
 {% endapi_block %}
@@ -133,7 +133,7 @@ Les requêtes de type liste (liste de clients, de factures, de devis, ...) retou
 
 Exemple:
 
-{% api_block %}
+{% api_block 'shell' %}
 HTTP/1.1 200 OK
 ...
 X-Pagination:{"current_page":1,"total_pages":10,"per_page":30,"total_entries":300}
@@ -148,7 +148,7 @@ Vous pouvez accéder aux différentes pages d'une liste en utilisant le paramèt
 Si une requête échoue, vous obtiendrez des codes d'erreur HTTP spécifiques, accompagnés d'un message d'erreur.
 Par exemple, pour un enregistrement non trouvé, la réponse peut ressembler à:
 
-{% api_block %}
+{% api_block 'shell' %}
 HTTP/1.1 404 The record could not be found
 Date: 2020-01-26 11:24:20 +0100
 ...
@@ -190,7 +190,7 @@ L'API est compatible avec le format JSONP, vous permettant d'accéder aux métho
 
 Exemple de requête:
 
-{% api_block %}
+{% api_block 'shell' %}
   {% curl_cmd %} "{{ site.data.urls['customers']['show']['url'] | api_url }}?callback=afficherInfo"
 {% endapi_block %}
 

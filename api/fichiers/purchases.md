@@ -30,29 +30,29 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [
   {
-  "id": 1,
-  "purchase_id": 1,
-  "document_name": "facture_123.pdf",
-  "document_size": 18884,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
-  "title": "Location serveur dédié"
+    "id": 1,
+    "purchase_id": 1,
+    "document_name": "facture_123.pdf",
+    "document_size": 18884,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/1/download",
+    "title": "Location serveur dédié"
   },
   {
-  "id": 2,
-  "purchase_id": 2,
-  "document_name": "bill_321.pdf",
-  "document_size": 33442,
-  "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
-  "title": "Comptabilité 05/2014"
+    "id": 2,
+    "purchase_id": 2,
+    "document_name": "bill_321.pdf",
+    "document_size": 33442,
+    "download_url": "https://www.facturation.pro/firms/FIRM_ID/assets/2/download",
+    "title": "Comptabilité 05/2014"
   }
 ]
 {% endapi_block %}

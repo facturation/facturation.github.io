@@ -12,7 +12,7 @@ Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engage
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o proforma.pdf "{{ request.url | api_url }}?proforma=1"
 {% endapi_block %}

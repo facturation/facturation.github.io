@@ -12,7 +12,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -21,7 +21,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des devis.
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 302 Redirected
 Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
 {% endapi_block %}

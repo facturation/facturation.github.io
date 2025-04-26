@@ -42,5 +42,5 @@ Nous proposons une documentation de notre API en une seule page, que vous pouvez
 L'URL à fournir à votre IA est:<br/>
 ```https://facturation.dev/llm```
 
-Vous pouvez aussi récupérer cette documentation à l'aide de la commande:
+Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
 ```curl https://facturation.dev/llm```

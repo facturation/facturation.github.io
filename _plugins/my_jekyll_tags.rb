@@ -30,7 +30,7 @@ module MyJekyllTags
 
     # curl_cmd write: true, user_agent: 'toto'
     def render(context)
-      res = "curl -i -S -u IdentifiantApi:CleApi -H '#{user_agent}: MonApp (patrick@camping.test)' \\\n"
+      res = "curl -i -S -u IdentifiantApi:CleApi -H '#{user_agent}: MonApp (patrick@seniordev.test)' \\\n"
       write_mode? ? "#{res}-H 'Content-Type: application/json; charset=utf-8' \\\n" : res
     end
 
@@ -49,7 +49,7 @@ module MyJekyllTags
     def initialize(tag_name, style, tokens)
       super
       @style = eval(style)
-      @style = "sh" if @style.to_s.strip == ""
+      @style = "shell" if @style.to_s.strip == ""
     end
 
     def render(context)

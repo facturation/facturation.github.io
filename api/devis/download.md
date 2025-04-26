@@ -12,7 +12,7 @@ Télécharger le devis n° ID au format PDF.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
  -o devis.pdf "{{ request.url | api_url }}"
 {% endapi_block %}

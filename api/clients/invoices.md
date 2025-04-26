@@ -12,7 +12,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -21,7 +21,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
 La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 302 Redirected
 Location: /firms/{FIRM_ID}/invoices.json?customer_id=180371
 {% endapi_block %}

@@ -44,13 +44,13 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd %} "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'json' %}
 [{
   "account_code": "411PANDORA",
   "api_custom": null,

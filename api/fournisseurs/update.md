@@ -12,7 +12,7 @@ Mise à jour d'un fournisseur existant.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"city":"Palo Alto","country":"US","street": "1 infinite loop"}' \
 "{{ request.url | api_url }}"
@@ -20,6 +20,6 @@ Mise à jour d'un fournisseur existant.
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}

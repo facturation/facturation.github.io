@@ -12,26 +12,26 @@ Affiche les informations sur le compte de l'utilisateur.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd -%}
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'json' -%}
 {
-  "id":1,
+  "id": 1,
   "email": "moi@google.com",
-  "firms" : [
-  {
-  "id":1,
-  "name": "Ma petite entreprise"
-  },
-  {
-  "id":2,
-  "name": "Ma grosse entreprise"
-  }
+  "firms": [
+    {
+      "id": 1,
+      "name": "Ma petite entreprise"
+    },
+    {
+      "id": 2,
+      "name": "Ma grosse entreprise"
+    }
   ]
 }
 {% endapi_block %}

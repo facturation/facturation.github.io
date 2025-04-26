@@ -22,7 +22,7 @@ Permet d'envoyer une facture finalisée par courriel.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -d '{
 "to": "machin@test.com",
@@ -36,6 +36,6 @@ Permet d'envoyer une facture finalisée par courriel.
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 {% endapi_block %}

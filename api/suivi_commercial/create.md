@@ -12,7 +12,7 @@ Création d'un nouveau suivi commercial. On obtient en retour le code JSON du su
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{"title":"En attente de réponse","status":"1"}' \
 "{{ request.url | api_url }}"
@@ -20,10 +20,12 @@ Création d'un nouveau suivi commercial. On obtient en retour le code JSON du su
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 201 Created
 Location: /firms/FIRM_ID/followups/1234.json
+{% endapi_block %}
 
+{% api_block 'json' -%}
 {
   "id": 1234,
   "status": 1,

@@ -12,7 +12,7 @@ Mise à jour d'un produit existant.
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{"title":"Optimisation module Prestashop","api_custom":"CUSTOM_SHOP"}' \
 "{{ request.url | api_url }}"
@@ -20,6 +20,6 @@ Mise à jour d'un produit existant.
 
 ## Réponse
 
-{% api_block('json') %}
+{% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}

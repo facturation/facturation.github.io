@@ -17,36 +17,39 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 
 ## Requête
 
-{% api_block %}
+{% api_block 'shell' %}
 {% curl_cmd write: true -%}
 -X PATCH -d '{
-"id": "ID",
-"api_custom": null,
-"api_id": null,
-"customer_id": 1,
-"title": "Creation internet",
-"quote_status": "1",
-"discount": "0.0",
-"information": "TEST",
-"pay_before": "30",
-"penalty": "3.0",
-"items": [{
-"position": "1",
-"product_id": "10",
-"quantity": "1.0",
-"title": "Campagne pub",
-"unit_price": "300.0",
-"nature": "2"
-}, {
-"id": "889",
-"_destroy": "1"
-}]
+  "id": "ID",
+  "api_custom": null,
+  "api_id": null,
+  "customer_id": 1,
+  "title": "Creation internet",
+  "quote_status": "1",
+  "discount": "0.0",
+  "information": "TEST",
+  "pay_before": "30",
+  "penalty": "3.0",
+  "items": [
+    {
+      "position": "1",
+      "product_id": "10",
+      "quantity": "1.0",
+      "title": "Campagne pub",
+      "unit_price": "300.0",
+      "nature": "2"
+    },
+    {
+      "id": "889",
+      "_destroy": "1"
+    }
+  ]
 }'
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
 ## Réponse
 
-{% api_block('json') -%}
+{% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}

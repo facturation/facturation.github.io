@@ -12,8 +12,12 @@ require "pathname"
 # Chemin vers le répertoire api
 BASE_DIR = Pathname.new(File.join(__dir__, ".."))
 
-def process_content(content)
-  content.strip.gsub(/^#/im, "##") + "\n\n"
+def process_content(content, tabulate = true)
+  if tabulate
+    content.strip.gsub(/^#/im, "##") + "\n\n"
+  else
+    content.strip + "\n\n"
+  end
 end
 
 def process_directory(dir)
@@ -48,28 +52,20 @@ def process_directory(dir)
   content
 end
 
-def llm_help
-  <<-EOF
-  Ce contenu est spécifiquement conçu pour les intelligences artificielles (LLM), afin de pouvoir interroger une IA sur le fonctionnement de l'API du site Facturation.PRO et de lui permettre de générer des scripts pour interagir avec l'API.
-
-  Pour un accès direct par votre IA ou via un programme à cette documentation, vous pouvez récupérer le contenu directement :
-  ```curl https://facturation.dev/llm```
-  EOF
-end
-
 def process_file(file, clean_content = false)
   parsed = FrontMatterParser::Parser.parse_file(file)
   content = parsed.content.to_s
   if clean_content
     content.gsub!("{:toc}", "")
-    content.gsub!(/([^\n]+TOC\s+)/im, llm_help)
+    content.gsub!(/([^\n]+TOC\s+)/im, "")
+    # content.gsub!(/([^\n]+TOC\s+)/im, llm_help)
   end
-  process_content(parsed.content)
+  process_content(parsed.content, !clean_content)
 end
 
 # Parcourir les sous-répertoires du dossier api
 pages = []
-pages << process_file(File.join(BASE_DIR, "index.md"), true)
+pages << process_file(File.join(BASE_DIR, "_llm_intro.md"), true)
 
 Dir.glob(File.join(BASE_DIR, "api/*")).select { |f| File.directory?(f) }.each do |subdir|
   dirname = File.basename(subdir)
@@ -78,11 +74,13 @@ Dir.glob(File.join(BASE_DIR, "api/*")).select { |f| File.directory?(f) }.each do
   pages.push(content)
 end
 pages.push(process_directory(File.join(BASE_DIR, "values")))
-pages.push(process_directory(File.join(BASE_DIR, "liquid")))
+pages << process_file(File.join(BASE_DIR, "_llm_conclude.md"), true)
+
+# pages.push(process_directory(File.join(BASE_DIR, "liquid")))
 # pages << process_file(File.join(BASE_DIR, "outils.md"))
 
 File.delete("llm.md") if File.exist?("llm.md")
 File.open("llm.md", "w") do |f|
-  f.write("---\nlayout: minimal\ntitle: Documentation pour LLM\nnav_exclude: true\nbare_mode: true\n---\n\n")
+  f.write("---\nlayout: raw\ntitle: Documentation pour LLM\nnav_exclude: true\nsearch_exclude: true\nbare_mode: true\n---\n\n")
   f.write(pages.join("\n\n"))
 end
