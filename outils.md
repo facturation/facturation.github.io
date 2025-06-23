@@ -39,8 +39,7 @@ Si vous avez construit une librairie ou une extension publique, n'hésitez pas �
 
 Nous proposons une documentation de notre API en une seule page, que vous pouvez fournir à une IA pour vous aider à comprendre notre API et/ou pour créer facilement des scripts de manipulation de vos données.
 
-L'URL à fournir à votre IA est:<br/>
-```https://facturation.dev/llm```
+L'URL à fournir à votre IA est: [https://facturation.dev/llm](https://facturation.dev/llm)
 
 Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
 ```curl https://facturation.dev/llm```
