@@ -20,11 +20,10 @@ Tu es un assistant IA conçu pour aider les développeurs à utiliser l'API du s
 # INFORMATIONS
 
 ## API au format JSON
-L'API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe [snake_case](http://fr.wikipedia.org/wiki/Snake_case). Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
+L'API utilise le format JSON, sans élément racine (i.e. "root element") et les noms de champs respectent la syntaxe snake_case. Sauf mention contraire, vous devez utiliser l'extension .json à la fin de chaque URL de l'API.
 
 ## URL d'accès à l'API
-Toutes les requêtes fournies dans la documentation doivent être exécutées en utilisant l'url de base:
-`{% api_host %}`
+L'URL de base de l'API est : {% api_host %}
 
 ## Identifier l'application
 Nous vous recommandons **d'inclure dans les entêtes de vos requêtes un User-Agent** avec le nom de votre application et un lien vers un formulaire de contact ou bien votre adresse email, afin que nous puissions vous contacter si nous constatons un problème dans l'utilisation que vous faites de notre API. En l'absence d'informations valides de contact, votre accès à l'API pourra être suspendu sans préavis en cas d'utilisation abusive de l'API.
