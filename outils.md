@@ -15,6 +15,15 @@ Pour configurer vos tests sur cet outil, vous devez ajouter un nouveau "hook" et
 
 Si besoin, il existe des services alternatifs plus ou moins évolués tel que [hookdeck.com](https://hookdeck.com/) ou bien [RequestBin](https://requestbin.com/) pour déboguer vos requêtes.
 
+## Intelligence artificielle / LLM
+
+Nous proposons une documentation de notre API en une seule page, que vous pouvez fournir à une IA pour vous aider à comprendre notre API et/ou pour créer facilement des scripts de manipulation de vos données.
+
+L'URL à fournir à votre IA est: [https://facturation.dev/llm](https://facturation.dev/llm)
+
+Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
+```curl https://facturation.dev/llm```
+
 ## Librairies
 
 Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
@@ -34,12 +43,3 @@ Voici une liste de librairies et d'extensions développées par des tiers qui pe
 - Package [Laravel](https://github.com/atome-dev/laravel-facturationpro-api)
 
 Si vous avez construit une librairie ou une extension publique, n'hésitez pas à nous le faire savoir pour qu'elle soit ajoutée sur cette page.
-
-## Intelligence artificielle / LLM
-
-Nous proposons une documentation de notre API en une seule page, que vous pouvez fournir à une IA pour vous aider à comprendre notre API et/ou pour créer facilement des scripts de manipulation de vos données.
-
-L'URL à fournir à votre IA est: [https://facturation.dev/llm](https://facturation.dev/llm)
-
-Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
-```curl https://facturation.dev/llm```
