@@ -29,17 +29,16 @@ Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
 Notre API est de type REST, et elle est compatible [ActiveResource](https://github.com/rails/activeresource) :
 
 - En Ruby ou Rails, vous pouvez utiliser [cette librairie](https://www.facturation.pro/facturation.rb)
-- [Unirest](http://unirest.io/) propose des librairies en PHP, Java, Ruby, Python et Objective-C pour utiliser facilement une API REST telle que la notre.
 - En PHP, il existe des librairies qui permettent de s'interconnecter avec une API de type ActiveResource (cf. [ActiveResource](https://github.com/Indatus/ActiveResource) ou bien [PhpActiveResource](https://github.com/phurni/PhpActiveResource)).
 
-## Librairies tierces
+## Applications tierces
 
-Voici une liste de librairies et d'extensions développées par des tiers qui peuvent vous aider à vous interconnecter avec MonAE et MaTPE. Cette liste est fournie à titre d'information, sans aucune garantie de notre part, et pour toute question au sujet de l'une de ces librairies (fonctionnement, bugs, commercialisation, ...), vous devez vous adresser directement à l'auteur concerné.
+Voici une liste d'extensions développées par des tiers qui peuvent vous aider à vous interconnecter avec MonAE et MaTPE. Cette liste est fournie à titre d'information, sans aucune garantie de notre part, et pour toute question au sujet de l'une de ces extensions (fonctionnement, bugs, commercialisation, ...), vous devez vous adresser directement à l'auteur concerné.
 
 - Module [Prestashop](https://store.comexpertise.com/modules/prestashop/facturation.pro-monae-matpe/)
 - Module [WooCommerce](https://wpfacturationpro.fr/)
 - [PHPmonAE](https://github.com/Atome-TM/PHPmonAE) : librairie PHP.
-- Bundle pour [PHP Symfony 3](https://github.com/Tiloweb/tiloweb-matpe) et [Symphony 4](https://github.com/Isoka/monae-symfony4-service)
+- Bundle pour [PHP Symfony 3](https://github.com/Tiloweb/tiloweb-matpe)
 - Package [Laravel](https://github.com/atome-dev/laravel-facturationpro-api)
 
 Si vous avez construit une librairie ou une extension publique, n'hésitez pas à nous le faire savoir pour qu'elle soit ajoutée sur cette page.
