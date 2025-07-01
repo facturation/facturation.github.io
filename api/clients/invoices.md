@@ -8,7 +8,7 @@ nav_order: 2000
 {% assign request = site.data.urls.customers.invoices -%}
 ## {{ request.method }} {{ request.url }}
 
-liste des factures du client ID, par groupe de {{ site.api.per_page }} résultats.
+liste des {{ site.api.per_page }} factures les plus récentes du client ID.
 
 ## Requête
 
@@ -19,7 +19,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 ## Réponse
 
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des factures. Pour ovtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
 
 {% api_block 'plaintext' %}
 Status: 302 Redirected

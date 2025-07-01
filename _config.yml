@@ -44,7 +44,7 @@ aux_links:
 
 # paramètres spécifique à la documentation de l'API
 api:
-  per_page: 30
+  per_page: 50
   seo_title: "API & web service de facturation pour entreprise"
 
 # incremental: true
