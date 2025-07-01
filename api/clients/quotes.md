@@ -19,7 +19,7 @@ liste des {{ site.api.per_page }} devis les plus récents du client ID.
 ## Réponse
 
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la liste des devis. Pour ovtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des devis. Pour obtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
 
 {% api_block 'plaintext' %}
 Status: 302 Redirected
