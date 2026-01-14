@@ -591,6 +591,7 @@ Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
     - `all` : retourne tous les clients (actifs ou archivés)
     - `company` : retourne uniquement les professionnels actifs
     - `individual` : retourne uniquement les particuliers actifs
+    - `missing_siret` : retourne uniquement les entreprises françaises sans SIRET (actives ou archivées)
     - `archived` : retourne uniquement les clients archivés
 
 #### Tri
@@ -926,7 +927,7 @@ Location: /firms/FIRM_ID/assets/1.json
 {% assign request = site.data.urls.customers.quotes -%}
 ### {{ request.method }} {{ request.url }}
 
-liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
+liste des {{ site.api.per_page }} devis les plus récents du client ID.
 
 ### Requête
 
@@ -937,7 +938,7 @@ liste des devis du client ID, par groupe de {{ site.api.per_page }}résultats.
 ### Réponse
 
 Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la liste des devis.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des devis. Pour obtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
 
 {% api_block 'plaintext' %}
 Status: 302 Redirected
@@ -949,7 +950,7 @@ Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
 {% assign request = site.data.urls.customers.invoices -%}
 ### {{ request.method }} {{ request.url }}
 
-liste des factures du client ID, par groupe de {{ site.api.per_page }} résultats.
+liste des {{ site.api.per_page }} factures les plus récentes du client ID.
 
 ### Requête
 
@@ -960,7 +961,7 @@ liste des factures du client ID, par groupe de {{ site.api.per_page }} résultat
 ### Réponse
 
 Cette fonction est un raccourci vers la liste des factures, liste restreinte aux factures du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la liste des factures.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des factures. Pour obtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
 
 {% api_block 'plaintext' %}
 Status: 302 Redirected
