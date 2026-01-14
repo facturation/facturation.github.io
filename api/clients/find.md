@@ -26,6 +26,7 @@ Affiche la liste des clients, par groupe de {{ site.api.per_page }} résultats.
     - `all` : retourne tous les clients (actifs ou archivés)
     - `company` : retourne uniquement les professionnels actifs
     - `individual` : retourne uniquement les particuliers actifs
+    - `missing_siret` : retourne uniquement les entreprises françaises sans SIRET (actives ou archivées)
     - `archived` : retourne uniquement les clients archivés
 
 ### Tri
