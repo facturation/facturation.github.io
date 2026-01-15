@@ -111,7 +111,7 @@ Notre API vous autorise à réaliser :
 * 600 requêtes par période de 5 minutes, soit en moyenne deux requêtes par seconde
 * 10000 requêtes par jour
 
-Si vous dépassez l'une ou l'autre de ces limitations, vous receverez un code d'erreur 429, avec un message "Retry later" dans le corps de la réponse.
+Si vous dépassez l'une ou l'autre de ces limitations, vous receverez un code d'erreur 429, avec un message "Retry later" dans le corps de la réponse et vous pouvez connaitre le temps restant avant de pouvoir refaire une requête en consultant l'entête "Retry-After" de la réponse (nombre de secondes).
 
 Afin de suivre vos quotas, vous pouvez consulter les champs d'entête suivant:
 * X-RateLimit-Limit: nombre total de requêtes autorisées
