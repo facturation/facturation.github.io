@@ -35,7 +35,7 @@ Notre API est de type REST, et elle est compatible [ActiveResource](https://gith
 
 Voici une liste d'extensions développées par des tiers qui peuvent vous aider à vous interconnecter avec MonAE et MaTPE. Cette liste est fournie à titre d'information, sans aucune garantie de notre part, et pour toute question au sujet de l'une de ces extensions (fonctionnement, bugs, commercialisation, ...), vous devez vous adresser directement à l'auteur concerné.
 
-- Module [Prestashop](https://store.comexpertise.com/modules/prestashop/facturation.pro-monae-matpe/)
+- Un MCP, des spécifications OpenAPI, et une collection Postman sont maintenus et [mis à disposition par Dixpix](https://github.com/dixpix/Facturation.pro)
 - Module [WooCommerce](https://wpfacturationpro.fr/)
 - [PHPmonAE](https://github.com/Atome-TM/PHPmonAE) : librairie PHP.
 - Bundle pour [PHP Symfony 3](https://github.com/Tiloweb/tiloweb-matpe)
