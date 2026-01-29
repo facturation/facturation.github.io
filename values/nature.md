@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "nature"
+title: "nature (facturation)"
 parent: "Valeurs spécifiques"
 nav_order: 500
 ---

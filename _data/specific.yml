@@ -455,6 +455,16 @@ nature:
     - 8
   - - Non applicable
     - 9
+purchase_nature:
+  data:
+  - - Achat de biens
+    - 1
+  - - Prestation de service
+    - 2
+  - - Mixte
+    - 5
+  - - Autre
+    - 9
 status_category:
   data:
     Achats/Ventes: 0

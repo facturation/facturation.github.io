@@ -3,7 +3,7 @@ customer:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: company_name
   mode: modifiable
@@ -93,7 +93,7 @@ customer:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: account_code
   mode: modifiable
@@ -138,7 +138,7 @@ customer:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
@@ -173,7 +173,7 @@ customer:
 - key: validity
   mode: modifiable
   title: Durée de validité d'un devis
-  type: int(11)
+  type: int
   help:
 - key: last_invoiced_on
   mode: lecture
@@ -254,7 +254,7 @@ supplier:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: company_name
   mode: modifiable
@@ -344,7 +344,7 @@ supplier:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: account_code
   mode: modifiable
@@ -379,7 +379,7 @@ supplier:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
@@ -405,12 +405,12 @@ quote:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: customer_id
   mode: modifiable
   title: Client
-  type: int(11)
+  type: int
   help:
 - key: customer_identity
   mode: lecture
@@ -430,12 +430,12 @@ quote:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: followup_id
   mode: modifiable
   title: Suivi commercial
-  type: int(11)
+  type: int
   help:
 - key: invoiced_on
   mode: modifiable
@@ -565,7 +565,7 @@ quote:
 - key: user_id
   mode: modifiable
   title: Géré par
-  type: int(11)
+  type: int
   help:
 - key: public_download_url
   mode: lecture
@@ -585,7 +585,7 @@ quote:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
@@ -605,12 +605,12 @@ quote:
 - key: quote_status
   mode: modifiable
   title: Statut du devis
-  type: int(11)
+  type: int
   help:
 - key: quote_ref
   mode: lecture
   title: Devis n°
-  type: int(11)
+  type: int
   help:
 - key: ignore_quote
   mode: modifiable
@@ -646,12 +646,12 @@ invoice:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: customer_id
   mode: modifiable
   title: Client
-  type: int(11)
+  type: int
   help:
 - key: customer_identity
   mode: lecture
@@ -671,12 +671,12 @@ invoice:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: followup_id
   mode: modifiable
   title: Suivi commercial
-  type: int(11)
+  type: int
   help:
 - key: invoiced_on
   mode: modifiable
@@ -806,7 +806,7 @@ invoice:
 - key: user_id
   mode: modifiable
   title: Géré par
-  type: int(11)
+  type: int
   help:
 - key: public_download_url
   mode: lecture
@@ -826,7 +826,7 @@ invoice:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
@@ -851,7 +851,7 @@ invoice:
 - key: quote_id
   mode: lecture
   title: ID Devis associé
-  type: int(11)
+  type: int
   help:
 - key: invoice_ref
   mode: lecture
@@ -871,7 +871,7 @@ invoice:
 - key: payment_mode
   mode: modifiable
   title: Mode de règlement
-  type: int(11)
+  type: int
   help:
 - key: paid_on
   mode: modifiable
@@ -896,7 +896,7 @@ invoice:
 - key: refund_id
   mode: lecture
   title: Avoir sur la facture n°ID
-  type: int(11)
+  type: int
   help: Si la facture est un avoir généré via notre système automatisé, ce champ contient
     l'ID de la facture annulée
 - key: pay_url
@@ -927,13 +927,13 @@ invoice:
 - key: recurring_invoice_id
   mode: lecture
   title: ID de la facture récurrente associée
-  type: int(11)
+  type: int
   help:
 item:
 - key: id
   mode: modifiable
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: quantity
   mode: modifiable
@@ -963,12 +963,12 @@ item:
 - key: product_id
   mode: modifiable
   title: Identifiant du produit
-  type: int(11)
+  type: int
   help:
 - key: position
   mode: modifiable
   title: Ligne n°
-  type: int(11)
+  type: int
   help:
 - key: total
   mode: lecture
@@ -995,7 +995,7 @@ item:
 - key: nature
   mode: modifiable
   title: Type
-  type: int(11)
+  type: int
   help: la nature de la prestation n'est à préciser que pour les auto-entrepreneurs
     et les micro-entrepreneurs, afin de calculer correctement les cotisations sociales.
 - key: sap_nature
@@ -1008,12 +1008,12 @@ purchase:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: supplier_id
   mode: modifiable
   title: Fournisseur
-  type: int(11)
+  type: int
   help:
 - key: supplier_identity
   mode: lecture
@@ -1022,7 +1022,7 @@ purchase:
   help:
 - key: title
   mode: modifiable
-  title: Nature/Libellé
+  title: Libellé
   type: text
   help:
 - key: ref
@@ -1068,7 +1068,7 @@ purchase:
 - key: payment_mode
   mode: modifiable
   title: Mode de règlement
-  type: int(11)
+  type: int
   help:
 - key: payment_ref
   mode: modifiable
@@ -1113,12 +1113,12 @@ purchase:
 - key: serial_number
   mode: lecture
   title: Numéro de pièce
-  type: int(11)
+  type: int
   help:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: accounting_entry
   mode: modifiable
@@ -1139,6 +1139,11 @@ purchase:
   mode: modifiable
   title: Motif de sortie de l'immobilisation
   type: string(255)
+  help:
+- key: nature
+  mode: modifiable
+  title: Nature de l'achat
+  type: int
   help:
 - key: created_at
   mode: lecture
@@ -1168,7 +1173,7 @@ purchase:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
@@ -1179,7 +1184,7 @@ category:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: title
   mode: modifiable
@@ -1189,7 +1194,7 @@ category:
 - key: status
   mode: modifiable
   title: Affectation
-  type: tinyint(4)
+  type: tinyint
   help:
 - key: created_at
   mode: lecture
@@ -1205,7 +1210,7 @@ followup:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: title
   mode: modifiable
@@ -1215,7 +1220,7 @@ followup:
 - key: status
   mode: modifiable
   title: Affectation
-  type: int(11)
+  type: int
   help:
 - key: created_at
   mode: lecture
@@ -1231,7 +1236,7 @@ product:
 - key: id
   mode: lecture
   title: Identifiant
-  type: int(11)
+  type: int
   help:
 - key: ref
   mode: modifiable
@@ -1261,17 +1266,17 @@ product:
 - key: sap_nature
   mode: modifiable
   title: Code activité NOVA
-  type: int(11)
+  type: int
   help:
 - key: nature
   mode: modifiable
   title: Type de facturation
-  type: int(11)
+  type: int
   help:
 - key: category_id
   mode: modifiable
   title: Catégorie
-  type: int(11)
+  type: int
   help:
 - key: notes
   mode: modifiable
@@ -1326,7 +1331,7 @@ product:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
-  type: bigint(20)
+  type: bigint
   help:
 - key: api_custom
   mode: modifiable
