@@ -8,7 +8,7 @@ nav_order: 400
 {% assign request = site.data.urls.followups.update -%}
 ## {{ request.method }} {{ request.url }}
 
-Mise à jour d'un suivi commercial existante.
+Mise à jour d'un suivi commercial existante. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ## Requête
 

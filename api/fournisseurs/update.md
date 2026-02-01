@@ -8,7 +8,7 @@ nav_order: 400
 {% assign request = site.data.urls.suppliers.update -%}
 ## {{ request.method }} {{ request.url }}
 
-Mise à jour d'un fournisseur existant.
+Mise à jour d'un fournisseur existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ## Requête
 

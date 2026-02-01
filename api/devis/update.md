@@ -8,7 +8,8 @@ nav_order: 400
 {% assign request = site.data.urls.quotes.update -%}
 ## {{ request.method }} {{ request.url }}
 
-Mise à jour d'un devis existant.
+Mise à jour d'un devis existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
+Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
 
 Un devis doit toujours contenir au moins une ligne de facturation:
 * Pour ajouter une ligne de facturation, l'id de l'item doit être vide.

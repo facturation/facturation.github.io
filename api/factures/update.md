@@ -12,6 +12,9 @@ Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des 
 
 La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
 
+Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
+Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
+
 ## Paramètres
 
 * `type_doc` : par défaut une facture reste dans son état (brouillon ou finalisée) lors de sa mise à jour. Si vous souhaitez changer le status d'une facture brouillon, utilisez la valeur `final` pour finaliser la facture, ou bien `draft` pour rester en mode brouillon. Une facture finalisée ne peut pas changer de status.
