@@ -23,3 +23,5 @@ Mise à jour d'un suivi commercial existante. Il n’est pas nécessaire de four
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.

@@ -325,6 +325,7 @@ Obtenir le détail de l'achat n° ID
 ### {{ request.method }} {{ request.url }}
 
 Mise à jour d'un achat existant.
+Il n'est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -339,6 +340,8 @@ Mise à jour d'un achat existant.
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un achat
 
@@ -524,7 +527,7 @@ Obtenir le détail de la catégorie n° ID.
 {% assign request = site.data.urls.categories.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'une catégorie existante.
+Mise à jour d'une catégorie existante. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -539,6 +542,8 @@ Mise à jour d'une catégorie existante.
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer une catégorie
 
@@ -807,7 +812,7 @@ Obtenir le détail du client n° ID
 {% assign request = site.data.urls.customers.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'un client existant.
+Mise à jour d'un client existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -822,6 +827,8 @@ Mise à jour d'un client existant.
 {% api_block 'plaintext' %}
   Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un client
 
@@ -1392,7 +1399,8 @@ Chaque devis est composé d'une ou plusieurs lignes de facturation (`items`)
 {% assign request = site.data.urls.quotes.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'un devis existant.
+Mise à jour d'un devis existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
+Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
 
 Un devis doit toujours contenir au moins une ligne de facturation:
 * Pour ajouter une ligne de facturation, l'id de l'item doit être vide.
@@ -1437,6 +1445,8 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 {% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un devis
 
@@ -2070,6 +2080,9 @@ Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des 
 
 La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
 
+Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
+Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
+
 ### Paramètres
 
 * `type_doc` : par défaut une facture reste dans son état (brouillon ou finalisée) lors de sa mise à jour. Si vous souhaitez changer le status d'une facture brouillon, utilisez la valeur `final` pour finaliser la facture, ou bien `draft` pour rester en mode brouillon. Une facture finalisée ne peut pas changer de status.
@@ -2093,6 +2106,8 @@ Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal 
 {% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer une facture
 
@@ -2733,7 +2748,7 @@ Obtenir le détail du fournisseur n°ID.
 {% assign request = site.data.urls.suppliers.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'un fournisseur existant.
+Mise à jour d'un fournisseur existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -2748,6 +2763,8 @@ Mise à jour d'un fournisseur existant.
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un fournisseur
 
@@ -2910,7 +2927,7 @@ Obtenir le détail du produitn° ID.
 {% assign request = site.data.urls.products.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'un produit existant.
+Mise à jour d'un produit existant. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -2925,6 +2942,8 @@ Mise à jour d'un produit existant.
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un produit
 
@@ -3192,7 +3211,7 @@ Obtenir le détail du suivi commercial n° ID.
 {% assign request = site.data.urls.followups.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'un suivi commercial existante.
+Mise à jour d'un suivi commercial existante. Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
 ### Requête
 
@@ -3207,6 +3226,8 @@ Mise à jour d'un suivi commercial existante.
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
 
 ## Supprimer un suivi commercial
 
@@ -3269,7 +3290,13 @@ Voici les valeurs spécifiques des délais de paiement
 
 Si vous avez définit des valeurs personnalisées de délais de règlement, les valeurs correspondantes sont documentées directement dans la page de gestion des délais personnalisés (i.e. dans la rubrique Paramètres / Facturation)
 
-## nature
+## nature (achat)
+
+Voici les différentes nature d'achats possible
+
+{% include values.md entries=site.data.specific.purchase_nature.data field='nature' %}
+
+## nature (facturation)
 
 Voici les différentes nature possible pour les lignes de facturation lorsque vous gérez une auto-entreprise ou une micro-entreprise
 

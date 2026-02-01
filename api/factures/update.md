@@ -38,3 +38,5 @@ Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal 
 {% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.

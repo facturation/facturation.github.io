@@ -24,3 +24,5 @@ Il n'est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquem
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.

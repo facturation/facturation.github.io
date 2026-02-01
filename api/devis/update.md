@@ -54,3 +54,5 @@ Un devis doit toujours contenir au moins une ligne de facturation:
 {% api_block 'plaintext' -%}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.

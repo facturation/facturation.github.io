@@ -23,3 +23,5 @@ Mise à jour d'un produit existant. Il n’est pas nécessaire de fournir tous l
 {% api_block 'plaintext' %}
 Status: 200 OK
 {% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
