@@ -1,5 +1,7 @@
 ---
 layout: raw
 title: Documentation pour LLM
+redirect_from:
+  - /llm
 ---
 {% include llm.md %}
