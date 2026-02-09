@@ -1,7 +1,7 @@
 Ce contenu est spécifiquement conçu pour les intelligences artificielles (LLM), afin de pouvoir interroger une IA sur le fonctionnement de l'API du site Facturation.PRO et de lui permettre de générer des scripts pour interagir avec l'API.
 
 Pour un accès direct par votre IA ou via un programme à cette documentation, vous pouvez récupérer le contenu directement :
-```curl https://facturation.dev/llm```
+```curl https://facturation.dev/llms.txt```
 
 # INSTRUCTIONS GENERALES
 

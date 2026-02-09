@@ -1,10 +1,5 @@
 ---
-# old file
 layout: raw
 title: Documentation pour LLM
-nav_exclude: true
-search_exclude: true
-bare_mode: true
 ---
-
 {% include llm.md %}

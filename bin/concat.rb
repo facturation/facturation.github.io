@@ -79,8 +79,8 @@ pages << process_file(File.join(BASE_DIR, "_llm_conclude.md"), true)
 # pages.push(process_directory(File.join(BASE_DIR, "liquid")))
 # pages << process_file(File.join(BASE_DIR, "outils.md"))
 
-File.delete("llm.md") if File.exist?("llm.md")
-File.open("llm.md", "w") do |f|
-  f.write("---\nlayout: raw\ntitle: Documentation pour LLM\nnav_exclude: true\nsearch_exclude: true\nbare_mode: true\n---\n\n")
+llm_file = File.join(BASE_DIR, "_includes/llm.md")
+File.delete(llm_file) if File.exist?(llm_file)
+File.open(llm_file, "w") do |f|
   f.write(pages.join("\n\n"))
 end

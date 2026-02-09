@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Outils"
-nav_order: 20000
+nav_order: 50000
 ---
 
 1. TOC
@@ -19,10 +19,10 @@ Si besoin, il existe des services alternatifs plus ou moins évolués tel que [h
 
 Nous proposons une documentation de notre API en une seule page, que vous pouvez fournir à une IA pour vous aider à comprendre notre API et/ou pour créer facilement des scripts de manipulation de vos données.
 
-L'URL à fournir à votre IA est: [https://facturation.dev/llm](https://facturation.dev/llm)
+L'URL à fournir à votre IA est: [https://facturation.dev/llms](https://facturation.dev/llms.txt)
 
 Vous pouvez aussi récupérer cette documentation à l'aide de la commande:<br/>
-```curl https://facturation.dev/llm```
+```curl https://facturation.dev/llms.txt```
 
 ## Librairies
 

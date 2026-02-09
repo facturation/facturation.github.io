@@ -76,3 +76,6 @@ exclude:
   - _plugins/
   - old/
   - bin/
+
+include:
+  - llms.txt
