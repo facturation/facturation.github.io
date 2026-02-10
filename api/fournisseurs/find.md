@@ -33,6 +33,11 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création
   - updated: tri par date de dernière modification
 
+### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de fournisseurs spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri.
+
+
 ## Requête
 
 {% api_block 'shell' %}
