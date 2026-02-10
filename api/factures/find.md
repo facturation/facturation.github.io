@@ -76,7 +76,7 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 
 ### Obtention d'enregistrements spécifiques
 
-Vous avez la possibilité d'obtenir un ensemble de factures spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri.
+Vous avez la possibilité d'obtenir un ensemble de factures spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
 
 ## Requête
 
