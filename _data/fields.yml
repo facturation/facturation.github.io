@@ -215,6 +215,11 @@ customer:
   title: Email facturation
   type: text
   help:
+- key: electronic_address
+  mode: modifiable
+  title: Adresse électronique PA
+  type: string(128)
+  help:
 - key: field1
   mode: modifiable
   title: Champ libre 1
