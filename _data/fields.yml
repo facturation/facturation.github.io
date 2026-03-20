@@ -457,6 +457,12 @@ quote:
   title: Brouillon
   type: boolean
   help:
+- key: balance_year
+  mode: lecture
+  title: Exercice fiscal
+  type: int
+  help: Indique l'année de début de l'exercice fiscal lorsque l'exercice fiscal est
+    personnalisé.
 - key: total
   mode: lecture
   title: Montant total HT
@@ -698,6 +704,12 @@ invoice:
   title: Brouillon
   type: boolean
   help:
+- key: balance_year
+  mode: modifiable
+  title: Exercice fiscal
+  type: int
+  help: Indique l'année de début de l'exercice fiscal lorsque l'exercice fiscal est
+    personnalisé.
 - key: total
   mode: lecture
   title: Montant total HT
@@ -992,11 +1004,12 @@ item:
   mode: modifiable
   title: Style de formattage
   type: string(20)
-  help: Par défaut (ie valeur vide), ce champ indique une ligne de facturation standard.
-    La valeur 'comment' permet d'indiquer qu'il s'agit d'une ligne de commentaire,
-    la valeur 'title' permet d'indiquer une ligne de titre (mise en gras automatiquement),
-    la value 'subtotal' permet d'indiquer une ligne de sous-total et la valeur 'new_page'
-    permet d'indiquer un saut de page.
+  help: 'Par défaut (ie valeur vide), ce champ indique une ligne de facturation standard.
+    La valeur ''comment'' permet d''indiquer qu''il s''agit d''une ligne de commentaire,
+    la valeur ''title'' permet d''indiquer une ligne de titre (mise en gras automatiquement),
+    la value ''subtotal'' permet d''indiquer une ligne de sous-total, la valeur ''new_page''
+    permet d''indiquer un saut de page et la valeur ''subsidy'' permet d''indiquer
+    une déduction à appliquer sur le total TTC (ex: Prime CEE).'
 - key: nature
   mode: modifiable
   title: Type
