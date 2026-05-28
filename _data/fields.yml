@@ -33,7 +33,7 @@ customer:
 - key: street
   mode: modifiable
   title: Adresse de facturation
-  type: string(255)
+  type: string(512)
   help:
 - key: city
   mode: modifiable
