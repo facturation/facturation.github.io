@@ -1,20 +1,36 @@
 ---
 layout: default
-nav_title: 'facturer'
-title: 'Convertir un devis en facture'
+nav_title: 'acompte'
+title: 'Etablir un acompte sur un devis'
 parent: 'Devis'
 nav_order: 700
 ---
-{% assign request = site.data.urls.quotes.invoice -%}
+{% assign request = site.data.urls.quotes.partial_invoice -%}
 ## {{ request.method }} {{ request.url }}
 
-Conversion du devis ID en facture.
+Factuation d'un acompte sur le devis ID.
+
+## Paramètres obligatoires
+
+- `amount` : montant HT de l'acompte
+- `vat` : taux de TVA appliqué à l'acompte si c'est un devis avec TVA
+- `nature` : nature de la prestation si c'est un devis émis par un micro-entrepreneur.
+
+Vous devez obligatoirement fournir soit le taux de TVA, soit la nature de la prestation (selon le type d'entreprise que vous gérez). Le montant de l'acompte doit être strictement inférieur au montant total restant à facturer pour ce taux de TVA ou cette nature de prestation.
+
+Notre outil ne propose pas de faire d'acomptes avec plusieurs taux de TVA ou plusieurs natures de prestation. Il faut si besoin faire un acompte distinct pour chaque taux de TVA ou chaque nature de prestation.
+
+## Paramètres optionnels
+
+- `invoiced_on` : date de la facture d'acompte (par défaut la date du jour)
+- `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture d'acompte
 
 ## Requête
 
 {% api_block 'shell' %}
-{% curl_cmd -%}
- -X POST "{{ request.url | api_url }}"
+{% curl_cmd write: true-%}
+-X POST -d '{"vat": 0.2, "amount": "100","invoiced_on": "2026-06-06"}' \
+"{{ request.url | api_url }}"
 {% endapi_block %}
 
 ### Réponse

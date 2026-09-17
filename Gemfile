@@ -8,7 +8,7 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 gem "jekyll", "~> 4.4.1"
-gem "just-the-docs"
+gem "just-the-docs", "~> 0.10.1"
 gem "jekyll-redirect-from"
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and

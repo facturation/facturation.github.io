@@ -85,6 +85,9 @@ quotes:
   invoice:
     url: "/firms/FIRM_ID/quotes/ID/invoice.json"
     method: POST
+  partial_invoice:
+    url: "/firms/FIRM_ID/quotes/ID/partial_invoice.json"
+    method: POST
 invoices:
   find:
     url: "/firms/FIRM_ID/invoices.json"
