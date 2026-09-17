@@ -1527,12 +1527,15 @@ Notre outil ne propose pas de faire d'acomptes avec plusieurs taux de TVA ou plu
 
 - `invoiced_on` : date de la facture d'acompte (par défaut la date du jour)
 - `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture d'acompte
+- `api_id` : mémorisation d'un ID spécifique pour l'acompte
+- `api_custom` : mémorisation d'une information libre pour l'acompte
+
 
 ### Requête
 
 {% api_block 'shell' %}
 {% curl_cmd write: true-%}
--X POST -d '{"vat": 0.2, "amount": "100","invoiced_on": "2026-06-06"}' \
+-X POST -d '{"vat": 0.2, "amount": "300","invoiced_on": "2026-09-17"}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -1545,62 +1548,79 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
 
 {% api_block 'json' %}
 {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": null,
-  "currency": "EUR",
-  "customer_id": 1,
-  "external_ref": null,
-  "discount": null,
-  "draft": false,
-  "id": 411584,
-  "information": null,
-  "invoice_ref": "201307-4",
-  "invoiced_on": "2013-07-29",
+  "id": 14302655,
+  "customer_id": 25185,
+  "title": "Réparation toiture",
   "language": "fr",
-  "paid_on": null,
-  "pay_before": "60fm",
-  "payment_mode": 0,
-  "payment_ref": null,
-  "penalty": "0.0",
-  "precompte": null,
-  "quote_id": null,
+  "category_id": 1,
+  "followup_id": -1,
+  "invoiced_on": "2026-09-17",
+  "term_on": "2026-10-02",
+  "draft": false,
+  "balance_year": 2026,
+  "total": "300.0",
+  "total_with_vat": "360.0",
+  "currency": "EUR",
   "rebate_percentage": "0.0",
-  "service_personne": false,
-  "tax_percent": null,
-  "tax_title": null,
-  "term_on": "2013-09-30",
-  "title": "Facturation mensuelle",
-  "total": "700.0",
+  "exchange_rate": "1.0",
+  "estimated_rate": false,
   "vat_exemption": null,
+  "vat_country": "IE",
+  "tax_title": null,
+  "tax_percent": null,
+  "penalty": null,
+  "pay_before": "15",
+  "discount": null,
+  "precompte": null,
+  "activity_title": null,
+  "service_personne": false,
+  "accounting_entry": "706200",
+  "information": null,
+  "internal_note": null,
+  "purchase_number": null,
+  "created_at": "2026-09-17T15:06:54.711+02:00",
+  "updated_at": "2026-09-17T15:06:54.684+02:00",
   "items": [
     {
-      "id": 949167,
-      "nature": 9,
-      "optional": false,
-      "position": 1,
-      "product_id": null,
+      "id": 36303847,
       "quantity": "1.0",
-      "style": null,
-      "title": "Affichage pub 1",
-      "total": "500.0",
-      "unit_price": "500.0",
-      "vat": "0.200"
-    },
-    {
-      "id": 949168,
-      "nature": 9,
-      "optional": false,
-      "position": 2,
+      "measure": null,
+      "title": "Acompte sur le devis n°1006",
+      "unit_price": "300.0",
+      "vat": "0.2",
       "product_id": null,
-      "quantity": "1.0",
+      "position": 0,
+      "total": "300.0",
+      "optional": false,
       "style": null,
-      "title": "Affichage pub 2",
-      "total": "200.0",
-      "unit_price": "200.0",
-      "vat": "0.200"
+      "nature": 9,
+      "sap_nature": null
     }
-  ]
+  ],
+  "api_id": null,
+  "api_custom": null,
+  "soft_deleted": false,
+  "hard_delete_on": null,
+  "delivery_on": null,
+  "quote_id": 14302654,
+  "invoice_ref": "2026-61",
+  "external_ref": null,
+  "full_invoice_ref": "2026-61",
+  "payment_mode": 0,
+  "paid_on": null,
+  "payment_ref": null,
+  "paid_in_main_currency": null,
+  "estimated_total_in_main_currency": 360,
+  "refund_id": 0,
+  "pay_url": null,
+  "balance": "360.0",
+  "external": false,
+  "overdue_at": null,
+  "recurring_invoice_id": null,
+  "paid_in_euros": null,
+  "estimated_total_euro_paid": 360,
+  "settlements": [],
+  "files": []
 }
 {% endapi_block %}
 
@@ -1611,11 +1631,18 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
 
 Si des acomptes ont été enregistrés pour le devis, ils seront pris en compte et cette méthode génère la facture de solde en tenant compte des acomptes déjà versés. Sinon l'intégralité du devis est facturé.
 
+### Paramètres optionnels
+
+- `invoiced_on` : date de la facture de solde (par défaut la date du jour)
+- `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture de solde
+- `api_id` : mémorisation d'un ID spécifique pour la facture de solde
+- `api_custom` : mémorisation d'une information libre pour la facture de solde
+
 ### Requête
 
 {% api_block 'shell' %}
 {% curl_cmd -%}
- -X POST "{{ request.url | api_url }}"
+ -X POST "{{ request.url | api_url }}?api_id=99&api_custom=fin_de_chantier"
 {% endapi_block %}
 
 #### Réponse
@@ -1627,62 +1654,92 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
 
 {% api_block 'json' %}
 {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": null,
-  "currency": "EUR",
-  "customer_id": 1,
-  "external_ref": null,
-  "discount": null,
-  "draft": false,
-  "id": 411584,
-  "information": null,
-  "invoice_ref": "201307-4",
-  "invoiced_on": "2013-07-29",
+  "id": 14302656,
+  "customer_id": 25185,
+  "title": "Réparation toiture",
   "language": "fr",
-  "paid_on": null,
-  "pay_before": "60fm",
-  "payment_mode": 0,
-  "payment_ref": null,
-  "penalty": "0.0",
-  "precompte": null,
-  "quote_id": null,
-  "rebate_percentage": "0.0",
-  "service_personne": false,
-  "tax_percent": null,
-  "tax_title": null,
-  "term_on": "2013-09-30",
-  "title": "Facturation mensuelle",
+  "category_id": 1,
+  "followup_id": -1,
+  "invoiced_on": "2026-09-17",
+  "term_on": "2026-10-02",
+  "draft": false,
+  "balance_year": 2026,
   "total": "700.0",
+  "total_with_vat": "840.0",
+  "currency": "EUR",
+  "rebate_percentage": "0.0",
+  "exchange_rate": "1.0",
+  "estimated_rate": false,
   "vat_exemption": null,
+  "vat_country": "FR",
+  "tax_title": null,
+  "tax_percent": null,
+  "penalty": null,
+  "pay_before": "15",
+  "discount": null,
+  "precompte": null,
+  "activity_title": null,
+  "service_personne": false,
+  "accounting_entry": "706200",
+  "information": null,
+  "internal_note": null,
+  "purchase_number": null,
+  "created_at": "2026-09-17T15:07:04.379+02:00",
+  "updated_at": "2026-09-17T15:07:04.335+02:00",
   "items": [
     {
-      "id": 949167,
-      "nature": 9,
-      "optional": false,
-      "position": 1,
-      "product_id": null,
+      "id": 36303848,
       "quantity": "1.0",
+      "measure": null,
+      "title": "Refection de votre toiture",
+      "unit_price": "1000.0",
+      "vat": "0.2",
+      "product_id": null,
+      "position": 1,
+      "total": "1000.0",
+      "optional": false,
       "style": null,
-      "title": "Affichage pub 1",
-      "total": "500.0",
-      "unit_price": "500.0",
-      "vat": "0.200"
+      "nature": 9,
+      "sap_nature": null
     },
     {
-      "id": 949168,
-      "nature": 9,
-      "optional": false,
-      "position": 2,
-      "product_id": null,
+      "id": 36303849,
       "quantity": "1.0",
+      "measure": null,
+      "title": "Acompte n°2026-61",
+      "unit_price": "-300.0",
+      "vat": "0.2",
+      "product_id": null,
+      "position": 2,
+      "total": "-300.0",
+      "optional": false,
       "style": null,
-      "title": "Affichage pub 2",
-      "total": "200.0",
-      "unit_price": "200.0",
-      "vat": "0.200"
+      "nature": 9,
+      "sap_nature": null
     }
-  ]
+  ],
+  "api_id": 99,
+  "api_custom": "fin_de_chantier",
+  "delivery_on": null,
+  "quote_id": 14302654,
+  "invoice_ref": "2026-62",
+  "external_ref": null,
+  "full_invoice_ref": "2026-62",
+  "payment_mode": 0,
+  "paid_on": null,
+  "payment_ref": null,
+  "paid_in_main_currency": null,
+  "estimated_total_in_main_currency": 840,
+  "refund_id": 0,
+  "pay_url": null,
+  "balance": "840.0",
+  "external": false,
+  "overdue_at": null,
+  "recurring_invoice_id": null,
+  "paid_in_euros": null,
+  "estimated_total_euro_paid": 840,
+  "settlements": [],
+  "files": [],
 }
 {% endapi_block %}
 
@@ -2476,123 +2533,94 @@ Vous avez la possibilité d'obtenir un ensemble de factures spécifiques en tran
 {% api_block 'json' %}
 [
   {
-    "api_custom": null,
-    "api_id": null,
-    "category_id": null,
-    "currency": "EUR",
-    "customer_id": 180366,
-    "customer_name": "Big Corp",
-    "external_ref": null,
-    "discount": null,
-    "draft": false,
-    "id": 411588,
-    "information": null,
-    "invoice_ref": "201307-4",
-    "invoiced_on": "2013-07-29",
+    "id": 1,
+    "customer_id": 1,
+    "title": null,
     "language": "fr",
-    "paid_on": null,
-    "pay_before": "60fm",
-    "payment_mode": 0,
-    "payment_ref": null,
-    "penalty": "0.0",
-    "precompte": null,
-    "quote_id": null,
+    "category_id": 1,
+    "followup_id": -1,
+    "invoiced_on": "2025-09-08",
+    "term_on": null,
+    "draft": true,
+    "balance_year": null,
+    "total": "500.0",
+    "total_with_vat": "500.0",
+    "currency": "EUR",
     "rebate_percentage": "0.0",
-    "service_personne": false,
-    "tax_percent": null,
+    "exchange_rate": null,
+    "estimated_rate": false,
+    "vat_exemption": "Autoliquidation art. 196 directive UE 2006/112/CE",
+    "vat_country": "FR",
     "tax_title": null,
-    "term_on": "2013-09-30",
-    "title": "Facturation mensuelle",
-    "total": "700.0",
-    "vat_exemption": null,
-    "items": [
-      {
-        "id": 949167,
-        "nature": 9,
-        "optional": false,
-        "position": 1,
-        "product_id": null,
-        "quantity": "1.0",
-        "style": null,
-        "title": "Affichage pub 1",
-        "total": "500.0",
-        "unit_price": "500.0",
-        "vat": "0.200"
-      },
-      {
-        "id": 949168,
-        "nature": 9,
-        "optional": false,
-        "position": 2,
-        "product_id": null,
-        "quantity": "1.0",
-        "style": null,
-        "title": "Affichage pub 2",
-        "total": "200.0",
-        "unit_price": "200.0",
-        "vat": "0.200"
-      }
-    ]
+    "tax_percent": null,
+    "penalty": null,
+    "pay_before": "15",
+    "discount": null,
+    "precompte": null,
+    "activity_title": null,
+    "service_personne": false,
+    "accounting_entry": "706200",
+    "information": "",
+    "internal_note": "",
+    "purchase_number": "",
+    "created_at": "2025-09-08T14:42:01.191+02:00",
+    "updated_at": "2025-09-08T14:42:01.191+02:00",
+    "api_id": null,
+    "api_custom": null,
+    "soft_deleted": false,
+    "hard_delete_on": null,
+    "mailing": false,
+    "payment_mode": 3,
+    "paid_on": null,
+    "next_run_on": "2025-09-09",
+    "last_run_on": "2025-08-09",
+    "occurrence": null,
+    "frequency": 30
   },
   {
-    "api_custom": null,
-    "api_id": null,
-    "category_id": null,
-    "currency": "EUR",
-    "customer_id": 180366,
-    "customer_name": "Big Corp",
-    "external_ref": null,
-    "discount": null,
-    "draft": false,
-    "id": 411587,
-    "information": null,
-    "invoice_ref": "201307-3",
-    "invoiced_on": "2013-07-29",
+    "id": 2,
+    "customer_id": 2,
+    "title": null,
     "language": "fr",
-    "paid_on": null,
-    "pay_before": "60fm",
-    "payment_mode": 0,
-    "payment_ref": null,
-    "penalty": "0.0",
-    "precompte": null,
-    "quote_id": null,
+    "category_id": 8116,
+    "followup_id": -1,
+    "invoiced_on": "2015-01-20",
+    "term_on": null,
+    "draft": false,
+    "balance_year": null,
+    "total": "10000.0",
+    "total_with_vat": "12000.0",
+    "currency": "EUR",
     "rebate_percentage": "0.0",
-    "service_personne": false,
-    "tax_percent": null,
-    "tax_title": null,
-    "term_on": "2013-09-30",
-    "title": "Facturation mensuelle",
-    "total": "700.0",
-    "paid_in_main_currency": null,
+    "exchange_rate": null,
+    "estimated_rate": false,
     "vat_exemption": null,
-    "items": [
-      {
-        "id": 949165,
-        "nature": 9,
-        "optional": false,
-        "position": 1,
-        "product_id": null,
-        "quantity": "1.0",
-        "style": null,
-        "title": "Affichage pub 1",
-        "total": "500.0",
-        "unit_price": "500.0",
-        "vat": "0.200"
-      },
-      {
-        "id": 949166,
-        "nature": 9,
-        "optional": false,
-        "position": 2,
-        "product_id": null,
-        "quantity": "1.0",
-        "style": null,
-        "title": "Affichage pub 2",
-        "total": "200.0",
-        "unit_price": "200.0",
-        "vat": "0.200"
-      }
-    ]
+    "vat_country": "FR",
+    "tax_title": null,
+    "tax_percent": null,
+    "penalty": "0.0",
+    "pay_before": "60",
+    "discount": "0.0",
+    "precompte": null,
+    "activity_title": null,
+    "service_personne": false,
+    "accounting_entry": "706000",
+    "information": "",
+    "internal_note": "",
+    "purchase_number": "",
+    "created_at": "2015-01-20T16:57:06.000+01:00",
+    "updated_at": "2015-04-15T04:05:10.205+02:00",
+    "api_id": null,
+    "api_custom": null,
+    "soft_deleted": false,
+    "hard_delete_on": null,
+    "mailing": false,
+    "payment_mode": 0,
+    "paid_on": null,
+    "next_run_on": "2015-07-15",
+    "last_run_on": "2015-04-15",
+    "occurrence": null,
+    "frequency": 90
   }
 ]
 {% endapi_block %}
@@ -2616,29 +2644,35 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
 {% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
+  "frequency": "30",
+  "draft": "0",
+  "customer_id": "1",
+  "next_run_on": "2026-09-09",
   "currency": "EUR",
-  "customer_id": 1,
-  "invoiced_on": "2013-07-29",
-  "language": "fr",
-  "pay_before": "60fm",
-  "penalty": "0.0",
-  "title": "Facturation mensuelle",
+  "title": "Emplacement publicitaire",
   "items": [
     {
-      "position": 1,
-      "quantity": "1.0",
-      "title": "Affichage pub 1",
-      "unit_price": "500",
-      "vat": "0.200"
-    },
-    {
-      "position": 2,
-      "quantity": "1.0",
-      "title": "Affichage pub 2",
-      "unit_price": "200",
-      "vat": "0.200"
+      "position": "1",
+      "style": "",
+      "title": "Affichage publicité",
+      "product_id": "",
+      "quantity_measure": "1",
+      "vat": "0.2",
+      "unit_price": "250",
+      "nature": "9"
     }
-  ]
+  ],
+  "rebate_percentage": "0",
+  "language": "fr",
+  "pay_before": "30",
+  "mailing": "1",
+  "email_attributes": {
+    "to": "laurent@test.com",
+    "cc": "",
+    "bcc": "",
+    "subject": "Votre facture",
+    "message": "Bonjour\r\n\r\nVeuillez trouver ci-joint la facture %{reference} à régler avant le %{echeance}.\r\nEn vous remerciant,\r\n\r\nCordialement,\r\nAds Corp"
+  }
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
@@ -2716,7 +2750,7 @@ Location: /firms/FIRM_ID/invoices/1.json
 {% assign request = site.data.urls.recurring_invoices.show -%}
 ### {{ request.method }} {{ request.url }}
 
-Obtenir le détail de la facture n° ID<br/>
+Obtenir le détail de la facture récurrente n° ID.<br/>
 Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
 ### Requête
@@ -2730,64 +2764,80 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
 {% api_block 'json' -%}
 {
-  "api_custom": null,
-  "api_id": null,
-  "category_id": null,
-  "currency": "EUR",
-  "customer_id": 1,
-  "external_ref": null,
-  "discount": null,
-  "draft": false,
   "id": 1,
-  "information": null,
-  "invoice_ref": "201307-4",
-  "invoiced_on": "2013-07-29",
+  "customer_id": 1,
+  "title": null,
   "language": "fr",
-  "paid_on": null,
-  "pay_before": "60fm",
-  "payment_mode": 0,
-  "payment_ref": null,
-  "penalty": "0.0",
-  "precompte": null,
-  "quote_id": null,
+  "category_id": 1,
+  "followup_id": -1,
+  "invoiced_on": "2025-09-08",
+  "term_on": null,
+  "draft": true,
+  "balance_year": null,
+  "total": "500.0",
+  "total_with_vat": "500.0",
+  "currency": "EUR",
   "rebate_percentage": "0.0",
-  "service_personne": false,
-  "tax_percent": null,
+  "exchange_rate": null,
+  "estimated_rate": false,
+  "vat_exemption": "Autoliquidation art. 196 directive UE 2006/112/CE",
+  "vat_country": "FR",
   "tax_title": null,
-  "term_on": "2013-09-30",
-  "title": "Facturation mensuelle",
-  "total": "700.0",
-  "paid_in_main_currency": null,
-  "vat_exemption": null,
+  "tax_percent": null,
+  "penalty": null,
+  "pay_before": "15",
+  "discount": null,
+  "precompte": null,
+  "activity_title": null,
+  "service_personne": false,
+  "accounting_entry": "706200",
+  "information": "",
+  "internal_note": "",
+  "purchase_number": "",
+  "created_at": "2025-09-08T14:42:01.191+02:00",
+  "updated_at": "2025-09-08T14:42:01.191+02:00",
+  "api_id": null,
+  "api_custom": null,
+  "soft_deleted": false,
+  "hard_delete_on": null,
+  "mailing": false,
+  "payment_mode": 3,
+  "paid_on": null,
+  "next_run_on": "2025-09-09",
+  "last_run_on": "2025-08-09",
+  "occurrence": null,
+  "frequency": 30,
   "items": [
     {
-      "id": 949167,
-      "nature": 9,
-      "optional": false,
-      "position": 1,
-      "product_id": null,
+      "id": 10000,
       "quantity": "1.0",
-      "style": null,
-      "title": "Affichage pub 1",
-      "total": "500.0",
+      "measure": null,
+      "title": "Prestation %{mois}",
       "unit_price": "500.0",
-      "vat": "0.200"
-    },
-    {
-      "id": 949168,
-      "nature": 9,
-      "optional": false,
-      "position": 2,
+      "vat": "0.0",
       "product_id": null,
-      "quantity": "1.0",
+      "position": 1,
+      "total": "500.0",
+      "optional": false,
       "style": null,
-      "title": "Affichage pub 2",
-      "total": "200.0",
-      "unit_price": "200.0",
-      "vat": "0.200"
+      "nature": 9,
+      "sap_nature": null
     }
-  ]
+  ],
+  "invoice_ids": [
+    10,
+    25
+  ],
+  "email": {
+    "id": 222,
+    "to": "laurent@test.com",
+    "cc": null,
+    "bcc": null,
+    "subject": "Votre facture",
+    "message": "Bonjour Laurent\r\n\r\nVeuillez trouver ci-joint la facture %{reference} à régler avant le %{echeance}.\r\nEn vous remerciant,\r\n\r\nCordialement,\r\nJohn\r\nTest Corp"
+  }
 }
+
 {% endapi_block -%}
 
 ## Modifier une facture récurrente
@@ -2795,28 +2845,14 @@ Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 {% assign request = site.data.urls.recurring_invoices.update -%}
 ### {{ request.method }} {{ request.url }}
 
-Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des données est modifiable, par contre, une fois la facture finalisée, tout ce qui influe sur le montant de la facturation ne peut plus être modifié. Pour annuler une facture, vous devez faire un avoir.
+Mise à jour de la facture récurrente n° ID. Il n'est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
 
-La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
-
-Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
-Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
-
-### Paramètres
-
-* `type_doc` : par défaut une facture reste dans son état (brouillon ou finalisée) lors de sa mise à jour. Si vous souhaitez changer le status d'une facture brouillon, utilisez la valeur `final` pour finaliser la facture, ou bien `draft` pour rester en mode brouillon. Une facture finalisée ne peut pas changer de status.
-
-#### Remarques
-
-Pour enregistrer différents modes de règlement sur une facture, utilisez le mécanisme des [règlements multiples](/api/reglements). Veuillez noter que le système de règlement multiple est uniquement prévu pour enregistrer les différents modes de règlement d'une facture, il ne s'agit pas d'un système de gestion des paiements en plusieurs fois. Pour un paiement en plusieurs fois, les méthodes légales sont de facturer vos prestations sous forme de X factures d'acompte et d'une facture de solde, ou bien de passer par un organisme de crédit pour mettre en place des solutions de crédit gratuit ou payant pour vos clients.
 
 ### Requête
 
-Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal le 6 juin 2020
-
 {% api_block 'shell' %}
 {% curl_cmd write: true -%}
--X PATCH -d '{"paid_on":"2020-04-06","payment_mode":1}' \
+-X PATCH -d '{"title":"Emplacement publicitaire premium", "information": "Vous bénéficiez désormais d'un emplacement premium pour votre publicité."}' \
 "{{ request.url | api_url }}"
 {% endapi_block %}
 
@@ -2858,6 +2894,12 @@ Status: 200 OK
 Les lignes de facturations sont transmises sous forme d'un tableau de lignes, dans le champ ```items``` de la facture récurrente
 
 {% include fields.md fields=site.data.fields.item %}
+
+### Email
+
+Si vous activez l'envoi automatique des nouvelles factures (i.e. lorsque le paramètre `mailing` est à `1`), vous devez indiquer les informations relatives à l'email dans le champ ```email``` de la facture récurrente.
+
+{% include fields.md fields=site.data.fields.email %}
 
 
 

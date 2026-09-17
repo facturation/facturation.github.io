@@ -1,7 +1,7 @@
 ---
 - key: today
   title: Date du jour
-  example: 17/09/2026
+  example: 18/09/2026
 - key: month
   title: Ce mois ci
   example: septembre 2026

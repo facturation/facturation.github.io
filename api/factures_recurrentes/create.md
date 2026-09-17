@@ -22,29 +22,35 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
 {% api_block 'shell' %}
 {% curl_cmd write: true-%}
 -X POST -d '{
+  "frequency": "30",
+  "draft": "0",
+  "customer_id": "1",
+  "next_run_on": "2026-09-09",
   "currency": "EUR",
-  "customer_id": 1,
-  "invoiced_on": "2013-07-29",
-  "language": "fr",
-  "pay_before": "60fm",
-  "penalty": "0.0",
-  "title": "Facturation mensuelle",
+  "title": "Emplacement publicitaire",
   "items": [
     {
-      "position": 1,
-      "quantity": "1.0",
-      "title": "Affichage pub 1",
-      "unit_price": "500",
-      "vat": "0.200"
-    },
-    {
-      "position": 2,
-      "quantity": "1.0",
-      "title": "Affichage pub 2",
-      "unit_price": "200",
-      "vat": "0.200"
+      "position": "1",
+      "style": "",
+      "title": "Affichage publicité",
+      "product_id": "",
+      "quantity_measure": "1",
+      "vat": "0.2",
+      "unit_price": "250",
+      "nature": "9"
     }
-  ]
+  ],
+  "rebate_percentage": "0",
+  "language": "fr",
+  "pay_before": "30",
+  "mailing": "1",
+  "email_attributes": {
+    "to": "laurent@test.com",
+    "cc": "",
+    "bcc": "",
+    "subject": "Votre facture",
+    "message": "Bonjour\r\n\r\nVeuillez trouver ci-joint la facture %{reference} à régler avant le %{echeance}.\r\nEn vous remerciant,\r\n\r\nCordialement,\r\nAds Corp"
+  }
 }' \
 "{{ request.url | api_url }}"
 {% endapi_block %}

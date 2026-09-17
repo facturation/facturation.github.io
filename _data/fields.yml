@@ -1123,11 +1123,6 @@ recurring_invoice:
   title: Lignes de facturation
   type: array
   help:
-- key: files
-  mode: lecture
-  title: Fichiers joints
-  type: array
-  help:
 - key: api_id
   mode: modifiable
   title: API - Référence numérique libre
@@ -1147,11 +1142,6 @@ recurring_invoice:
   mode: lecture
   title: Date définitive de la suppression
   type: date
-  help:
-- key: mailing
-  mode: modifiable
-  title: Transmettre par courriel
-  type: boolean
   help:
 - key: payment_mode
   mode: modifiable
@@ -1187,6 +1177,16 @@ recurring_invoice:
   mode: lecture
   title: Tableau des IDs des factures associées à cette facture récurrente
   type: array
+  help:
+- key: mailing
+  mode: modifiable
+  title: Transmettre par courriel
+  type: boolean
+  help:
+- key: email
+  mode: modifiable
+  title: Configuration de l'email si la facture doit être transmise par courriel
+  type: hash
   help:
 item:
 - key: id
@@ -1597,4 +1597,30 @@ product:
   mode: modifiable
   title: API - Texte libre
   type: string(255)
+  help:
+email:
+- key: to
+  mode: modifiable
+  title: Destinataire(s)
+  type: string(255)
+  help:
+- key: cc
+  mode: modifiable
+  title: Copie
+  type: string(255)
+  help:
+- key: bcc
+  mode: modifiable
+  title: Copie cachée
+  type: string(255)
+  help:
+- key: subject
+  mode: modifiable
+  title: Sujet
+  type: string(255)
+  help:
+- key: message
+  mode: modifiable
+  title: Message
+  type: text
   help:
