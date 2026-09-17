@@ -184,6 +184,9 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - created: tri par date de création d'un achat (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'un achat (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
 
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble d'achats spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
 
 ### Requête
 
@@ -604,6 +607,9 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
     - `created` : tri par date de création
     - `updated` : tri par date de dernière modification
 
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de clients spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
 
 ### Requête
 
@@ -921,29 +927,6 @@ Location: /firms/FIRM_ID/assets/1.json
 }
 {% endapi_block %}
 
-## Devis d'un client
-
-{% assign request = site.data.urls.customers.quotes -%}
-### {{ request.method }} {{ request.url }}
-
-liste des {{ site.api.per_page }} devis les plus récents du client ID.
-
-### Requête
-
-{% api_block 'shell' %}
-{% curl_cmd %} "{{ request.url | api_url }}"
-{% endapi_block %}
-
-### Réponse
-
-Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
-La réponse est donc une redirection vers la requête à exécuter sur la liste des devis. Pour obtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
-
-{% api_block 'plaintext' %}
-Status: 302 Redirected
-Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
-{% endapi_block %}
-
 ## Factures d'un client
 
 {% assign request = site.data.urls.customers.invoices -%}
@@ -965,6 +948,29 @@ La réponse est donc une redirection vers la requête à exécuter sur la liste 
 {% api_block 'plaintext' %}
 Status: 302 Redirected
 Location: /firms/{FIRM_ID}/invoices.json?customer_id=180371
+{% endapi_block %}
+
+## Devis d'un client
+
+{% assign request = site.data.urls.customers.quotes -%}
+### {{ request.method }} {{ request.url }}
+
+liste des {{ site.api.per_page }} devis les plus récents du client ID.
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd %} "{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+Cette fonction est un raccourci vers la liste des devis, liste restreinte aux devis du client ID.
+La réponse est donc une redirection vers la requête à exécuter sur la liste des devis. Pour obtenir les résultats suivants et/ou filtrer ces résultats, vous devez appliquer les paramètres sur l'URL de redirection plutôt que sur l'url d'origine.
+
+{% api_block 'plaintext' %}
+Status: 302 Redirected
+Location: /firms/{FIRM_ID}/quotes.json?customer_id=180371
 {% endapi_block %}
 
 ## Liste des champs
@@ -1111,6 +1117,10 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - billed: tri par date de devis
   - created: tri par date de création d'un devis (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'un devis (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
+
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de devis spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
 
 ### Requête
 
@@ -1496,12 +1506,110 @@ Une facture proforma n'est rien d'autre qu'un devis pour lequel vous vous engage
 
 Vous obtenez le fichier PDF de la facture proforma demandée.
 
-## Convertir un devis en facture
+## Etablir un acompte sur un devis
+
+{% assign request = site.data.urls.quotes.partial_invoice -%}
+### {{ request.method }} {{ request.url }}
+
+Factuation d'un acompte sur le devis ID.
+
+### Paramètres obligatoires
+
+- `amount` : montant HT de l'acompte
+- `vat` : taux de TVA appliqué à l'acompte si c'est un devis avec TVA
+- `nature` : nature de la prestation si c'est un devis émis par un micro-entrepreneur.
+
+Vous devez obligatoirement fournir soit le taux de TVA, soit la nature de la prestation (selon le type d'entreprise que vous gérez). Le montant de l'acompte doit être strictement inférieur au montant total restant à facturer pour ce taux de TVA ou cette nature de prestation.
+
+Notre outil ne propose pas de faire d'acomptes avec plusieurs taux de TVA ou plusieurs natures de prestation. Il faut si besoin faire un acompte distinct pour chaque taux de TVA ou chaque nature de prestation.
+
+### Paramètres optionnels
+
+- `invoiced_on` : date de la facture d'acompte (par défaut la date du jour)
+- `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture d'acompte
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd write: true-%}
+-X POST -d '{"vat": 0.2, "amount": "100","invoiced_on": "2026-06-06"}' \
+"{{ request.url | api_url }}"
+{% endapi_block %}
+
+#### Réponse
+
+{% api_block 'plaintext' %}
+Status: 201 Created
+Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
+{% endapi_block %}
+
+{% api_block 'json' %}
+{
+  "api_custom": null,
+  "api_id": null,
+  "category_id": null,
+  "currency": "EUR",
+  "customer_id": 1,
+  "external_ref": null,
+  "discount": null,
+  "draft": false,
+  "id": 411584,
+  "information": null,
+  "invoice_ref": "201307-4",
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "paid_on": null,
+  "pay_before": "60fm",
+  "payment_mode": 0,
+  "payment_ref": null,
+  "penalty": "0.0",
+  "precompte": null,
+  "quote_id": null,
+  "rebate_percentage": "0.0",
+  "service_personne": false,
+  "tax_percent": null,
+  "tax_title": null,
+  "term_on": "2013-09-30",
+  "title": "Facturation mensuelle",
+  "total": "700.0",
+  "vat_exemption": null,
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
+}
+{% endapi_block %}
+
+## Facturer / Solder un devis
 
 {% assign request = site.data.urls.quotes.invoice -%}
 ### {{ request.method }} {{ request.url }}
 
-Conversion du devis ID en facture.
+Si des acomptes ont été enregistrés pour le devis, ils seront pris en compte et cette méthode génère la facture de solde en tenant compte des acomptes déjà versés. Sinon l'intégralité du devis est facturé.
 
 ### Requête
 
@@ -1737,6 +1845,10 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
   - term: tri par date d'échéance
   - created: tri par date de création d'une facture (ie date à laquelle l'enregistrement a été créé)
   - updated: tri par date de dernière modification d'une facture (ie date à laquelle l'enregistrement a été modifié pour la dernière fois)
+
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de factures spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
 
 ### Requête
 
@@ -2242,20 +2354,6 @@ Status: 201 Created
 La liste des règlements partiels enregistrés pour une facture est retournée dans le détail d'une facture, dans la clé `settlements`.
 Si vous souhaitez ajouter ou supprimer des règlements partiels, vous pouvez consulter la [documentation disponible ici](/api/reglements/).
 
-## Gestion des factures récurrentes
-
-Les factures récurrentes sont gérées uniquement via l'interface web. Cependant, vous pouvez obtenir des informations sommaires sur la liste des factures récurrentes configurées à l'aide des méthodes suivantes :
-
-{% assign request = site.data.urls.invoices.recurring_list -%}
-### {{ request.method }} {{ request.url }}
-
-Obtenir la liste des factures récurrentes
-
-{% assign request = site.data.urls.invoices.recurring_show -%}
-### {{ request.method }} {{ request.url }}
-
-Obtenir des informations sur la facture récurrente ID
-
 ## Ajouter un fichier
 
 {% assign request = site.data.urls.invoices.upload -%}
@@ -2304,6 +2402,460 @@ Location: /firms/FIRM_ID/assets/1.json
 ### Ligne de facturation
 
 Les lignes de facturations sont transmises sous forme d'un tableau de lignes, dans le champ ```items``` de la facture
+
+{% include fields.md fields=site.data.fields.item %}
+
+
+
+# Factures récurrentes
+
+## Liste des factures récurrentes
+
+{% assign request = site.data.urls.recurring_invoices.find -%}
+
+### {{ request.method }} {{ request.url }}
+
+Liste des factures récurrentes, par groupe de {{ site.api.per_page }} résultats.<br/>
+Chaque facture récurrente est composée d'un ensemble de lignes de facturation (items) ainsi que d'informations spécifiques à la récurrence et à la transmission éventuelle de la facture par courriel.
+
+### Optimisation des requêtes
+
+Par défaut, l'API retourne les informations de chaque facture récurrente, sauf les lignes de facturation et le contenu des courriels, afin d'optimiser les performances de vos requêtes. Pour obtenir les lignes de facturation d'une facture spécifique (ou bien le contenu du courriel), il vous suffit de faire une requête sur la facture récurrente concernée.
+
+Vous avez la possibilité d'inclure plus ou moins d'informations avec chaque facture récurrente retournée dans la réponse en utilisant les paramètres suivants :
+
+- `with_details` :
+  - 1 pour inclure les lignes de facturation et le courriel
+  - 0 (par défaut) pour ne pas inclure les lignes de facturation et le contenu du courriel
+
+### Paramètres optionnels
+
+- `page` : numéro de page
+- `title` : recherche partielle sur le l'objet de la facture
+- `company` : recherche partielle sur le nom de société
+- `last_name` : recherche partielle sur le nom de famille
+- `email` : recherche partielle sur une adresse email utilisée dans le courriel associé à la facture récurrente
+- `status`: recherche sur l'état des factures récurrentes. Les valeurs possibles sont :
+  {% for item in site.data.specific.recurring_status.data -%}
+  {% if item[1] and item[1] != '' -%}- {{ item[1] }} : {{ item[0] }}{% endif %}
+  {% endfor %}
+- `frequency` : recherche sur la fréquence de la facture récurrente. Les valeurs possibles sont :
+  {% for item in site.data.specific.recurring_frequency.data -%}
+  {% if item[1] and item[1] != '' -%}- {{ item[1] }} : {{ item[0] }}{% endif %}
+  {% endfor %}
+- `category_id`: recherche sur l'ID d'une catégorie spécifique (utiliser l'ID 0 pour retrouver les factures sans catégorie)
+
+#### Tri
+
+Par défaut, les factures sont triées par ordre décroissant de numéro de facture.
+Vous pouvez trier les résultats selon différentes méthodes en utilisant les paramètres suivants
+
+- `sort` :
+  - asc: tri croissant
+  - desc: tri décroissant
+- `order` : type de tri
+  - customer: tri par nom mnémotechnique de client
+  - paid: tri par date de paiement
+  - total: tri par montant total de facturation
+  - last_run: date de dernière exécution
+  - next_run: date de prochaine exécution
+
+
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de factures spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd %} "{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+{% api_block 'json' %}
+[
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": null,
+    "currency": "EUR",
+    "customer_id": 180366,
+    "customer_name": "Big Corp",
+    "external_ref": null,
+    "discount": null,
+    "draft": false,
+    "id": 411588,
+    "information": null,
+    "invoice_ref": "201307-4",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "paid_on": null,
+    "pay_before": "60fm",
+    "payment_mode": 0,
+    "payment_ref": null,
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_id": null,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-09-30",
+    "title": "Facturation mensuelle",
+    "total": "700.0",
+    "vat_exemption": null,
+    "items": [
+      {
+        "id": 949167,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 1",
+        "total": "500.0",
+        "unit_price": "500.0",
+        "vat": "0.200"
+      },
+      {
+        "id": 949168,
+        "nature": 9,
+        "optional": false,
+        "position": 2,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 2",
+        "total": "200.0",
+        "unit_price": "200.0",
+        "vat": "0.200"
+      }
+    ]
+  },
+  {
+    "api_custom": null,
+    "api_id": null,
+    "category_id": null,
+    "currency": "EUR",
+    "customer_id": 180366,
+    "customer_name": "Big Corp",
+    "external_ref": null,
+    "discount": null,
+    "draft": false,
+    "id": 411587,
+    "information": null,
+    "invoice_ref": "201307-3",
+    "invoiced_on": "2013-07-29",
+    "language": "fr",
+    "paid_on": null,
+    "pay_before": "60fm",
+    "payment_mode": 0,
+    "payment_ref": null,
+    "penalty": "0.0",
+    "precompte": null,
+    "quote_id": null,
+    "rebate_percentage": "0.0",
+    "service_personne": false,
+    "tax_percent": null,
+    "tax_title": null,
+    "term_on": "2013-09-30",
+    "title": "Facturation mensuelle",
+    "total": "700.0",
+    "paid_in_main_currency": null,
+    "vat_exemption": null,
+    "items": [
+      {
+        "id": 949165,
+        "nature": 9,
+        "optional": false,
+        "position": 1,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 1",
+        "total": "500.0",
+        "unit_price": "500.0",
+        "vat": "0.200"
+      },
+      {
+        "id": 949166,
+        "nature": 9,
+        "optional": false,
+        "position": 2,
+        "product_id": null,
+        "quantity": "1.0",
+        "style": null,
+        "title": "Affichage pub 2",
+        "total": "200.0",
+        "unit_price": "200.0",
+        "vat": "0.200"
+      }
+    ]
+  }
+]
+{% endapi_block %}
+
+## Créer une facture récurrente
+
+{% assign request = site.data.urls.recurring_invoices.create -%}
+### {{ request.method }} {{ request.url }}
+
+Création d'une nouvelle facture. On obtient en retour le code JSON de l'enregistrement créé, avec l'ID qui lui a été attribué.<br/>
+Une facture doit au moins contenir une ligne de facturation (champs items)<br/>
+Le total de chaque ligne de facturation ainsi que le total de la facture sont calculés automatiquement et ne doivent pas être transmis.
+
+#### Remarques
+
+* Si vous souhaitez créer une facture en mode brouillon, ajoutez le paramètre `type_doc=draft` à l'url.
+* Si vous souhaitez **importer une facture externe** (i.e. enregistrer dans votre compte une **facture créée dans un autre outil**, pour en tenir compte dans les statistiques et les exports de votre entreprise), ajoutez le paramètre `external=1` à l'url. Dans ce cas, vous devez obligatoirement préciser le numéro de la facture d'origine dans le champs "external_ref".
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd write: true-%}
+-X POST -d '{
+  "currency": "EUR",
+  "customer_id": 1,
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "pay_before": "60fm",
+  "penalty": "0.0",
+  "title": "Facturation mensuelle",
+  "items": [
+    {
+      "position": 1,
+      "quantity": "1.0",
+      "title": "Affichage pub 1",
+      "unit_price": "500",
+      "vat": "0.200"
+    },
+    {
+      "position": 2,
+      "quantity": "1.0",
+      "title": "Affichage pub 2",
+      "unit_price": "200",
+      "vat": "0.200"
+    }
+  ]
+}' \
+"{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+{% api_block 'plaintext' -%}
+Status: 201 Created
+Location: /firms/FIRM_ID/invoices/1.json
+{% endapi_block %}
+
+{% api_block 'json' -%}
+{
+  "api_custom": null,
+  "api_id": null,
+  "category_id": null,
+  "currency": "EUR",
+  "customer_id": 180366,
+  "external_ref": null,
+  "discount": null,
+  "draft": false,
+  "id": 411588,
+  "information": null,
+  "invoice_ref": "201307-4",
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "paid_on": null,
+  "pay_before": "60fm",
+  "payment_mode": 0,
+  "payment_ref": null,
+  "penalty": "0.0",
+  "precompte": null,
+  "quote_id": null,
+  "rebate_percentage": "0.0",
+  "service_personne": false,
+  "tax_percent": null,
+  "tax_title": null,
+  "term_on": "2013-09-30",
+  "title": "Facturation mensuelle",
+  "total": "700.0",
+  "vat_exemption": null,
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
+}
+{% endapi_block %}
+
+## Détails d'une facture récurrente
+
+{% assign request = site.data.urls.recurring_invoices.show -%}
+### {{ request.method }} {{ request.url }}
+
+Obtenir le détail de la facture n° ID<br/>
+Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd -%}
+"{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+{% api_block 'json' -%}
+{
+  "api_custom": null,
+  "api_id": null,
+  "category_id": null,
+  "currency": "EUR",
+  "customer_id": 1,
+  "external_ref": null,
+  "discount": null,
+  "draft": false,
+  "id": 1,
+  "information": null,
+  "invoice_ref": "201307-4",
+  "invoiced_on": "2013-07-29",
+  "language": "fr",
+  "paid_on": null,
+  "pay_before": "60fm",
+  "payment_mode": 0,
+  "payment_ref": null,
+  "penalty": "0.0",
+  "precompte": null,
+  "quote_id": null,
+  "rebate_percentage": "0.0",
+  "service_personne": false,
+  "tax_percent": null,
+  "tax_title": null,
+  "term_on": "2013-09-30",
+  "title": "Facturation mensuelle",
+  "total": "700.0",
+  "paid_in_main_currency": null,
+  "vat_exemption": null,
+  "items": [
+    {
+      "id": 949167,
+      "nature": 9,
+      "optional": false,
+      "position": 1,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 1",
+      "total": "500.0",
+      "unit_price": "500.0",
+      "vat": "0.200"
+    },
+    {
+      "id": 949168,
+      "nature": 9,
+      "optional": false,
+      "position": 2,
+      "product_id": null,
+      "quantity": "1.0",
+      "style": null,
+      "title": "Affichage pub 2",
+      "total": "200.0",
+      "unit_price": "200.0",
+      "vat": "0.200"
+    }
+  ]
+}
+{% endapi_block -%}
+
+## Modifier une facture récurrente
+
+{% assign request = site.data.urls.recurring_invoices.update -%}
+### {{ request.method }} {{ request.url }}
+
+Mise à jour d'une facture. Lorsque la facture est un brouillon, l'ensemble des données est modifiable, par contre, une fois la facture finalisée, tout ce qui influe sur le montant de la facturation ne peut plus être modifié. Pour annuler une facture, vous devez faire un avoir.
+
+La mise à jour d'une facture sert essentiellement à enregistrer le règlement de la facture lorsque le règlement est différé, ou bien à mettre à jour le champ d'informations et les conditions de règlement.
+
+Il n’est pas nécessaire de fournir tous les champs, vous pouvez inclure uniquement ceux que vous souhaitez modifier dans la requête. Les champs non inclus resteront inchangés.
+Par contre, si vous souhaitez modifier les lignes de facturation, vous devez systématiquement fournir la liste complète des lignes de facturation, y compris celles que vous ne souhaitez pas modifier.
+
+### Paramètres
+
+* `type_doc` : par défaut une facture reste dans son état (brouillon ou finalisée) lors de sa mise à jour. Si vous souhaitez changer le status d'une facture brouillon, utilisez la valeur `final` pour finaliser la facture, ou bien `draft` pour rester en mode brouillon. Une facture finalisée ne peut pas changer de status.
+
+#### Remarques
+
+Pour enregistrer différents modes de règlement sur une facture, utilisez le mécanisme des [règlements multiples](/api/reglements). Veuillez noter que le système de règlement multiple est uniquement prévu pour enregistrer les différents modes de règlement d'une facture, il ne s'agit pas d'un système de gestion des paiements en plusieurs fois. Pour un paiement en plusieurs fois, les méthodes légales sont de facturer vos prestations sous forme de X factures d'acompte et d'une facture de solde, ou bien de passer par un organisme de crédit pour mettre en place des solutions de crédit gratuit ou payant pour vos clients.
+
+### Requête
+
+Dans l'exemple ci dessous, on enregistre le règlement de la facture par Paypal le 6 juin 2020
+
+{% api_block 'shell' %}
+{% curl_cmd write: true -%}
+-X PATCH -d '{"paid_on":"2020-04-06","payment_mode":1}' \
+"{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+{% api_block 'plaintext' -%}
+Status: 200 OK
+{% endapi_block %}
+
+Le corps de la réponse contient l'objet JSON mis à jour.
+
+## Supprimer une facture récurrente
+
+{% assign request = site.data.urls.recurring_invoices.destroy -%}
+### {{ request.method }} {{ request.url }}
+
+Supprime la facture identifiée par son ID à condition que cette facture soit un brouillon.
+Si la facture a été finalisée, elle ne sera pas supprimée et vous recevrez un message d'erreur.
+
+### Requête
+
+{% api_block 'shell' %}
+{% curl_cmd -%}
+-X DELETE "{{ request.url | api_url }}"
+{% endapi_block %}
+
+### Réponse
+
+{% api_block 'plaintext' %}
+Status: 200 OK
+{% endapi_block %}
+
+## Liste des champs
+
+{% include fields.md fields=site.data.fields.recurring_invoice %}
+
+### Ligne de facturation
+
+Les lignes de facturations sont transmises sous forme d'un tableau de lignes, dans le champ ```items``` de la facture récurrente
 
 {% include fields.md fields=site.data.fields.item %}
 
@@ -2589,6 +3141,11 @@ Vous pouvez trier les résultats selon différentes méthodes en utilisant les p
 * `order` : type de tri
   - created: tri par date de création
   - updated: tri par date de dernière modification
+
+#### Obtention d'enregistrements spécifiques
+
+Vous avez la possibilité d'obtenir un ensemble de fournisseurs spécifiques en transmettant une liste d'ID séparés par une virgule dans le champ `ids` (vous pouvez aussi transmettre un tableau d'ID). Dans ce cas, tous les paramètres optionnels sont ignorés à l'exception des paramètres de tri et de pagination.
+
 
 ### Requête
 
@@ -3282,17 +3839,17 @@ Voici les valeurs spécifiques des délais de paiement
 
 Si vous avez définit des valeurs personnalisées de délais de règlement, les valeurs correspondantes sont documentées directement dans la page de gestion des délais personnalisés (i.e. dans la rubrique Paramètres / Facturation)
 
-## nature (achat)
-
-Voici les différentes nature d'achats possible
-
-{% include values.md entries=site.data.specific.purchase_nature.data field='nature' %}
-
 ## nature (facturation)
 
 Voici les différentes nature possible pour les lignes de facturation lorsque vous gérez une auto-entreprise ou une micro-entreprise
 
 {% include values.md entries=site.data.specific.nature.data field='nature' %}
+
+## nature (achat)
+
+Voici les différentes nature d'achats possible
+
+{% include values.md entries=site.data.specific.purchase_nature.data field='nature' %}
 
 ## status (catégorie)
 
@@ -3331,3 +3888,4 @@ Pour aider les développeurs :
 3. Tenir compte de la gestion des erreurs.
 4. Expliquer les limitations pertinentes.
 5. Proposer des modèles optimaux pour leur cas d'utilisation.
+

@@ -946,6 +946,248 @@ invoice:
   title: ID de la facture récurrente associée
   type: int
   help:
+recurring_invoice:
+- key: id
+  mode: lecture
+  title: Identifiant
+  type: int
+  help:
+- key: customer_id
+  mode: modifiable
+  title: Client
+  type: int
+  help:
+- key: customer_identity
+  mode: lecture
+  title: Nom de la société ou du client
+  type: string(255)
+  help:
+- key: title
+  mode: modifiable
+  title: Objet
+  type: string(255)
+  help:
+- key: language
+  mode: modifiable
+  title: Langue du PDF
+  type: string(2)
+  help:
+- key: category_id
+  mode: modifiable
+  title: Catégorie
+  type: int
+  help:
+- key: followup_id
+  mode: modifiable
+  title: Suivi commercial
+  type: int
+  help:
+- key: invoiced_on
+  mode: modifiable
+  title: Date facture
+  type: date
+  help:
+- key: term_on
+  mode: modifiable
+  title: Date d'échéance
+  type: date
+  help:
+- key: draft
+  mode: modifiable
+  title: Brouillon
+  type: boolean
+  help:
+- key: balance_year
+  mode: modifiable
+  title: Exercice fiscal
+  type: int
+  help: Indique l'année de début de l'exercice fiscal lorsque l'exercice fiscal est
+    personnalisé.
+- key: total
+  mode: lecture
+  title: Montant total HT
+  type: decimal(15,3)
+  help:
+- key: total_with_vat
+  mode: lecture
+  title: Montant total TTC
+  type: decimal(15,3)
+  help:
+- key: currency
+  mode: modifiable
+  title: Devise
+  type: string(3)
+  help:
+- key: rebate_percentage
+  mode: modifiable
+  title: Réduction globale
+  type: decimal(8,3)
+  help:
+- key: exchange_rate
+  mode: lecture
+  title: Taux de change
+  type:
+  help:
+- key: estimated_rate
+  mode: lecture
+  title: Taux de change estimé?
+  type:
+  help:
+- key: vat_exemption
+  mode: modifiable
+  title: Motif d'exonération de TVA
+  type: string(255)
+  help:
+- key: vat_country
+  mode: modifiable
+  title: Code pays des taux TVA à appliquer
+  type: string(2)
+  help:
+- key: tax_title
+  mode: modifiable
+  title: Intitulé de la taxe additionnelle sur le total HT
+  type: string(255)
+  help:
+- key: tax_percent
+  mode: modifiable
+  title: Pourcentage de la taxe additionnelle sur le total HT
+  type: decimal(5,2)
+  help:
+- key: penalty
+  mode: modifiable
+  title: Pénalités de retard
+  type: decimal(8,3)
+  help:
+- key: pay_before
+  mode: modifiable
+  title: Délai de paiement
+  type: string(16)
+  help:
+- key: discount
+  mode: modifiable
+  title: Taux d'escompte
+  type: decimal(8,3)
+  help:
+- key: precompte
+  mode: modifiable
+  title: Précompte des cotisations
+  type: boolean
+  help:
+- key: activity_title
+  mode: modifiable
+  title: Nature de l'activité
+  type: string(255)
+  help:
+- key: service_personne
+  mode: modifiable
+  title: Service à la personne
+  type: boolean
+  help:
+- key: accounting_entry
+  mode: modifiable
+  title: Compte d'imputation
+  type: string(8)
+  help:
+- key: information
+  mode: modifiable
+  title: Informations complémentaires
+  type: text
+  help:
+- key: internal_note
+  mode: modifiable
+  title: Note interne
+  type: text
+  help:
+- key: purchase_number
+  mode: modifiable
+  title: Bon de commande
+  type: string(100)
+  help:
+- key: created_at
+  mode: lecture
+  title: Créé le
+  type: datetime(3)
+  help:
+- key: updated_at
+  mode: lecture
+  title: Modifié le
+  type: datetime(3)
+  help:
+- key: user_id
+  mode: modifiable
+  title: Géré par
+  type: int
+  help:
+- key: items
+  mode: modifiable
+  title: Lignes de facturation
+  type: array
+  help:
+- key: files
+  mode: lecture
+  title: Fichiers joints
+  type: array
+  help:
+- key: api_id
+  mode: modifiable
+  title: API - Référence numérique libre
+  type: bigint
+  help:
+- key: api_custom
+  mode: modifiable
+  title: API - Texte libre
+  type: string(255)
+  help:
+- key: soft_deleted
+  mode: lecture
+  title: Enregistrement marqué comme à supprimer
+  type: boolean
+  help:
+- key: hard_delete_on
+  mode: lecture
+  title: Date définitive de la suppression
+  type: date
+  help:
+- key: mailing
+  mode: modifiable
+  title: Transmettre par courriel
+  type: boolean
+  help:
+- key: payment_mode
+  mode: modifiable
+  title: Mode de règlement
+  type: int
+  help:
+- key: paid_on
+  mode: modifiable
+  title: Payé le
+  type: date
+  help:
+- key: next_run_on
+  mode: modifiable
+  title: A partir du
+  type: date
+  help:
+- key: last_run_on
+  mode: lecture
+  title: Derniere facture enregistrée
+  type: date
+  help:
+- key: occurrence
+  mode: modifiable
+  title: Occurrences
+  type: int
+  help:
+- key: frequency
+  mode: modifiable
+  title: Répeter
+  type: int
+  help:
+- key: invoice_ids
+  mode: lecture
+  title: Tableau des IDs des factures associées à cette facture récurrente
+  type: array
+  help:
 item:
 - key: id
   mode: modifiable

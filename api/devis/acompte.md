@@ -24,6 +24,9 @@ Notre outil ne propose pas de faire d'acomptes avec plusieurs taux de TVA ou plu
 
 - `invoiced_on` : date de la facture d'acompte (par défaut la date du jour)
 - `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture d'acompte
+- `api_id` : mémorisation d'un ID spécifique pour l'acompte
+- `api_custom` : mémorisation d'une information libre pour l'acompte
+
 
 ## Requête
 

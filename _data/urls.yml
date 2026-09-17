@@ -122,6 +122,22 @@ invoices:
   recurring_show:
     url: "/firms/FIRM_ID/recurring_invoices/ID.json"
     method: GET
+recurring_invoices:
+  find:
+    url: "/firms/FIRM_ID/recurring_invoices.json"
+    method: GET
+  create:
+    url: "/firms/FIRM_ID/recurring_invoices.json"
+    method: POST
+  show:
+    url: "/firms/FIRM_ID/recurring_invoices/ID.json"
+    method: GET
+  update:
+    url: "/firms/FIRM_ID/recurring_invoices/ID.json"
+    method: PATCH
+  destroy:
+    url: "/firms/FIRM_ID/recurring_invoices/ID.json"
+    method: DELETE
 purchases:
   find:
     url: "/firms/FIRM_ID/purchases.json"

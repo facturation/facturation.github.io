@@ -1,37 +1,26 @@
 ---
 layout: default
-nav_title: 'facturer / solder'
-title: 'Facturer / Solder un devis'
-parent: 'Devis'
-nav_order: 701
+nav_title: détails
+title: Détails d'une facture récurrente
+parent: 'Factures récurrentes'
+nav_order: 300
 ---
-{% assign request = site.data.urls.quotes.invoice -%}
+{% assign request = site.data.urls.recurring_invoices.show -%}
 ## {{ request.method }} {{ request.url }}
 
-Si des acomptes ont été enregistrés pour le devis, ils seront pris en compte et cette méthode génère la facture de solde en tenant compte des acomptes déjà versés. Sinon l'intégralité du devis est facturé.
-
-## Paramètres optionnels
-
-- `invoiced_on` : date de la facture de solde (par défaut la date du jour)
-- `purchase_number` : référence eventuelle du bon de commande à indiquer sur la facture de solde
-- `api_id` : mémorisation d'un ID spécifique pour la facture de solde
-- `api_custom` : mémorisation d'une information libre pour la facture de solde
+Obtenir le détail de la facture n° ID<br/>
+Chaque facture est composée d'une ou plusieurs lignes de facturation (items)
 
 ## Requête
 
 {% api_block 'shell' %}
 {% curl_cmd -%}
- -X POST "{{ request.url | api_url }}?api_id=99&api_custom=fin_de_chantier"
+"{{ request.url | api_url }}"
 {% endapi_block %}
 
-### Réponse
+## Réponse
 
-{% api_block 'plaintext' %}
-Status: 201 Created
-Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
-{% endapi_block %}
-
-{% api_block 'json' %}
+{% api_block 'json' -%}
 {
   "api_custom": null,
   "api_id": null,
@@ -41,7 +30,7 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
   "external_ref": null,
   "discount": null,
   "draft": false,
-  "id": 411584,
+  "id": 1,
   "information": null,
   "invoice_ref": "201307-4",
   "invoiced_on": "2013-07-29",
@@ -60,6 +49,7 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
   "term_on": "2013-09-30",
   "title": "Facturation mensuelle",
   "total": "700.0",
+  "paid_in_main_currency": null,
   "vat_exemption": null,
   "items": [
     {
@@ -90,4 +80,4 @@ Location: /firms/FIRM_ID/invoices/INVOICE_ID.json
     }
   ]
 }
-{% endapi_block %}
+{% endapi_block -%}

@@ -540,3 +540,31 @@ bills_type_choices:
   - - Nova
     - nova
   internal: true
+recurring_status:
+  data:
+  - - Tous
+    - ''
+  - - Actif
+    - '0'
+  - - Terminé
+    - '1'
+  - - Erreur
+    - error
+  internal: true
+recurring_frequency:
+  data:
+  - - tous les mois
+    - 30
+  - - tous les 2 mois
+    - 60
+  - - tous les 3 mois
+    - 90
+  - - tous les 4 mois
+    - 120
+  - - tous les 6 mois
+    - 180
+  - - tous les ans
+    - 360
+  - - tous les 2 ans
+    - 720
+  internal: true
