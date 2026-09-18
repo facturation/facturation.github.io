@@ -39,7 +39,7 @@ Le total de chaque ligne de facturation ainsi que le total de la facture sont ca
   "language": "fr",
   "pay_before": "30",
   "mailing": "1",
-  "email_attributes": {
+  "email": {
     "to": "laurent@test.com",
     "cc": "",
     "bcc": "",
