@@ -2634,11 +2634,6 @@ Création d'une nouvelle facture. On obtient en retour le code JSON de l'enregis
 Une facture doit au moins contenir une ligne de facturation (champs items)<br/>
 Le total de chaque ligne de facturation ainsi que le total de la facture sont calculés automatiquement et ne doivent pas être transmis.
 
-#### Remarques
-
-* Si vous souhaitez créer une facture en mode brouillon, ajoutez le paramètre `type_doc=draft` à l'url.
-* Si vous souhaitez **importer une facture externe** (i.e. enregistrer dans votre compte une **facture créée dans un autre outil**, pour en tenir compte dans les statistiques et les exports de votre entreprise), ajoutez le paramètre `external=1` à l'url. Dans ce cas, vous devez obligatoirement préciser le numéro de la facture d'origine dans le champs "external_ref".
-
 ### Requête
 
 {% api_block 'shell' %}
